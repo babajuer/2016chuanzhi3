@@ -1,0 +1,45 @@
+<html>  
+<head>  
+    <title>JavaScript原理学习</title>  
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">    
+</head>  
+<body>  
+链式调用例子如：  
+$("ok").css("border", "2px red solid").show();  
+<br><br><br><br>  
+<input type="button" value="执行" onclick="init()"/>  
+<br>  
+  
+<div id="ok" style="display:none;">asdlf</div>  
+  
+</body>  
+</html>
+    <script type="text/javascript">  
+        function jQueryOBJ(el) {  
+            this.el = el;  
+        }  
+        jQueryOBJ.prototype = {  
+            css : function(key, value) {  
+                this.el.style[key] = value;  
+                return this;  
+            },  
+            hide:function() {  
+                this.el.style["display"] = "none";  
+                return this;  
+            },  
+            show:function() {  
+                this.el.style["display"] = "block";  
+                return this;  
+            }  
+        }  
+  
+        var $ = function(idString) {  
+            var el = document.getElementById(idString);  
+            var JOB = new jQueryOBJ(el);  
+            return JOB;  
+        }  
+  
+        function init() {  
+            $("ok").css("border", "2px red solid").show();  
+        }  
+    </script>

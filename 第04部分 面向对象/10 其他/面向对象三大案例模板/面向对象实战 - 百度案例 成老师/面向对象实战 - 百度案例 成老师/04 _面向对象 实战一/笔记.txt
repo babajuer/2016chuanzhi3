@@ -1,0 +1,23 @@
+【星座】
+create 		ICD框架中创建元素方法
+formateString 	ICD框架中格式化字符串方法
+trim 		ICD框架中取出首尾空白符方法
+toggleClass 	ICD框架中切换类
+addClass 	ICD框架中添加类
+removeClass 	ICD框架中移除类
+hasClass 	ICD框架中判断元素是否拥有类
+
+【世界杯】
+getICDTarget 	ICD框架方法	获取ICD包装后的事件源
+switch case 	多分支判断语句
+
+
+
+
+
+
+
+
+
+
+

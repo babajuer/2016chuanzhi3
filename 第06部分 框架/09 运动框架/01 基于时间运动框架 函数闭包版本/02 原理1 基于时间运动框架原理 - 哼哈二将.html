@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+  div{height:50px;width:50px;background:#F00;position:absolute;}
+    .div1{
+    }
+    .div2{
+        margin-top:100px;
+    }
+</style>
+</head>
+
+<body>
+<button id='btn'>确认</button>
+<div class='div1'></div>
+<div class='div2'></div>
+</body>
+</html>
+<script src='../itcast.js'></script>
+<script>
+  //案例: 将一个物体在5秒内从0px移动到400px
+   //3 4 从0移动到500(时间：5秒钟)
+  //讲解哼哈二将 --理解基于时间动画的原理
+  //定义变量
+  var btn = document.getElementById('btn');
+  var div =document.getElementById('div');
+  		/*运动开始时间*/
+  		var now = +new Date();
+		/*var yongshi*/
+  		/*tween：动画时间进程*/
+  		/*用时/总时间*/
+  		/*用时：已经走得时间 --开始时间*/
+		var tween;
+		var juli = 500;
+		/*var step;*/
+		var timer;
+   //绑定事件
+   btn.onclick=function() {
+		timer = setInterval(move,30);	
+    }
+
+  //定义一个函数，专门用来计算tween的值
+  //函数编写的原则: 单一职责原则
+
+  function getTween(now,pass,duration){
+      var yongshi = pass - now;
+      var tween = yongshi/duration
+      return tween
+    /*  return (pass - now) /duration*/
+  }
+
+
+
+  //停止动画时候做的事情
+  function stop(){
+     clearInterval(timer)
+  }
+
+  function oneProperty(id,name,juli,tween){
+      $$.css(id,name,juli*tween +'px')
+     /* dom.style[name] = juli*tween +'px';*/
+  }
+
+  function move(){
+      if(tween >=1){
+          stop()
+      }else{
+          /*计算现在的时间*/
+          var pass = +new Date();
+          tween = getTween(now,pass,5000)
+          oneProperty('div','left',juli,tween)
+          oneProperty('div','height',juli,tween)
+          oneProperty('div','width',juli,tween)
+          /*s = 总距离X进程*/
+         /* div.style.left = juli*tween +'px';*/
+      }
+
+
+  }
+
+
+//总距离X 动画时间进程
+//  每次循环执行的代码
+/*	function move() {
+		//+new Date -- 将时间转换成毫秒 - 纯数字 -- 为什么 --
+		//动画背后就是数学公式，公式之间都是数字比如 a+b a b都是数字 如果100px+100会报错
+		pass = +new Date();
+		yongshi = pass-now;
+		//持续时间/总时间  = 进度--   总距离X进度 ---步长
+		tween = yongshi/5000;
+		//这里的算法很简单，每次循环计算出下一次物体应该走了多少进度（动画时间进程），
+		// 乘以总距离就可以得到动画距离进程
+		step = 400*tween;
+		div.style.left= step+'px';
+		}*/
+</script>

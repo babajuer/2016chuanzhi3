@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <style type="text/css">
+        * {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container">
+    <h3>h3</h3>
+
+    <p>
+        <span class="mark">class="mark"</span>
+        <span>span</span>
+        <strong>strong</strong>
+    </p>
+</div>
+<div style='color:red;background:yellow;' id='mydiv' class='myclass'><span>span</span></div>
+</body>
+</html>
+<script>
+
+    //我们的框架
+    ;
+    (function () {
+        var ICD = {};
+
+        //二级命名空间  -- 通过二级命名空间来管理模块
+        ICD.dom = {};
+        ICD.event = {};
+        ICD.animate = {};
+
+
+        // 选择框架
+        ICD.dom.g = function (str) {
+            var sel = '', result = [], context = [], arr = [];
+            var group = str.split(',');
+            for (var g = 0, glen = group.length; g < glen; g++) {
+                var select = group[g].replace(/^\s*|\s*$/g, '');
+                context = [];
+                context = $cengci(select);
+                pushArr(context, result);
+
+            }
+            ;
+            return result;
+
+
+            function pushArr(arr1, arr2) {
+                for (var k = 0, domsLen = arr1.length; k < domsLen; k++) {
+                    arr2.push(arr1[k]);
+                }
+            }
+
+
+            function $id(id) {
+                return document.getElementById(id);
+            }
+
+            function $tag(tag, context) {
+                if (typeof context == 'string') {
+                    context = document.getElementById(context);
+                }
+                if (context) {
+                    return context.getElementsByTagName(tag);
+                } else {
+                    return document.getElementsByTagName(tag);
+                }
+            }
+
+            function $class(className, id) {
+                if (id) {
+                    var context = document.getElementById(id);
+                    if (context.getElementsByClassName) {
+                        return context.getElementsByClassName(className);
+                    }
+                } else {
+                    if (document.getElementsByClassName) {
+                        return document.getElementsByClassName(className);
+                    }
+                }
+                var arr = [];
+                if (id) {
+                    var context = document.getElementById(id);
+                    var dom = context.getElementsByTagName('*');
+                } else {
+                    var dom = document.getElementsByTagName('*');
+                }
+                for (var i = 0, len = dom.length; i < len; i++) {
+                    if (dom[i].className && dom[i].className.indexOf(className) >= 0) {
+                        arr.push(dom[i]);
+                    }
+                }
+                return arr
+            }
+
+            //var dom = $('.myspan,#mydiv,h3');
+            function $groups(content) {
+                //总体思路： 个个击破
+                //找到个个 ---放在数组里面 ---遍历--个个击破
+                //三种情况
+                var i = 0, j = 0, len, domlen, index, arr = [], result = [], doms = [];
+                arr = content.split(',');
+                //alert(arr.length);
+                for (i, len = arr.length; i < len; i++) {
+                    if (arr[i].indexOf('.') >= 0) {
+                        index = arr[i].indexOf('.')
+                        doms = $class(arr[i].slice(index + 1))
+                        //各个击破2
+                    } else if (arr[i].indexOf('#') >= 0) {
+                        index = arr[i].indexOf('#')
+                        // 陷阱2
+                        doms = [$id(arr[i].slice(index + 1))]
+                    } else {
+                        //标签  是数组 不会出现上述陷阱问题
+                        doms = $tag(arr[i]);
+                    }
+                    //陷阱2  前面见过doms是数组，但是#获取的不是数组，所以需要转换为数组
+                    var j = 0, domlen;
+                    for (j, domlen = doms.length; j < domlen; j++) {
+                        result.push(doms[j])
+                    }
+                }
+                return result;
+            }
+
+            function $cengci(select) {
+                //个个击破法则 -- 寻找击破点
+                var sel = select.split(' ');
+                //context保存父亲id集合
+                //arr保存搜索到的元素集合
+                var context = [], arr = [];
+                for (var i = 0, len = sel.length; i < len; i++) {
+                    var s = sel[i];
+                    //重要 -- 每次都要清空 -- 只是用来计算中间结果
+                    arr = [];
+                    if (s) {
+                        //同样 三种情况
+                        if (s.indexOf('#') >= 0) {
+                            //如果是#，找到该元素，那么将搜索到的元素保存在context里面，将成为下个管道的入口参数
+                            //将值保存在context中
+                            pushArr([$id(s.slice(s.indexOf('#') + 1))]);
+                            context = arr;
+
+                        } else if (s.indexOf('.') >= 0) {
+                            //如果是.
+                            //找到context中所有的class为【s-1】的元素 --context是个集合
+                            if (context.length) {
+                                for (var j = 0, contextLen = context.length; j < contextLen; j++) {
+                                    pushArr($class(s.slice(s.indexOf('.') + 1), context[j]));
+                                }
+                            } else {
+                                pushArr($class(s.slice(s.indexOf('.') + 1)));
+                            }
+                            context = arr;
+                        } else {
+                            //如果是标签
+                            //根据标签
+                            //遍历父亲，找到父亲中的元素==父亲都存在context中
+                            if (context.length) {
+                                for (var j = 0, contextLen = context.length; j < contextLen; j++) {
+                                    pushArr($tag(s, context[j]));
+                                }
+                            } else {
+                                pushArr($tag(s));
+                            }
+                            context = arr;
+                        }
+                    }
+                }
+
+
+                function pushArr(doms) {
+                    for (var k = 0, domsLen = doms.length; k < domsLen; k++) {
+                        arr.push(doms[k]);
+                    }
+                }
+
+                return context;
+            }
+        }
+
+        //作业 - 获取str规定的范围内的所有的tag标签  -- 比如 #san p .class找到的元素下所有的p标签
+        ICD.dom.q = function (str, tag) {
+            var result = [], tag = tag;
+            if (typeof str == 'string') {
+                dom = ICD.dom.g(str);
+            } else {
+                dom = str;
+            }
+            if (dom.length) {
+                for (var i = 0, len = dom.length; i < len; i++) {
+                    getDom(dom[i].children);
+                }
+            }
+            function getDom(doms) {
+                for (var c = 0, clen = doms.length; c < clen; c++) {
+                    if (doms[c].tagName.toLowerCase() == tag.toLowerCase()) {
+                        result.push(doms[c]);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        //事件框架
+        // 绑定事件
+        ICD.event.on = function (id, type, fn) {
+            var dom = typeof id === 'string' ? ICD.dom.g(id) : id;
+            if (dom.length) {
+                for (var i = dom.length - 1; i >= 0; i--) {
+                    addEvent(dom[i]);
+                }
+            } else {
+                addEvent(dom);
+            }
+            function addEvent(dom) {
+                if (dom.addEventListener) {
+                    dom.addEventListener(type, fn, false);
+                } else if (dom.attachEvent) {
+                    dom.attachEvent('on' + type, fn);
+                } else {
+                    dom['on' + type] = fn;
+                }
+            }
+        }
+        // 解除事件
+        ICD.event.un = function (id, type, fn) {
+            var dom = typeof id === 'string' ? ICD.dom.g(id) : id;
+            if (dom.length) {
+                for (var i = dom.length - 1; i >= 0; i--) {
+                    removeEvent(dom[i]);
+                }
+            } else {
+                removeEvent(dom);
+            }
+            function removeEvent(dom) {
+                if (dom.removeEventListener) {
+                    dom.removeEventListener(type, fn);
+                } else if (dom.detachEvent) {
+                    dom.detachEvent(type, fn);
+                } else {
+                    dom['on' + type] = null;
+                }
+            }
+        }
+        // 获取事件对象
+        ICD.event.getEvent = function (event) {
+            return event ? event : window.event;
+        }
+        // 获取元素
+        ICD.event.getTarget = function (event) {
+            var event = ICD.event.getEvent(event);
+            return event.target || event.srcElement;
+        }
+      // 阻止冒泡以及捕获
+        ICD.event.stopPropagation = function (event) {
+            var event = ICD.event.getEvent(event);
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }
+// 阻止默认行为
+        ICD.event.preventDefault = function (event) {
+            var event = ICD.event.getEvent(event);
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else {
+                event.returnValue = false;
+            }
+        }
+//获取鼠标按钮数值
+        ICD.event.getDetail = function (event) {
+            var event = ICD.event.getEvent(event);
+            if (event.wheelDelta) {
+                return event.wheelDelta;
+            } else {
+                return -event.detail * 40;
+            }
+        }
+
+
+        ICD.test = function () {
+            alert('你好');
+        }
+
+
+        window.ICD = $ = ICD;
+
+
+    })();
+
+
+</script>
+
+
+<script type="text/javascript">
+    var doms = $.dom.g('    #container p span, strong   , #container h3   ');
+    for (var i = 0, len = doms.length; i < len; i++) {
+        doms[i].style.border = '1px solid red';
+    }
+
+    //q获取某个元素下所有的名称是tag的所有子节点
+    console.log($.dom.g('#container'))
+    console.log($.dom.q($.dom.g('div'), 'span'))
+    console.log($.dom.q('div', 'h3'))
+
+    //根据id
+    $.event.on('#mydiv', 'click', function () {
+        alert("你好");
+
+    });
+
+    //根据class
+    $.event.on('.myclass', 'click', function () {
+        alert("你好");
+
+    });
+</script>

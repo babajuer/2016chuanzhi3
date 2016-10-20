@@ -1,0 +1,160 @@
+
+.w{
+    width: 1390px;
+    margin:0 auto;
+}
+.nav-2014{height: 44px;border-bottom: 2px solid #B1191A;}
+.nav-2014 .w {
+    position: relative;
+    z-index: 9;
+    height: 44px;
+    margin-top: 15px;
+}
+#categorys-2014 {
+    float: left;
+    position: relative;
+    z-index: 10;
+    width: 210px;
+    height: 44px;
+    overflow: visible;
+    background: #B1191A;
+}
+#categorys-2014 .dt a {
+    display: block;
+    width: 190px;
+    height: 44px;
+    padding: 0 10px;
+    background: #B1191A;
+    font: 400 15px/44px "microsoft yahei";
+    color: #fff;
+    text-decoration: none;
+}
+#navitems-2014 .spacer, #navitems-2014 a, #navitems-2014 li, #navitems-2014 ul {
+    float: left;
+}
+#navitems-2014 a {
+    height: 44px;
+    padding: 0 20px;
+    text-align: center;
+    text-decoration: none;
+    font: 400 15px/44px "microsoft yahei";
+    color: #333;
+}
+#J_searchWrap
+{padding-top:15px;}
+
+.m-aside{
+    float: left;
+    width: 180px;
+    position: relative;
+    border: 1px solid #ddd;
+}
+.mt {
+    line-height: 36px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+.mt h3 {
+     font-family: "microsoft yahei";
+     font-size: 14px;
+    font-weight: bold;
+ }
+.mc li{
+    padding-left: 9px;
+    padding-right: 9px;
+    margin-bottom: 20px;
+}
+.imgs{padding:5px 0}
+.p-price {
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    padding: 0 10px;
+}
+.p-price span{
+    font-size:14px;
+    color: #e4393c;
+    font-weight: 400;
+    font-family: Verdana;
+}
+.p-name {
+    line-height: 18px;
+    height: 36px;
+    overflow: hidden;
+    padding: 0 10px;
+}
+.p-comm{
+    padding: 8px 10px 0;
+}
+.m-right
+{
+    float: right;
+    width: 1200px;
+
+}
+.m-right li{
+    width: 222px;
+    height: 388px;
+    float: left;
+    position: relative;
+    z-index: 1;
+    _display: inline;
+    margin-top: 10px;
+    padding: 38px 9px 10px;
+}
+.m-right li:hover{
+    box-shadow:1px 1px  2px #ccc,-1px -1px  2px  #ccc;
+}
+
+.m-right .p-img {
+    height: 220px;
+    padding: 0;
+    margin-bottom: 15px;
+    position: relative;
+
+}
+.m-right .p-name{
+    height: 40px;
+    margin-bottom: 6px;
+    overflow: hidden;
+    color:#666;
+    font-family: "microsoft yahei";
+    line-height: 150%;
+
+
+}
+.m-right .p-price{
+    margin-right: 10px;
+    color: #e4393c;
+    font-size: 20px;
+}
+.p-commit{
+    padding: 0 10px;
+}
+.p-commit a{
+    color: #005aa0;
+    font-family: verdana;
+    font-weight: 700;
+}
+.p-operate a{
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #DDD;
+    padding: 0 3px 0 28px;
+    position: relative;
+    background: #fff;
+    color: #999;
+    margin-top:10px;
+    margin-left:-1px;
+    background: url(../img/list-sprite.png) no-repeat;
+}
+.p-operate .db{
+    background-position:5px -82px;
+}
+.p-operate .gz {
+    background-position: 5px -432px;
+}.p-operate .shop {
+    background-position: 5px -270px;
+}

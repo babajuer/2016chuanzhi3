@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+
+<script>
+	//定义一个动画对象
+	//属性 方法
+	//采用函数式
+	 
+	 
+	 //定义对象 -- 先把模子搭建起来 -- 整体思考--搭建对象骨架
+	//通过举例开发淘宝产品页面思考如何定义对象的属性和方法
+	//思考 如何用面向对象思想开发订单页面  属性 方法
+    //思考完之后将可能的属性写下来，可能的方法写下来，并注释，这个时候不需要很精确，可以以后慢慢完善
+
+    //首先明确动画的本质，其实就是添加一些您要做动画的属性，然后运行动画，所以整体上我们大概知道需要有添加方法，运行方法
+    //并且添加之后需要运行。我们基于这个思路搭建起骨架
+
+
+    function Animate() {
+		 //函数句柄  动画句柄
+		this.timer =0;
+		//动画间隔时间
+		this.interval = 16;
+		//动画对象 
+		 //封装动画当中需要的值  动画对象
+		this._obj=null;
+	}
+	
+	
+
+Animate.prototype ={
+
+		//公共部门
+
+
+	    /* ------------------------------------------------
+		 *运行部 老大:run
+		 *部门职责描述: 根据添加进来的元素属性创建动画,并运行起来
+		 *-------------------------------------------------*/
+		/*动画的本质1：每次循环就是执行某些代码*/
+		/*这里我们将每次循环要做的事情专门放在一个函数中去做*/
+		_run: function() {
+
+            var that = this;
+            this.timer = setInterval(function(){that._move()},that.interval)
+		},
+		/*动画的本质2：每次循环就是执行某些代码*/
+		_move:function(){
+
+	},
+
+		/*停止动画*/
+         _stop:function(){},
+		/*单个属性运动公式*/
+		_oneProperty:function(){},
+        /*获取动画时间进程*/
+		_getTween:function(){},
+
+
+		 /* ------------------------------------------------
+		 *添加部  -- add  -- 将所有相关API也放在添加部中
+		 *部门职责描述: 添加元素 以及确定我要对哪个属性做动画
+		 *-------------------------------------------------*/
+		 //部门老大 - 添加
+		add:function(id,json,duration) {
+            //复习前面学习的接口知识，并运用在项目中，演示
+			this._adapter(id,json,duration);
+            this._run();
+		},
+        //复习适配器并实战
+        _adapter:function(id,json,duration) {
+        },
+
+
+
+	    /* ------------------------------------------------
+		 *后勤部
+		 *部门职责描述: 辅助运行动画  比如清除 比如内存回收
+		 *-------------------------------------------------*/
+		 //清除垃圾
+		 _destroy:function() {}
+
+	}
+
+
+var animate = new Animate();
+	animate.add('id',{left:'300px',top:'200px'},2000);
+</script>

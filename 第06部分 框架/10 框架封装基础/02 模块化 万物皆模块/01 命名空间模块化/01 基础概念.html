@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+//我们的框架
+ ;(function(){	
+	var ICD = {};
+
+	//二级命名空间  -- 通过二级命名空间来管理模块
+    ICD.basic = {};
+	ICD.dom = {};
+	ICD.event = {};
+	ICD.animate = {};
+	ICD.css = {};
+	ICD.html = {};
+    ICD.ui = {};
+    ICD.ajax = {};
+
+    ICD.ui.pc = {};
+    ICD.ui.mobile = {};
+
+    ICD.page = {
+        login:function(){
+            alert('通用login')
+        }
+    };
+    ICD.page.home={
+        login:function(){
+            alert('特有login')
+        }
+    };
+    ICD.page.detail={};
+    ICD.page.order={};
+
+
+    ICD.test=function() {
+		alert('你好');
+	}
+
+
+   window.ICD = $ = ICD;
+})();
+
+
+$.test();
+$.page.login();
+$.page.home.login();
+
+</script>

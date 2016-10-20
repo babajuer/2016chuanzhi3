@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <style>
+        div{
+            background: red;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id='div'></div>
+</body>
+</html>
+<script src='itcast3.js'></script>
+<script>
+  /*明天在家复习jquery jquery是目前最风云的一个框架，几乎所有的企业都用jquery
+  101%都是使用jquery开发*/
+   /* $('div').click*/
+   /*伪数组*/ /*链式访问*/
+    /*内置的js的事件：onclick
+    jquery事件click*/
+        click('div',function(){
+            alert('使用自定义事件封装点击事件')
+        })
+
+    /*      mouseover('div',function(){
+              var dom = $$.$id('div')
+              dom.style.background = 'green'
+          })
+
+          mouseout('div',function(){
+              var dom = $$.$id('div')
+              dom.style.background = 'red'
+          })*/
+
+
+            var dom = $$.$id('div')
+            hover('div',function(){
+                dom.style.background = 'green'
+            },function(){
+                dom.style.background = 'red'
+            })
+
+
+
+  /*  over  out enter leave move */
+
+</script>

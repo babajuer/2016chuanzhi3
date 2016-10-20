@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .green{
+            color:green
+        }
+    </style>
+</head>
+<body>
+
+<div id='container'>
+    <div class='div'>传智播客</div>
+    <div class='div'>传智播客</div>
+    <div class='div'>传智播客</div>
+    <div class='div'>传智播客</div>
+    <div class='div'>传智播客</div>
+</div>
+
+<br/>
+
+<button id="div">改变div内容 - 第一个和最后一个</button>
+
+</body>
+</html>
+<script src='itcast.js'></script>
+<script type="text/javascript">
+
+    /*测试*/
+    $(function(){
+        /*事件*/
+        $('#div').click(function(){
+            $(".div").first().html('王书奎')
+            $(".div").eq(1).html(' 王书奎')
+            var div = $.create('div',{id : 'div123',class:'green'},'传智播客')
+            div.appendTo('#container')
+            $('#container').find('.div').html('笑傲江湖')
+            $('#container').children().html('大话西游')
+        })
+
+
+        $('.div').click(function(){
+            console.log($(this).index())
+            console.log($(this).parent().css('background','red'))
+        })
+
+    });
+
+
+</script>

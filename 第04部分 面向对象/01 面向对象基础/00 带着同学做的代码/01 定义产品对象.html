@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 属性和名称
+    /*我们一般将属性放在上面
+     我们一般将方法放在下面*/
+    /*刚才已经知道抽象和具体
+     如何用代码来体现抽象和具体
+     这里面就是一个抽象的东西  -只是一个概念*/
+    function Product(){
+        this.name ='';
+        this.price ='';
+        this.description = '';
+        this.comments ='';
+    }
+    Product.prototype = {
+        //购买
+        buy:function(){},
+        //添加到购物车
+        addCart:function(){}
+    }
+    /*console.log(Product.name)*/
+    /*用代码实现具体*/
+    var iphone6s = new Product();
+    iphone6s.price = '4888.00';
+    iphone6s.name = 'Apple iPhone 6s (A1700) 16G 金色 移动';
+    iphone6s.comments = '66227';
+    iphone6s.description = '手机中的战斗机'
+    //使用
+    console.log(iphone6s.name)
+
+
+
+    /*学生*/
+    /*抽象 -- 共性*/
+    function Student(){
+        this.name = ''
+        this.sex=''
+        this.age=''
+        this.aihao=''
+    }
+    Student.prototype = {
+        studyAjax:function(){},
+        chidao:function(){},
+        huodong:function(){}
+    }
+
+    /*具体*/
+    var xiaoying = new Student()
+    xiaoying.name = 'sonngpeiying'
+    xiaoying.aihao = '学习 音乐 美术 武术 高尔夫 编程'
+    xiaoying.sex = '男'
+
+
+    /*使用 -- 点语法*/
+    console.log(xiaoying.name)
+</script>

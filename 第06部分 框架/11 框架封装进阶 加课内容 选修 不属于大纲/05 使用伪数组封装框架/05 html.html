@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<br/>
+
+<button id="div">改变div内容 - 原生版本</button>
+<button id="div2">改变div内容 - jquery版本</button>
+</body>
+</html>
+
+
+
+<script>
+
+    var F = function(selector, context) {
+        return this.init(selector,context)
+    };
+
+    /*原型 init*/
+    F.prototype.initOld = function(selector, context) {
+        var nodeList = (context || document).querySelectorAll(selector);
+        this.length = nodeList.length;
+        //这里遍历应从第1个开始到倒数第二个，而不是最后一个，因为最后一个属性是length
+        for (var i=0; i<this.length; i+=1) {
+            this[i] = nodeList[i];
+        }
+        //这里是关键，return的是this，表示当前对象
+        return this;
+    };
+    /*改造后的init：如果只有一个元素，返回一个只有一个元素的伪数组*/
+    F.prototype.init = function(selector, context) {
+        if(typeof selector === 'string'){
+            var nodeList = (context || document).querySelectorAll(selector);
+            this.length = nodeList.length;
+            //这里遍历应从第1个开始到倒数第二个，而不是最后一个，因为最后一个属性是length
+            for (var i=0; i<this.length; i+=1) {
+                this[i] = nodeList[i];
+            }
+        }else if(selector.nodeType){
+            this[0] = selector;
+            this.length=1;
+        }
+
+        return this;
+    };
+    //each
+    F.prototype.each = function(fn) {
+        var i=0, length = this.length;
+        for (; i<length; i+=1) {
+            fn.call(this[i]);
+            //fn.call(this.element[i],i,this.element[i]);
+        }
+        return this;
+    };
+    /*hide*/
+    F.prototype.hide = function() {
+        this.each(function() {
+            this.style.display = "none";
+        });
+    };
+    /*show*/
+    F.prototype.show = function() {
+        this.each(function() {
+            this.style.display = "block";
+        });
+    };
+    //get
+    F.prototype.get = function(num) {
+        return this[num] ? this[num] : null;
+    };
+    /*eq*/
+    F.prototype.eq = function(num) {
+        //前面我们改造了init函数，如果是nodetype，则返回只有一个元素的jquery对象
+        return new F(this.get(num))
+    };
+    /*HTML*/
+    F.prototype.htmlOld = function(){
+        var arg = arguments,
+                len = arg.length;
+        //如果用户使用html（），则表示获取元素的内容
+        if(len === 0){
+            return this[0].innerHTML;
+        }else if(len === 1){
+            //如果用户这样使用html（‘王书奎’），则以此遍历对象从第一个到倒数第二个
+            for(var i =0;i< this.length; i++){
+                this[i].innerHTML = arg[0];
+            }
+        }
+        return this;
+    }
+    F.prototype.html = function(){
+        var arg = arguments,
+                len = arg.length;
+        //如果用户使用html（），则表示获取元素的内容
+        if(len === 0){
+            return this[0].innerHTML;
+        }else if(len === 1){
+            //如果用户这样使用html（‘王书奎’），则以此遍历对象从第一个到倒数第二个
+//            for(var i =0;i< this.length; i++){
+//                this[i].innerHTML = arg[0];
+//            }
+            this.each(function(){
+                this.innerHTML=arg[0]
+            });
+        }
+        return this;
+    }
+
+
+
+    //对象+函数法则 - 引入美元符号
+    var $ = function(selector, context) {
+        return new F(selector, context);
+    };
+
+
+
+    /*原生版本*/
+    var btndiv = document.getElementById("div")
+    btndiv.onclick = function() {
+        /*$(".div")[0].innerHTML= '王书奎'*/
+        $(".div").get(0).innerHTML= '王书奎'
+
+    };
+
+    /*html方法版本*/
+    var btndiv2 = document.getElementById("div2")
+    btndiv2.onclick = function() {
+        /*$(".div")[0].innerHTML= '王书奎'*/
+        $(".div").eq(0).html('王书奎')
+
+    };
+
+</script>

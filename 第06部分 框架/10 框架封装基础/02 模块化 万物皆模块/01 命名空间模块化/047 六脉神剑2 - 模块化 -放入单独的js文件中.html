@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+*{padding: 10px;}
+</style>
+</head>
+
+<body>
+<div id="container" style='display:none'>
+	<h3>h3</h3>
+	<p>
+		<span class="mark">class="mark"</span>
+		<span>span</span>
+		<strong>strong</strong>
+	</p>
+</div>
+<div style='color:red;background:yellow;' id='mydiv' class='myclass'><span>span</span></div>
+
+</body>
+</html>
+
+<script src="../六脉神剑4%20基于链式访问的模块化/02%20命名空间模块化/common.js"></script>
+
+<script type="text/javascript">
+var doms = $.dom.g('    #container p span, strong   , #container h3   ');
+for(var i = 0, len = doms.length; i < len; i++){
+	doms[i].style.border = '1px solid red';
+}
+
+//q获取某个元素下所有的名称是tag的所有子节点
+ console.log($.dom.g('#container'))
+ console.log($.dom.q($.dom.g('div'), 'span'))
+ console.log($.dom.q('div', 'h3'))
+ 
+ //根据id
+ $.event.on('#mydiv','click',function(){
+	 //蔡总css - 样式
+	 $.dom.css('#mydiv','background','red');
+	 //操纵html 属性
+	 // $.dom.attr('#mydiv','name','hello');
+	  //获取属性的值
+	 // alert($.dom.attr('#mydiv','name'));
+	  //$.dom.html('#mydiv','<h2>wangshukui </h2>');
+	  //$.dom.hide('#container',800);
+	  $.dom.show('#container',800);
+	 });
+	 
+   //根据class
+$.event.on('.myclass','click',function(){
+	 //alert("你好");
+	 
+	 });
+	 
+
+</script>

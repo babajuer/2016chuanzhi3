@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            color:red;
+            font-size:50px;
+        }
+        .redcolor{color: blue}
+        .bigger{font-size:100px}
+        .show{display: block}
+        .hide{display:none}
+    </style>
+</head>
+<body>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<button id='show'>显示</button>
+<button id='hide'>隐藏</button>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    $$.on('show','click',function(){
+        removeClass('.div','hide')
+    })
+
+    $$.on('hide','click',function(){
+        addClass('.div','hide')
+    })
+
+    //jqery 可以给一个元素添加一个class
+    function addClass(context,className){
+        //首先先获取元素 -- 把获取的元素放在一个集合里面
+        var doms = $$.$all(context)
+        //遍历集合，依次给每个元素添加class
+        for(var i=0;i<doms.length;i++){
+            addClassName(doms[i])
+        }
+        //给一个元素的class新增一个class
+        function addClassName(dom){
+            dom.className += " " +className
+        }
+    }
+
+    function removeClass(context, name){
+        var doms = $$.$all(context);
+        for(var i= 0,len=doms.length;i<len;i++){
+            removeName(doms[i],name);
+        }
+        function removeName(dom,name){
+            dom.className =  dom.className.replace(name,'')
+        }
+    }
+
+
+
+
+
+
+/*
+
+    function addClass(context,name){
+        var doms = $$.$all(context)
+        for(var i=0;i<doms.length;i++){
+            addOneName(doms[i])
+        }
+        /!*给一个元素添加class*!/
+        function addOneName(dom){
+            dom.className = dom.className + " " +  name
+        }
+    }*/
+
+
+
+
+    //动态添加和移除class
+  /*  function addClass(context, name){
+        var doms = $$.$all(context);
+        //如果获取的是集合
+        if(doms.length){
+            for(var i= 0,len=doms.length;i<len;i++){
+                addName(doms[i]);
+            }
+            //如果获取的不是集合
+        }else{
+            addName(doms);
+        }
+        function addName(dom){
+            dom.className = dom.className + ' ' + name;
+        }
+    }*/
+
+</script>

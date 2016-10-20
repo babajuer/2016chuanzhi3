@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="button">点击我</button>
+<img id="image1" src="../test.png">
+<img id="image2" src="../test.png">
+</body>
+</html>
+
+<script>
+
+    /*简单的框架*/
+    var $ = function(id) {
+        return document.getElementById(id);
+    };
+
+    /*给元素对象扩展方法*/
+    HTMLElement.prototype.hide = function() {
+        this.style.display = "none";
+    };
+
+    /*onclick事件元素对象上的方法而已*/
+    $("button").onclick = function() {
+        $("image1").hide();
+        $("image2").hide();
+    };
+
+
+
+
+</script>

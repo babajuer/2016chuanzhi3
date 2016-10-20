@@ -1,0 +1,9 @@
+*{padding: 0;margin: 0;}
+body{background: url(img/body_bg.jpg) no-repeat top center;-webkit-background-size: cover;
+    background-size: cover;overflow:hidden;}
+img{position: absolute;}
+#sun{top: 40px;}
+#cloud_sun{top: 70px;}
+#cloud{top: 200px;}
+#cloud_1{top: 30px;}
+#cloud_2{top: 200px;}

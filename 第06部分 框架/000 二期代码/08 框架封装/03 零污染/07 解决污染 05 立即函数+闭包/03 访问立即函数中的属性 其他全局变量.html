@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+
+</body>
+</html>
+<script>
+
+    /*升级成为任意全局对象的某个属性*/
+
+
+//    window是默认系统全局面向，其实任何全局变量都可以，任何全局变量都可以
+    var o = new Object();
+//    定义一个含有闭包特性的匿名函数
+    (function(w,obj){
+        var name = '书奎';
+        var sex = '男';
+
+        function get1(){
+            return name + ':' + sex;
+        }
+        function get2(){
+            return name + ':' + sex;
+        }
+//        外界无法访问闭包中的函数，方法
+//        通过如下方式访问  相当于给全局对象扩充一个属性
+        o.get = get1;
+    })();
+
+    alert(o.get());
+/*o省略*/
+
+</script>

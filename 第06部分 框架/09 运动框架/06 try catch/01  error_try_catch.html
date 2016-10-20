@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type='button' value='传智播客 - 小播播' onclick='message()' />
+
+</body>
+</html>
+<script>
+    function message() {
+        try{
+            //这里放置你需要检测的代码
+            alerwwwt('欢迎来到传智播客');
+        }
+        catch(e){
+            /*是捕获的异常*/
+            /*同时系统已经将错误信息保存在e这个对象（error对象）*/
+           /* 当你的代码发生错误 系统会自动执行这里的代码*/
+           /* error对象中有一个比较常用属性：
+            message:保存错误信息*/
+            alert('代码出错'+ e.message)
+        }
+
+    }
+message()
+</script>

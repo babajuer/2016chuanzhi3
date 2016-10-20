@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+
+</body>
+</html>
+<script>
+    /*window形式*/
+    /*  我们可以将立即函数中的某个变量升级为全局变量 --
+     怎么升级：就是让其成为window对象的某个属性就可以了*/
+
+    /*语法规范 window.get2 -不推荐*/
+
+    /*推荐的写法  通过参数的形式传参*/
+
+  /*  规范的语法格式：
+    第一：定义实参 window ；（实参的位置：后面）
+    第二：定义形参 w（位置：前面）
+    第三步：升级变量，使其成为window的某个属性 */
+
+//    定义一个含有闭包特性的匿名函数
+    (function(w){
+        var name = '王书奎';
+        var sex = '男';
+
+        function get1(){
+            return name + ':' + sex;
+        }
+        function get2(){
+            return name + ':' + sex;
+        }
+//        外界无法访问闭包中的函数，方法
+//        通过如下方式访问  相当于给全局对象扩充一个属性
+
+
+        w.get2 = get2;
+    })(window);
+
+
+
+    console.log(get2())
+
+
+
+
+
+//    alert(get1());
+    //get2成为全局变量
+    alert(get2());
+
+</script>

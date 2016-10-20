@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    toggle:function () {
+        var that = this;
+        var _arguments=arguments;
+
+        for(var i=0;i<this.length;i++) {
+            addToggle(this[i]);
+        }
+
+        function addToggle(obj) {
+            var count=0;
+            that.on('click', function (){
+                _arguments[count++%_arguments.length].call(obj);
+            });
+        }
+    }
+</script>

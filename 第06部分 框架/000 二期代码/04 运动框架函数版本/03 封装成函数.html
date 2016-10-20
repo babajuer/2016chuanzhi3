@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        div{
+            height:300px;
+            width:300px;
+            background:#CCC;
+            position:absolute;
+        }
+    </style>
+</head>
+
+<body>
+<button id='btn'>确认</button>
+<div id='div'></div>
+</body>
+</html>
+<script src='itcast2.js'></script>
+<script>
+
+
+    /*将一个物体div在5秒钟以内 从0移动到500*/
+    var timer;
+    var speed = 10;
+    var juli = 500;
+    var start = 0;
+    var tween;
+    var now;
+    /*必须将秒转为毫秒值*/
+    var duration = 5000;
+    //获取当前时间 -- 并转为毫秒值
+    /*  为什么要把事件转为毫秒值 （2014-09-09 12:23:11）*/
+    /* 因为我们目前是在写运动框架
+     运动框架的背后都是数学公式 --需要的数字 -所以我们需要将时间也转为数字*/
+    var btn = document.getElementById('btn')
+    var div = document.getElementById('div')
+
+    btn.onclick=function(){
+        now = +new Date();
+        timer = setInterval(move,16)
+    }
+
+    function move(){
+        //就是改变某个元素的left的值
+        /* s = s+speed*/
+        /*思路 骨架 if else*/
+        /*表示计算当前时间  并转为毫秒值*/
+        var pass = +new Date();
+        //使用函数形式来获取动画时间进程tween
+        tween = getTween(now,pass,duration)
+        console.log(tween)
+
+        //如何判断动画什么时候停止  时间到了也停止  我们也可以根据动画时间进程来判断
+        /*百分比 0--1*/
+        if(tween >= 1){
+            stop()
+        }else{
+            /*   div.style.left  =  div.offsetLeft+speed+'px'*/
+            /*div.style.left = 物体起始位置 + 总距离X动画时间进程（百分比）+'px'*/
+         /*   div.style.left = */
+            $$.css('div','left',start + juli*tween+'px')
+        }
+
+    }
+
+
+    /*复习函数的作用*/
+ /*   将一个个小的功能封装起来，以后可以把这段代码看做一个整体来使用
+    怎么使用：直接使用函数名字
+    好处：以后如果多个地方使用这段代码，只需要使用函数名字，而不用每次都拷贝
+    这样以后如果函数内容变化，我们如果不用函数，那么所有拷贝的地方都需要修改*/
+
+    //现在完善代码 我创建一个函数专门来去做计算动画时间进程
+    /*面向未来编程*/
+    function getTween(now,pass,duration){
+        var tween;
+        var pass = +new Date();
+       /* 动画时间进程 == 已经走得时间 /总时间*/
+        tween =  (pass - now) /duration;
+        return tween;
+    }
+
+    /*停止动画*/
+    function stop(){
+        /*当动画停止的时候，以后有可能会ajax调用后台*/
+        clearInterval(timer)
+    }
+
+
+    //定义一个函数，将计算动画时间进程封装起来，以后可以使用
+    /*函数的封装性 --封装复杂 封装算法*/
+    function getTween(now,pass,duration){
+        var tween;
+        var yongshi = pass -now;
+        tween = yongshi/duration
+        return tween;
+    }
+
+    function stop(){
+        clearInterval(timer);
+    }
+
+    /*单个属性运动公式*/
+    /*起始距离+总距离X动画时间进程*/
+    function oneProperty(dom,name,start,juli,tween){
+        dom.style[name]= (start+juli*tween)+'px'
+    }
+
+</script>

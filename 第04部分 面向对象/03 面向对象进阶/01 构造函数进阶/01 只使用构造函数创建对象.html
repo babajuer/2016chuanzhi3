@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+
+    //构造函数进阶  使用构造函数创建对象的四种方式：
+    function Product1(){
+        /*默认值*/
+        /*定义属性*/
+        this.name = ''
+        this.price=0
+        //定义方法
+        this.buy = function(){}
+    }
+    /*原型*/
+    Product1.prototype={}
+
+
+    /*参数形式*/
+    function Product2(name,price){
+        /*默认值*/
+        /*定义属性*/
+        this.name = name
+        this.price= price
+        //定义方法
+        this.buy = function(){}
+    }
+    /*原型*/
+    Product2.prototype={}
+
+
+    var iphone = new Product2('iphone7',6666)
+    console.log(iphone.name)
+
+
+
+    /*第三种方式：动态生成属性方式*/
+
+
+
+    /*参数形式*/
+    function Product3(){
+    }
+    /*原型*/
+    Product3.prototype={}
+
+    var iphone = new Product3()
+    iphone.name = 'iphone7'
+    iphone.price = 6666
+    iphone.description = '手机中的战斗机'
+    console.log(iphone.description)
+
+
+    /*第四种方式：混合模式*/
+    function Product4(name){
+        //参数形式
+        this.name = name
+        this.price = 0
+    }
+    /*原型*/
+    Product4.prototype={}
+
+    var iphone = new Product4('iphone8')
+    iphone.price = 7000
+    iphone.description = '手机中的战斗机 - 二号'
+    console.log(iphone.description)
+
+
+
+
+
+
+
+
+    /*存在的问题*/
+    //每个实例的name，描述确实不一样，需要单独的空间存储，但是buy方法是所有实例都一样的
+
+    /*为了避免内存浪费，所以出现了原型帮助我们解决这个问题*/
+
+    /*原型对象 不管你实例化多少次，都只生成一次*/
+
+</script>

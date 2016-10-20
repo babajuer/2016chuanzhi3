@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+
+
+//工厂对象 -- 也可以使用函数
+/*构建飞机工厂（飞机大战游戏中的飞机）*/
+var AirplaneFactory = function(){};  
+
+
+//工厂返回的是实例
+AirplaneFactory.prototype = {
+  createAirplane:function(model){
+    var plan;
+    switch(model){
+        case 'General':
+          plan = new GeneralPlan();
+          break;
+        case 'Boss':
+          plan = new BossPlan();
+          break;
+    }
+    return plan;
+  }
+}
+
+
+/*一般飞机类*/
+var GeneralPlan = function(){};
+GeneralPlan.prototype = {
+  name:'一般飞机',
+  type:'general',
+  getName:function(){
+    return this.name;
+  },
+  getType:function(){
+    return this.type;
+  }
+}
+/*BOSS 飞机类*/
+var BossPlan = function(){};
+BossPlan.prototype = {
+  name:'BOSS飞机',
+  type:'boss',
+  getName:function(){
+    return this.name;
+  },
+  getType:function(){
+    return this.type;
+  }
+}
+
+
+
+//函数方式
+function CreatePlan(model) {
+	 var plan;
+    switch(model){
+        case 'General':
+          plan = new GeneralPlan();
+          break;
+        case 'Boss':
+          plan = new BossPlan();
+          break;
+    }
+    return plan;
+}
+CreatePlan('Boss');
+CreatePlan('General');
+
+
+
+/*通过工厂生成 相应的飞机*/
+//返回实例而不是this的链式访问
+var myPlan = new AirplaneFactory().createAirplane('Boss');
+alert(myPlan.getName());
+var myPlan2 = new AirplaneFactory().createAirplane('General');
+alert(myPlan2.getName());
+
+</script>

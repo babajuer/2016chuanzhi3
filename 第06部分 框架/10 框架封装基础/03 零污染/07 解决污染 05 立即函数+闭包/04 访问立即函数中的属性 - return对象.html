@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+
+</body>
+</html>
+<script>
+
+
+    /* 1 必须将立即函数返回给另外一个变量 my
+     2 在内部定义一个return {}
+     3 通过my.get来访问立即函数中的变量*/
+   var my =  (function(){
+        var name = '田佩瑶';
+        var sex = '男';
+       return{
+           get: function(){
+               return name + ':' + sex;
+           }
+       }
+    })();
+    //alert(get1());
+    //get2成为全局变量
+    alert(my.get());
+
+</script>

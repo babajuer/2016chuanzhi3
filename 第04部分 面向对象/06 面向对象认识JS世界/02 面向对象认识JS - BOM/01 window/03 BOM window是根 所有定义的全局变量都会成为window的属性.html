@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    //1 任何我们定义的全局变量 函数 对象等都会成为window对象的属性
+//    1  document其实是window对象的属性
+
+    var sum = 0
+    function fn() {
+
+    }
+
+    /*当你这样写的时候，系统会自动将其变成window对象的一个属性*/
+
+    console.log(window.sum)
+    console.log(window.fn)
+
+
+    var name="属性";
+    var fn = function(){
+        document.write('方法')
+    }
+    document.write(window.name);
+    window.fn();
+</script>
+</script>

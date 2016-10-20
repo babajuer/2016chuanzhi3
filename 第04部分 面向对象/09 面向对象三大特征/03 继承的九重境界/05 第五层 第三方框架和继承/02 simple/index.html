@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script src='simple.js'></script>
+<script>
+    var Person = Class.extend({
+        init: function(age,name){
+            this.age = age;
+            this.name = name;
+        },
+        dance: function(){
+            alert("基类中 -- 跳舞 -- 爵士舞");
+        }
+    });
+    var Student = Person.extend({
+        init: function(age,name,height){
+            this._super(age,name);
+         /*   Person.apply(this,arguments)*/
+            this.height = height;
+        },
+        /*如果在子类中定义和基类中同名的方法，那么子类会覆盖基类  -override*/
+        dance: function(){
+            /*调用父类的同名方法*/
+          /*  this._super();*/
+            /*同时又可以调用自己的方法*/
+            alert("小张跳舞--江南style");
+        }
+    });
+
+
+    var xiaozhang = new Student(21,'小张','121');
+    xiaozhang.dance();
+
+</script>

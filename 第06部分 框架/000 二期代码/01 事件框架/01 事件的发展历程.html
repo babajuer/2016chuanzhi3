@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            background: red;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id='div'></div>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    /*dom0 dom2*/
+    var dom = $$.$id('div')
+   /* dom.onclick = function(){
+        alert('123')
+    }*/
+
+    /*定义事件的另外一中方式*/
+    /*就是标准组织规定的写法*/
+    /*DOM2*/
+    dom.addEventListener('click',function(){
+        dom.style.background ='blue'
+    },false)
+
+
+
+
+    /*IE的某些版本浏览器并不支持标准组织*/
+    /*Ie较新版本的浏览器也是支持标准的，
+    浏览器兼容性：30--50% 浏览器兼容性 -  因为微软公司存在*/
+    /*jquery：50%的代码都是在解决浏览器兼容性问题*/
+
+    /*EDEG */
+    btn.attachEvent('onclick', function(){
+        dom.style.background ='blue'
+    });
+
+
+
+    //我们需要编写一个函数 让他同时能够兼容所有的浏览器
+    function on(id,type,fn){
+     /*  判断浏览器是否支持某个功能其实就是判断：某个对象是否存在，如果对象存在就去判断其是否含有某个方法*/
+
+        /*整个js世界全是面向对象的，所有的功能都是对象里面的某个方法*/
+
+        //如果浏览器支持addEventListener 我们就使用它来编写事件
+        var dom = $$.$id(id)
+        if(dom.addEventListener){
+            /*使用addEventListener来编写事件*/
+            dom.addEventListener(type, fn, false);
+        }else{
+            if(dom.attachEvent){
+                /*使用微软公司的技术来编写事件*/
+                dom.attachEvent('on' + type, fn);
+            }
+        }
+
+
+        /* 如果浏览器不支持addEventListener，我们可以认定是一个微软公司的，就可以使用attachEvent*/
+        /*如何去判断浏览器是否支持某个功能*/
+
+    }
+
+</script>

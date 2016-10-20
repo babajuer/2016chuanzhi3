@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href='jquery.validator.css' >
+<script src="jquery.js"></script>
+<script src='jquery.validator.js'></script>
+<script src='local/zh_CN.js'></script>
+</head>
+
+<body>
+<form id="demo_11" action="results.php" method="post" autocomplete="off">
+<fieldset>
+    <p><input type="text" name="user[name]" data-rule="required;username" placeholder="用户名"></p>
+    <p><input type="password" name="user[pwd]" data-rule="required;password" placeholder="密码"></p>
+</fieldset>
+<button type="submit">提交</button>
+</form>
+
+<h1>比较匹配</h1>
+
+<form id="demo_21" action="results.php" method="post" autocomplete="off">
+<fieldset>
+    <p><label class="form-label">密码：</label>
+    <input name="user[pwd]" data-rule="密码: required;password;">
+    </p>
+    <p><label class="form-label">确认密码：</label>
+    <input name="againPwd" data-rule="确认密码: required;match(user[pwd]);">
+    </p>
+</fieldset>
+<div class="form-submit">
+    <button type="submit">提交</button>
+</div>
+</form>
+
+<form id="demo_22" action="results.php" method="post" autocomplete="off">
+<fieldset>
+    <p><label class="form-label">总量：</label>
+    <input name="totle" data-rule="总量:required;integer[+0]">
+    </p>
+    <p><label class="form-label">余量：</label>
+    <input name="last" data-rule="余量:required;match[lte, totle]">
+    <p>
+</fieldset>
+<div class="form-submit">
+    <button type="submit">提交</button>
+</div>
+</form>
+
+
+<form id="demo_23" action="results.php" method="post" autocomplete="off">
+<fieldset>
+    <p><label class="form-label">开始日期：</label>
+    <input name="totle" data-rule="开始日期: required; date;">
+    </p>
+    <p><label class="form-label">结束日期：</label>
+    <input name="last" data-rule="结束日期: required; date; match[gt, totle, date]">
+    <p>
+</fieldset>
+<div class="form-submit">
+    <button type="submit">提交</button>
+</div>
+</form>
+
+
+<h1>字符串长度</h1>
+<form id="demo_31" action="results.php" method="post" autocomplete="off">
+<fieldset>
+    <label class="form-label">描述：</label>
+    <textarea name="description" data-rule="描述:required;email;length[4~]"></textarea>
+</fieldset>
+<div class="form-submit">
+    <button type="submit">提交</button>
+</div>
+</form>
+
+<h1>数值范围</h1>
+<form id="demo_41" action="results.php" method="post" autocomplete="off">
+<fieldset>
+    <label class="form-label">折扣：</label>
+    <input name="discount" data-rule="required; integer; range[1~100]">%
+    <span class="msg-box" for="discount"></span>
+</fieldset>
+<div class="form-submit">
+    <button type="submit">提交</button>
+</div>
+</form>
+
+<h1>checkbox radio</h1>
+<form id="demo_51" action="results.php" method="post" autocomplete="off">
+<fieldset>
+    <label class="form-label">性别：</label>
+    <label><input type="radio" name="gender" value="1" data-rule="checked">男</label>&nbsp;
+    <label><input type="radio" name="gender" value="2">女</label>&nbsp;
+    <label><input type="radio" name="gender" value="0">保密</label>&nbsp;
+</fieldset>
+<div class="form-submit">
+    <button type="submit">提交</button>
+</div>
+</form>
+
+<h1>注册综合案例</h1>
+<div id="result" class="tip-ok" style="display:none">提交成功</div>
+<form id="signup_form" class="signup" data-validator-option="{stopOnError:true,timely:2}" 
+ autocomplete="off">
+<fieldset>
+    <div class="form-item">
+        <div class="field-name">全名</div>
+        <div class="field-input">
+          <input type="text" name="user[name]" maxlength="20" autocomplete="off"
+              data-rule="required" 
+              data-tip="输入你的名字与姓氏。" 
+              data-ok="名字很棒。" 
+              data-msg-required="全名必填!" 
+          >
+        </div>
+    </div>
+    <div class="form-item">
+        <div class="field-name">电子邮件地址</div>
+        <div class="field-input">
+          <input type="text" name="user[email]" autocomplete="off"
+              data-rule="required;email;remote[check/email.php]" 
+              data-tip="你的邮件地址是什么?" 
+              data-ok="我们将会给你发送确认邮件。" 
+              data-msg-required="电子邮箱地址必填!" 
+              data-msg-email="不像是有效的电子邮箱。" 
+          >
+        </div>
+    </div>
+    <div class="form-item">
+        <div class="field-name">创建密码</div>
+        <div class="field-input">
+          <input type="password" name="user[user_password]"
+              data-rule="required;length[6~];password;strength;" 
+              data-tip="6个或更多字符! 要复杂些。" 
+              data-ok="" 
+              data-msg-length="密码最少为6位。" 
+              data-msg-required="密码不能为空!"
+          >
+        </div>
+    </div>
+    <div class="form-item">
+        <div class="field-name">选择你的用户名</div>
+        <div class="field-input">
+          <input type="text" name="user[screen_name]" maxlength="15" autocomplete="off"
+              data-rule="required;username;remote[check/user.php]" 
+              data-rule-username="[/^[a-zA-Z0-9]+$/, '用户名无效! 仅支持字母与数字。']" 
+              data-tip="别担心,你可以稍后进行修改。" 
+              data-ok="用户名可以使用。<br>你可以稍后进行修改。" 
+              data-msg-required="用户名必填!<br>你可以稍后进行修改。" 
+          >
+        </div>
+    </div>
+</fieldset>
+    <button id="btn-submit" class="btn-submit" type="submit">创建我的账号</button>
+</form>
+<script>
+$('#signup_form')
+// 验证成功
+.on('valid.form', function(){
+    $.ajax({
+        url: 'results.php',
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function(d){
+            $('#result').fadeIn(300).delay(2000).fadeOut(500);
+        }
+    });
+})
+// 验证失败
+.on('invalid.form', function(){
+    //按钮动画效果
+    $('#btn-submit').stop().delay(100)
+        .animate({left:-5}, 100)
+        .animate({left:5}, 100)
+        .animate({left:-4}, 100)
+        .animate({left:4}, 100)
+        .animate({left:-3}, 100)
+        .animate({left:0}, 100);
+});
+</script>
+
+</body>
+</html>

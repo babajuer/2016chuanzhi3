@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        div{
+            height:300px;
+            width:300px;
+            background:#CCC;
+            position:absolute;
+        }
+    </style>
+</head>
+
+<body>
+<button id='btn'>确认</button>
+<div id='div'></div>
+</body>
+</html>
+
+<script>
+
+    //settimeout/interval
+
+    //定义变量
+    //绑定事件
+
+    var btn = document.getElementById('btn');
+    var div = document.getElementById('div');
+    var timer;
+    var speed =10;
+
+    btn.onclick =function() {
+        //用settimeout/interval实现动画
+        timer = setInterval(move,30);
+    }
+    function move() {
+        //移动物体
+        //当前物体移动的距离 =当前距离+移动距离
+        //数学公式都是针对数字进行计算
+        //为什么不用left的100px,因为我们需要数字 怎么得到数字..
+
+        if(div.offsetLeft>500) {
+            clearInterval(timer);
+        }else {
+            div.style.left= div.offsetLeft +speed+'px';
+        }
+    }
+</script>

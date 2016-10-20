@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style>
+        div{height:200px;width:200px;background:#F00;position:absolute;}
+    </style>
+</head>
+
+<body>
+<button id='btn'>确认</button>
+<div id='div'></div>
+</body>
+</html>
+<script src='../itcast.js'></script>
+<script>
+    //案例: 将一个物体在5秒内从0px移动到400px
+    var btn = document.getElementById('btn');
+    var div =document.getElementById('div');
+    var now = +new Date();//初始化计算now时间
+    var tween=0;//默认动画没有走 进度是0
+    var timer;
+    //绑定事件
+    btn.onclick=function() {
+        timer = setInterval(move,30);
+    }
+
+    //  我们封装成一个函数  复习函数的封装性
+    function getTween(now,pass,all){
+        var yongshi = pass-now;
+        console.log(yongshi)
+        var jincheng =yongshi/all;
+        return jincheng;
+    }
+
+    /*停止*/
+    function stop(){
+        clearInterval(timer);
+    }
+
+    /*单个属性运动公式*/
+    /*起始距离+总距离X动画时间进程*/
+    function oneProperty(dom,name,start,juli,tween){
+        dom.style[name]= (start+juli*tween)+'px'
+    }
+
+
+    //总距离X 动画时间进程
+    //  每次循环执行的代码
+    function move() {
+        //动画停止的条件
+        if(tween>=1) {
+            stop()
+        }else {
+            pass = +new Date();
+            tween = getTween(now,pass,5000)
+            oneProperty(div,'left',0,400,tween)
+        }
+    }
+</script>

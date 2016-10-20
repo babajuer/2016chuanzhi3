@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style type="text/css">
+        #container{
+            height: 400px;
+            position: relative;
+            width: 100%;
+            border-bottom: 1px black solid;
+            text-align: center;
+            top: 50px;
+        }
+        #container div{
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            background: red;
+            float: left;
+            top:10px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container">
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+    <div id="box5"></div>
+    <div id="box6"></div>
+    <div id="box7"></div>
+    <div id="box8"></div>
+</div>
+</body>
+</html>
+<script src='../itcast.js'></script>
+<script>
+
+
+    $$.animate.add('box1',{top:200,left:100,width:'100',opacity:0.2},4000);
+
+    //如果我新增一个物体 -- 如何将其运动起来
+    //分析为什么使用数组
+    $$.animate.add('box2',{top:200,left:100,width:'100',opacity:0.2},'slow');
+    $$.animate.add('box3',{top:200,left:100,width:'100',opacity:0.2},'fast');
+    $$.animate.add('box4',{top:200,left:100,width:'100',opacity:0.2},'normal');
+    $$.animate.add('box5',{top:200,left:100,width:'100',opacity:0.2});
+    $$.animate.add('box6',{top:200,left:100,width:'100',opacity:0.2},'快');
+    $$.animate.add('box7',{top:200,left:100,width:'100',opacity:0.2},'普通');
+
+    var dom = document.getElementById('box8')
+    $$.animate.add(dom,{top:200,left:100,width:'100',opacity:0.2},'慢');
+</script>

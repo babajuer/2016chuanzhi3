@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+
+</body>
+</html>
+<script>
+//第三种方式:return 形式 这个时候return的是一个json字面量形式
+
+    /* 1 必须将立即函数返回给另外一个变量 my
+     2 在内部定义一个return {}
+     3 通过my.get来访问立即函数中的变量*/
+    /*60%  window 40%*/
+   var itcast =  (function(){
+       var name = '123'
+       return{
+           get: function(){
+               return name + ':' + sex;
+           },
+           name:'王书奎'
+       }
+    })();
+    console.log(itcast.name)
+
+</script>

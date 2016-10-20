@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="watch.js"></script>
+<style>
+div{padding:10px}
+</style>
+</head>
+<body>
+
+<h2>第三方观察者模式框架实例演示</h2>
+
+<div id='mydiv1'></div>
+<div id='mydiv2'></div>
+
+<button id='btn'>确认比赛结束</button>
+</body>
+</html>
+<script type="text/javascript">
+
+//defining our object however we like
+var game = {
+    status: "未开始",
+    time: "2015-06-05 上午9点"
+};
+
+//defining a 'watcher' for an attribute
+watch(game, "status", function(){
+   updateModule1();
+   updateModule2();
+});
+
+
+
+//when changing the attribute its watcher will be invoked
+game.status = "进行中";
+
+
+
+function updateModule1()
+{
+	document.getElementById('mydiv1').innerHTML = '勇士和骑士世界大战进行中，目前比分：90:80 离比赛结束还有10分钟';	
+}
+
+function updateModule2()
+{
+	document.getElementById('mydiv2').innerHTML = '最新进展，詹姆斯目前个人得分已经得到40分，离比赛结束还有2分钟';	
+}
+
+</script>

@@ -1,0 +1,27 @@
+    <News>  
+        <year time="2014">  
+            <major name="军事">  
+                <item>习近平访问美国</item>  
+                <item>习近平访问美国</item>
+                <item>习近平访问美国</item>    
+            </major>  
+            <major name="体育">  
+                <item>习近平访问美国</item>  
+                <item>习近平访问美国</item>
+                <item>习近平访问美国</item>  
+            </major>  
+        </year>  
+       
+        <year time="2013">  
+            <major name="军事">  
+                <item>习近平访问美国</item>  
+                <item>习近平访问美国</item>
+                <item>习近平访问美国</item>  
+            </major>  
+            <major name="体育">  
+                <item>习近平访问美国</item>  
+                <item>习近平访问美国</item>
+                <item>习近平访问美国</item>  
+            </major>  
+        </year>  
+    </News>

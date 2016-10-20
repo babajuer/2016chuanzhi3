@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .mydiv{
+            background: red;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class='mydiv div1'>
+
+</div>
+<div class='mydiv div2'></div>
+<div class='mydiv div3'></div>
+<div class='mydiv div4'></div>
+</body>
+</html>
+<script>
+    /*  var a = {n:1};
+     var b = a;
+     a.x = a = {n:2};
+     console.log(a.x);
+     console.log(b.x);*/
+
+    var str ='124'
+
+
+
+    /* 函数里面的this -- window*/
+    function fn(){
+        console.log(this)
+    }
+    fn()
+
+
+    /*对象方法里面的this  -默认指向当前对象*/
+    /*对象里面的函数 -- -方法*/
+    function Product(){
+        this.name='七雄争霸'
+    }
+    Product.prototype = {
+        //方法
+        buy:function(){
+            /* console.log(this.name)*/
+            var that = this;
+            fn()
+            function fn(){
+                console.log(" 访问对象里面的属性"+that.name)
+                console.log('方法里面还有一个函数'+this)
+            }
+        }
+    }
+
+    var iphone = new Product()
+    iphone.buy()
+
+
+
+    //事件中this指向你点击的目标
+    var dom = document.getElementById('mydiv')
+    var doms = document.getElementsByTagName('div')
+
+    for(var i= 0,len= doms.length;i<len;i++){
+        doms[i].onclick =function(){
+            console.log(this)
+            this.style.background = 'green'
+        }
+    }
+
+    /* var p = new Product()
+     p.name = 'iphone'
+     p.price = 1000*/
+
+    var p = {name:'iphone',price:1000,sum:0,buy:function(){
+        console.log(this)
+    }}
+
+    p.buy()
+
+
+    /*闭包*/
+</script>

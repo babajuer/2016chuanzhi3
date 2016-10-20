@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class='div'></div>
+<button id='btn'>动态添加内容</button>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+
+    $$.on('btn','click',function(){
+        $$.html('.div','hello world')
+      /*  alert($$.html('.div'))*/
+    })
+
+
+    /*要求html和jquery一样，同时支持两种模式：获取模式，设置模式*/
+    function html(context,str){
+        //获取模式 设置模式
+        var doms = $$.$all(context)
+        /*思路  -- 骨架 --*/
+        /*参数*/
+        if(str){
+            /*设置模式 */
+            for(var i=0;i<doms.length;i++){
+                doms[i].innerHTML = str
+            }
+        }else{
+            /*获取模式*/
+            return doms[0].innerHTML;
+        }
+
+    }
+
+</script>

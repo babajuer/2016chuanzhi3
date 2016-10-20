@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class='div'></div>
+<div class='div'></div>
+<div class='div'></div>
+<button id='btnhide'>隐藏</button>
+<button id='btnshow'>显示</button>
+</body>
+</html>
+<script src = 'itcast.js'></script>
+
+<script>
+/*    $('#btnhide').click(function(){
+        $('.div').hide()
+    })
+    $('#btnshow').click(function(){
+        $('.div').show()
+    })
+    */
+    $$.on('btnhide','click',function(){
+        hide('.div')
+    })
+    $$.on('btnshow','click',function(){
+        show('.div')
+    })
+
+    function hide(context){
+        var doms = $$.$all(context)
+        for(var i=0;i<doms.length;i++){
+            doms[i].style.display='none'
+        }
+    }
+
+    function show(context){
+        var doms = $$.$all(context)
+        for(var i=0;i<doms.length;i++){
+            doms[i].style.display='block'
+        }
+    }
+
+
+
+    function hideNew(context){
+        $$.css('context','display','none')
+    }
+
+    function showNew(context){
+        $$.css(context,'display','block')
+    }
+
+
+
+</script>

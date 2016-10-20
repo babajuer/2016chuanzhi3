@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            background: red;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+<div class='div'></div>
+<div class='div'></div>
+<div class='div'></div>
+</body>
+</html>
+
+<script>
+    ;(function(w){
+        var itcast = {
+            element:'',
+            elements:[],
+            //去除空格
+            trim:function(str){
+                return str.replace(/(^\s*)|(\s*$)/g, '');
+            },
+            extend:function(tar,source) {
+                //遍历对象
+                for(var i in source){
+                    tar[i] = source[i];
+                }
+                return tar;
+            },
+            //数据类型检测
+            isNumber:function (val){
+                return typeof val === 'number' && isFinite(val)
+            },
+            isBoolean:function (val) {
+                return typeof val ==="boolean";
+            },
+            isString:function (val) {
+                return typeof val === "string";
+            },
+            isUndefined:function (val) {
+                return typeof val === "undefined";
+            },
+            isObj:function (str){
+                if(str === null || typeof str === 'undefined'){
+                    return false;
+                }
+                return typeof str === 'object';
+            },
+            isNull:function (val){
+                return  val === null;
+            },
+            isArray:function (arr) {
+                if(arr === null || typeof arr === 'undefined'){
+                    return false;
+                }
+                return arr.constructor === Array;
+            }
+        };
+
+        //封装选择框架
+        itcast.extend(itcast,{
+            //id选择器
+            $id:function(id){
+                this.element =  document.getElementById(id);
+                return this
+                //这里有两个this 当然就不起作用了？？ 怎么办？？
+            },
+
+            $all:function(selector,context){
+                context = context || document;
+                this.elements =  context.querySelectorAll(selector);
+                return this;
+            },
+
+        })
+
+        //封装css框架
+        itcast.extend(itcast,{
+            cssOne:function(key, value){
+                setStyle(this.element,key,value)
+                function setStyle(dom,key,value){
+                    dom.style[key] = value;
+                }
+                return this;
+            },
+            css:function(key, value){
+                /*var doms = $$.$all(context)*/
+                //如果是数组
+                for(var i = 0; i <this.elements.length; i++){
+                    setStyle(this.elements[i],key, value);
+                }
+                function setStyle(dom,key,value){
+                    dom.style[key] = value;
+                }
+                return this;
+            },
+            //显示
+            showOne:function (content){
+                this.element.style.display = 'block'
+                return this;
+            },
+            show:function (){
+                itcast.css('display', 'block');
+                return this;
+            },
+            //html5实现的选择器
+            $allOld:function(selector,context){
+                context = context || document;
+                return  context.querySelectorAll(selector);
+            },
+            hide:function(){
+                for(var i = 0;i<this.elements.length;i++){
+                    this.elements[i].style.display = 'none'
+                }
+                return this;
+            },
+            //隐藏和显示元素
+            hide1:function (){
+                console.log( this.elements)
+                itcast.css('display', 'none');
+              /*  for(var i= 0,len=doms.length;i<len;i++){
+                    doms[i].style.display = 'none'
+                    itcast.css(doms[i], 'display', 'none');
+                }*/
+                return this;
+            }
+        })
+
+
+        /*双对象法则*/
+        function $(context){
+            return itcast.$all(context)
+        }
+
+       w.$ = $;
+    })(window);
+
+
+    $('.div').css('background','green')
+</script>

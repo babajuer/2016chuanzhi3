@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    ;(function(w){
+        var itcast={
+            //子属性法：
+            //我们可以定义一个elements属性，来保存获取的元素
+            elements:[],
+            extend:function(tar,source) {
+                //遍历对象
+                for(var i in source){
+                    tar[i] = source[i];
+                }
+                return tar;
+            },
+        }
+
+        w.itcast = w.$$ = itcast;
+    })(window);
+
+    /*字符串操作*/
+    (function($$){
+        //去除左边空格
+        $$.ltrim = function(str){
+            return str.replace(/(^\s*)/g,'');
+        }
+        //去除右边空格
+        $$.rtrim = function(str){
+            return str.replace(/(\s*$)/g,'');
+        }
+        //去除空格
+        $$.trim = function(str){
+            return str.replace(/(^\s*)|(\s*$)/g, '');
+        },
+        //简单的数据绑定formateString
+         $$.formateString  = function(str, data){
+            return str.replace(/@\((\w+)\)/g, function(match, key){
+                return typeof data[key] === "undefined" ? '' : data[key]});
+        }
+    })(itcast);
+
+    /*类型转换*/
+    (function($$){
+        //数据类型检测
+        $$.isNumber = function (val){
+            return typeof val === 'number' && isFinite(val)
+        }
+        $$.isBoolean = function (val) {
+            return typeof val ==="boolean";
+        }
+        $$.isString = function (val) {
+            return typeof val === "string";
+        }
+        $$.isUndefined = function (val) {
+            return typeof val === "undefined";
+        }
+        $$.isObj = function (str){
+            if(str === null || typeof str === 'undefined'){
+                return false;
+            }
+            return typeof str === 'object';
+        }
+        $$.isNull = function (val){
+            return  val === null;
+        }
+        $$.isArray = function (arr) {
+            if(arr === null || typeof arr === 'undefined'){
+                return false;
+            }
+            return arr.constructor === Array;
+        }
+
+    })(itcast);
+
+    //选择框架
+    ;(function($$){
+        //html5实现的选择器
+        $$.$all=function(selector,context){
+            context = context || document;
+            this.elements = context.querySelectorAll(selector);
+            //这里返回this,也就是当前对象，这样就可以访问这个对象的其他属性方法了
+            return this;
+        }
+
+    })(itcast);
+
+
+</script>

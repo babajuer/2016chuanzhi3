@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<div id='main'>首页版块：比赛未开始</div>
+<div id='paiming'>球队排名版块：双方：0:0</div>
+<div id='tongji'>技术统计版块：比赛未开始</div>
+<div id='new'>我是新增的板块：比赛未开始</div>
+<button  onclick="ObserverManager.Change({status:'进行中'});">比赛状态改变：比赛进行中</button>
+<button onclick="ObserverManager.Change({status:'结束'});">比赛状态状态改变：结束</button>
+<button onclick="ObserverManager.Change({lastTime:2});">监控比赛剩余时间</button> 
+</body>
+</html>
+<script>
+
+var game = { 
+     /*依赖对象*/
+	status: "未开始",
+	//得分
+	score: '100:90',
+	//剩余时间
+	lastTime:10 
+}
+
+
+var ObserverManager = { 
+  /*队列*/
+ Observers:[], 
+ 
+ /*入队*/
+  AddObserver: function(item){
+	/**//*加入观察对象*/
+   this.Observers.push(item);
+  },
+
+    //当我们要检测的主题改变的时候，比如比赛，改变状态 --发送消息
+    Change: function(obj){ 
+		 /**//*改变对象行为*/
+		 //定义一个对象保存旧值
+		 var old = game.status;
+		 //赋予新值
+		for(var item in obj){
+		   game[item] = obj[item];
+        }
+		//检测旧的和新的是否相等来判断属性是否变化
+		if(old !=game.status)
+		{
+			//如果属性变化 更新各个模块
+			 //改变数据依赖对象数据
+	       for(var i = 0,len = this.Observers.length; i < len; i++){
+		    var item = this.Observers[i];
+			//当改变状态，则所有注册了模块都会更新界面
+		    item.update(); 
+		    //对象改变后，改变观察对象的行为Display; 为统一的接口
+		   }
+		}
+       
+    }
+}
+
+
+
+//新闻主页版块
+var Main = function(){ /**//*观察对象Header*/
+	this.update = function(){
+	    document.getElementById('main').innerHTML = '勇士逆转骑士：比分：100:97';
+     }
+}
+
+
+var Paiming = function(){ /**//*观察对象Content*/
+    this.update = function(){
+        document.getElementById('paiming').innerHTML = '排名：勇士1:骑士0';
+    }
+}
+
+
+
+var Tongji = function(){ /**//*观察对象Foot*/
+    this.update = function(){
+        document.getElementById('tongji').innerHTML = '技术统计：詹姆斯44分，库里：35分';
+   }
+} 
+
+
+var New = function(){ /**//*观察对象Foot*/
+    this.update = function(){
+        document.getElementById('new').innerHTML = '新增：最新视频模块';
+   }
+} 
+
+
+
+/***绑定观察器动作***/
+ObserverManager.AddObserver(new Main());
+ObserverManager.AddObserver(new Paiming());
+ObserverManager.AddObserver(new Tongji());
+ObserverManager.AddObserver(new New());
+</script>

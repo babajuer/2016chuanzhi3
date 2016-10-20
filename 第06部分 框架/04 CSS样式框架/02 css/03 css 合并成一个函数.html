@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        p{
+            background:red;
+            font-size:40px;
+            color:yellow;
+        }
+        .add{
+            color:blue;
+            font-size:100px;
+        }
+        .hide{
+            display:none
+        }
+    </style>
+</head>
+<style type="text/css">
+    *{padding: 10px;}
+</style>
+<body>
+<div id='div'>
+    <p>英雄联盟</p>
+    <p>梦幻西游</p>
+</div>
+
+<script src='../itcast.js'></script>
+<script type="text/javascript">
+        css('#div p','color','blue')
+    //设置元素的样式属性 css（'test'，'color','red'）；
+    //该函数包含两个功能：
+    // 1获取id为id元素的样式值 比如 高度 100 透明度0.5 宽度30，
+    // 2如果value不为空则表示设置样式的值，比如高度100
+
+
+    /*重载 -- 根据arguments参数个数*/
+    /*1，当我传递两个参数：获取
+     2，当我传递三个参数：设置*/
+    /*各个击破法则*/
+     function css(context, key, value) {
+         var doms = $$.isString(context) ? $$.$all(context) : context;
+         /*如果获取的是集合*/
+         /*针对集合*/
+         if (doms.length) {
+             //先骨架骨架 -- 如果是设置模式 -- 如果是设置模式
+             if (value) {
+                 /*设置模式*/
+                 //如果是获取模式 --遍历
+                /* setStyle(doms,key,value)*/
+                 for(var i=0;i<doms.length;i++){
+                     setOneStyle(doms[i],key,value)
+                 }
+             }else {
+                    /*获取*/
+                    getStyle(doms[0],key)
+             }
+             /*如果只有一个dom元素*/
+         } else{
+             /*设置*/
+             if (value) {
+                 setOneStyle(doms,key,value)
+             }else {
+                /*获取模式*/
+                 getStyle(doms,key)
+             }
+         }
+
+         /*设置*/
+         function setStyle(doms,key,value){
+             for(var i=0;i<doms.length;i++){
+                 doms[i].style[key]=value
+             }
+         }
+         /*设置单个元素的样式*/
+         function setOneStyle(dom,key,value){
+             dom.style[key]=value
+         }
+         /*获取*/
+         function getStyle(dom,key){
+             if(dom.currentStyle){
+                 return dom.currentStyle[key];
+             }else{
+                 return  window.getComputedStyle(dom,null)[key]
+             }
+         }
+    }
+
+   /* 第二种做法：根据arguments参数个数*/
+</script>
+</body>
+</html>

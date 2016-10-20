@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*其实立即函数就是把它当做一个表达式*/
+
+
+    void function() {
+    }();
+
+    ~function() {
+    }();
+
+   /* !a*/
+   var sum =  1+function() {
+        return 1
+    }();
+
+    console.log(sum)
+    ;(function() {
+    })();
+
+    -function(){
+        alert('water');
+    }();
+
+    1, function(){
+        console.log(this) // window
+    }();
+
+
+    1^function(){
+        console.log(this) // window
+    }();
+
+    1>function(){
+        console.log(this) // window
+    }();
+
+
+    ~+-!(function(){
+        alert("run!")
+    })();
+
+
+    ~!(function(){
+        alert("run!")
+    })();
+
+    (function(){
+        alert("run!")
+    }).call();
+
+
+    (function(){
+        alert("run!")
+    }).apply()
+
+
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*同位*/
+    (function(){
+        /*私有的 局部的 部分的 只能在这个空间里面访问到*/
+        var name = '我的同位是好人';
+      /*  function fn(){
+            console.log(name)
+        }
+        fn()*/
+    })();
+
+
+
+    /*班长*/
+    (function(){
+        var name = '我的同位的同位也是好人';
+       /* function fn(){
+            console.log(name)
+        }
+        fn()*/
+    })()
+
+
+
+</script>

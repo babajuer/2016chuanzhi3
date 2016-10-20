@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+	//最简单的高阶函数
+	//知识点：
+	//两个调用方式都必须灵活熟练掌握，熟到程度--熟烂，熟透，熟到化为零
+	//1学习调用-通过函数形式 
+	//2学习调用-通过隐藏函数形式
+
+	function FirstGaojie(fn){
+			fn();
+		}
+	function simple()
+	{
+			alert('123');
+	}
+	
+	FirstGaojie(simple);
+	
+	FirstGaojie(function(){
+			alert("利用隐藏函数");
+		
+		});
+		
+
+	
+</script>

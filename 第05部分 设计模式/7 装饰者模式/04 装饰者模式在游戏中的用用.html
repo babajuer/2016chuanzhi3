@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script type="text/javascript">
+    //游戏开始 -- 只有普通子弹的飞机
+	var Plane = function(){};
+	//原始飞机只能发射普通子弹
+	Plane.prototype.fire = function(){
+        console.log( '发射普通子弹' );
+
+	}
+
+
+
+
+    //定义一个导弹，注入飞机对象
+	var MissileDecorator = function( plane ){
+		this.plane = plane;
+	}
+	MissileDecorator.prototype.fire = function(){
+		//除了能够发射普通子弹 还能发射导弹
+		this.plane.fire();
+		console.log( '发射导弹' );
+	}
+
+//
+////	定义一个原子弹
+//	var AtomDecorator = function( plane ){
+//		this.plane = plane;
+//	}
+//	AtomDecorator.prototype.fire = function(){
+//		//除了能够发射普通子弹 还能发射原子弹
+//		this.plane.fire();
+//        console.log( '发射原子弹' );
+//	}
+
+
+    //普通飞机
+    console.log( '-------------------普通飞机-------------------' );
+    var plane = new Plane();
+    plane.fire();
+    console.log( '普通飞机' );
+
+
+
+
+
+	//装饰了导弹的飞机
+    console.log( '-------------------装饰了普通子弹和导弹的飞机-------------------' );
+	var plane_Missile = new MissileDecorator( plane );
+    plane_Missile.fire()
+
+
+
+
+
+
+
+
+	//装饰了原子弹的飞机 -- 逐渐递进增加功能
+    console.log( '-------------------装饰了普通子弹，导弹和原子弹的飞机-------------------' );
+	var plane_Missile_Atom = new AtomDecorator( plane_Missile );
+	plane_Missile_Atom.fire();
+
+
+    //问题 -- 如何生成一个装饰了普通子弹和原子弹的飞机
+    console.log( '-------------------装饰了普通子弹和原子弹的飞机-------------------' );
+</script>

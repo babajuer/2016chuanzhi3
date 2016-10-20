@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+	//最简单的返回函数的高阶函数
+	//其重要性和地球即将毁灭一样重要，必须引起重视
+	//下面我们从简单的开始讲起
+	//赋值方式也及其重要 -- 必须带个小括号
+	function Gaojie()
+	{
+		return function(){alert('最简单的返回函数的高阶函数');}
+	}
+	var test = Gaojie();
+	test();
+	
+	
+	
+	//返回的函数包含参数
+	function Gaojie2(a,b)
+	{
+		return function(){alert(a+b)};
+	}
+	var test2 = Gaojie2(4,5);
+	test2();
+	
+	
+	//双参数
+	//function Gaojie3(c)
+//	{
+//		return function(a,b){alert(a+b+c)}	
+//	}
+//	var test3 = Gaojie3(3);
+//	test3();
+	
+	
+	
+	
+</script>

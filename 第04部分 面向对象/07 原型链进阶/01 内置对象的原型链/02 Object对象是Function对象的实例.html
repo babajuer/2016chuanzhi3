@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*Object是内置对象Function对象的一个实例*/
+   /* == 值相等就可以了。  1 == '1' 吗  1 ==='1'吗  ==再比较的时候会自动做类型转换
+    === 全等于 数据类型 值都一样，那么才相等
+    java C# 全等于  地址相等*/
+    /*不是值，地址相等而是值和数据类型相等*/
+    /*console.log(Object.__proto__ === Function.prototype)*/
+
+
+    /*以后我们应该将Object对象和Function对象看成四个对考虑问题*/
+  /*  Object
+    Object.prototype
+    Function
+    Function.prototype*/
+    /*console.log(Function.prototype.__proto__  ===   Object.prototype)*/
+
+
+   /* console.log(Object.prototype.__proto__)*/
+
+
+    /*自定义对象的__proto__*/
+    function Product(){}
+    Product.prototype= {}
+
+    var iphone = new Product()
+    /*console.log(iphone.__proto__ === Product.prototype) true*/
+
+
+   /* console.log(Product.prototype.__proto__  ===  Function.prototype) false*/
+
+    /*console.log(Product.prototype.__proto__  ===  Object) false*/
+
+    /*console.log(Product.prototype.__proto__  ===  Object.prototype) true*/
+
+    Object.prototype.toString = function(){
+        alert('破坏之王')
+    }
+
+
+
+    /*也就是我们我的自定义对象可以访问Object对象中的一切属性和方法
+    为什么呢？？*/
+    console.log(iphone.toString())
+
+
+
+
+
+    /*object的__proto__指向Function对象的原型*/
+    //Object对象是Function对象的一个实例
+    console.log(Object.__proto__ === Function.prototype)
+
+
+
+    /*Function.prototype对象的原型的__proto__属性指向Object.prototype*/
+    console.log(Function.prototype.__proto__ === Object.prototype)
+
+    /*object的原型的__proto__属性为null*/
+    console.log(Object.prototype.__proto__ )
+
+
+    /*总结*/
+    /*一个自定义对象可以访问到Function对象的所有属性和方法，也可以访问到Object对象的所有属性和方法*/
+</script>

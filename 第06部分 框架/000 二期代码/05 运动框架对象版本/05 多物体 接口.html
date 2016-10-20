@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #container{
+            height: 400px;
+            position: relative;
+            width: 100%;
+            border-bottom: 1px black solid;
+            text-align: center;
+            top: 50px;
+        }
+        #container div{
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            background: red;
+            float: left;
+            top:10px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+</div>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+
+    //第一步：定义动画对象
+    //第二步：分析属性和方法
+
+
+    /*分析实现步骤 思路*/
+    /*单物体： obj -- 来保存运行一个物体需要的一切数据 this.obj ={}*/
+    /*多物体：  [{},{},{},{}]  objs*/
+   /* for(var i = 0;i<objs.length;i++ ){
+        做的事情 ：和单物体一模一样
+    }*/
+
+
+    function Animate(){
+        /*将变量提炼成属性*/
+        this.timer;
+        //我们可以定义一个变量（属性）来保存运行这个框架需要的一切数据
+     /*   this.obj={};*/
+        //定义一个数组来保存多个物体运行需要的数据
+       /* [{},{},{},{}]*/
+        this.queen =[];
+    }
+    Animate.prototype = {
+        /*
+         运行部
+         职责描述：和运行框架相关的一些方法      */
+
+        //动画的本质
+        /*动画其实很简单：就是一个循环，每次循环做什么事情呢？ 不就是改变left*/
+        /*老大*/
+        run:function(){
+            var that =this;
+            that.timer = setInterval(function(){
+                that.loop()
+            },16)
+
+
+        },
+        /*多个物体 --对数组循环，取出单个物体 --*/
+        loop:function(){
+            for(var i =0;i<this.queen.length;i++){
+                var obj = this.queen[i]
+                this.move(obj);
+            }
+        },
+        /*老二*/
+        move:function(obj){
+            var pass = +new Date();
+            var that =this;
+            var tween = this.getTween(obj.now,pass,obj.duration,'easeOutBounce')
+            //动画停止的条件
+            if(tween>=1) {
+                /*停止动画*/
+                that.stop()
+            }else {
+                that.setManyProperty(obj.id,obj.styles,tween)
+            }
+        },
+        /*获取动画时间进程*/
+        getTween:function (now,pass,all,ease){
+            var eases = {
+                //线性匀速
+                linear:function (t, b, c, d){
+                    return (c - b) * (t/ d);
+                },
+                //弹性运动
+                easeOutBounce:function (t, b, c, d) {
+                    if ((t/=d) < (1/2.75)) {
+                        return c*(7.5625*t*t) + b;
+                    } else if (t < (2/2.75)) {
+                        return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+                    } else if (t < (2.5/2.75)) {
+                        return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+                    } else {
+                        return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+                    }
+                },
+                //其他
+                swing: function (t, b, c, d) {
+                    return this.easeOutQuad(t, b, c, d);
+                },
+                easeInQuad: function (t, b, c, d) {
+                    return c*(t/=d)*t + b;
+                },
+                easeOutQuad: function (t, b, c, d) {
+                    return -c *(t/=d)*(t-2) + b;
+                },
+                easeInOutQuad: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t + b;
+                    return -c/2 * ((--t)*(t-2) - 1) + b;
+                },
+                easeInCubic: function (t, b, c, d) {
+                    return c*(t/=d)*t*t + b;
+                },
+                easeOutCubic: function (t, b, c, d) {
+                    return c*((t=t/d-1)*t*t + 1) + b;
+                },
+                easeInOutCubic: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t*t + b;
+                    return c/2*((t-=2)*t*t + 2) + b;
+                },
+                easeInQuart: function (t, b, c, d) {
+                    return c*(t/=d)*t*t*t + b;
+                },
+                easeOutQuart: function (t, b, c, d) {
+                    return -c * ((t=t/d-1)*t*t*t - 1) + b;
+                },
+                easeInOutQuart: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+                    return -c/2 * ((t-=2)*t*t*t - 2) + b;
+                },
+                easeInQuint: function (t, b, c, d) {
+                    return c*(t/=d)*t*t*t*t + b;
+                },
+                easeOutQuint: function (t, b, c, d) {
+                    return c*((t=t/d-1)*t*t*t*t + 1) + b;
+                },
+                easeInOutQuint: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+                    return c/2*((t-=2)*t*t*t*t + 2) + b;
+                },
+                easeInSine: function (t, b, c, d) {
+                    return -c * Math.cos(t/d * (Math.PI/2)) + c + b;
+                },
+                easeOutSine: function (t, b, c, d) {
+                    return c * Math.sin(t/d * (Math.PI/2)) + b;
+                },
+                easeInOutSine: function (t, b, c, d) {
+                    return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
+                },
+                easeInExpo: function (t, b, c, d) {
+                    return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
+                },
+                easeOutExpo: function (t, b, c, d) {
+                    return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+                },
+                easeInOutExpo: function (t, b, c, d) {
+                    if (t==0) return b;
+                    if (t==d) return b+c;
+                    if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+                    return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+                },
+                easeInCirc: function (t, b, c, d) {
+                    return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
+                },
+                easeOutCirc: function (t, b, c, d) {
+                    return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+                },
+                easeInOutCirc: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
+                    return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
+                },
+                easeInElastic: function (t, b, c, d) {
+                    var s=1.70158;var p=0;var a=c;
+                    if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+                    if (a < Math.abs(c)) { a=c; var s=p/4; }
+                    else var s = p/(2*Math.PI) * Math.asin (c/a);
+                    return -(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+                },
+                easeOutElastic: function (t, b, c, d) {
+                    var s=1.70158;var p=0;var a=c;
+                    if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+                    if (a < Math.abs(c)) { a=c; var s=p/4; }
+                    else var s = p/(2*Math.PI) * Math.asin (c/a);
+                    return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
+                },
+                easeInOutElastic: function (t, b, c, d) {
+                    var s=1.70158;var p=0;var a=c;
+                    if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
+                    if (a < Math.abs(c)) { a=c; var s=p/4; }
+                    else var s = p/(2*Math.PI) * Math.asin (c/a);
+                    if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+                    return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )*.5 + c + b;
+                },
+                easeInBack: function (t, b, c, d, s) {
+                    if (s == undefined) s = 1.70158;
+                    return c*(t/=d)*t*((s+1)*t - s) + b;
+                },
+                easeOutBack: function (t, b, c, d, s) {
+                    if (s == undefined) s = 1.70158;
+                    return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+                },
+                easeInOutBack: function (t, b, c, d, s) {
+                    if (s == undefined) s = 1.70158;
+                    if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
+                    return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+                },
+                easeInBounce: function (t, b, c, d) {
+                    return c - this.easeOutBounce (d-t, 0, c, d) + b;
+                },
+                easeInOutBounce: function (t, b, c, d) {
+                    if (t < d/2) return this.easeInBounce (t*2, 0, c, d) * .5 + b;
+                    return this.easeOutBounce (t*2-d, 0, c, d) * .5 + c*.5 + b;
+                }
+            }
+            var yongshi = pass -now;
+            return eases[ease](yongshi,0,1,all)
+        },
+        /*停止*/
+        stop:function (){
+            /* var tween =1;*/
+            var that = this;
+            clearInterval(that.timer);
+        },
+        //设置一个样式
+        setOneProperty:function (id,name,start,juli,tween){
+            /*透明度 不需要px
+             但是width top height left right px*/
+            if(name == 'opacity'){
+                $$.css(id,name,start + juli*tween)
+            }else{
+                $$.css(id,name,(start + juli*tween)+'px')
+            }
+        },
+        /*设置多个样式*/
+        setManyProperty:function (id,styles,tween){
+            for(var i =0;i<styles.length;i++){
+                var item = styles[i];
+                this.setOneProperty(id,item.name,item.start,item.juli,tween)
+            }
+        },
+
+
+
+        /*添加部*/
+        /*职责描述：准备素材 将烹饪需要的各种素材给你准备好 为运行部服务*/
+
+        /*用户需要调用的方法 用户只需要知道这个方法就可以了*/
+        add:function(id,json,duration){
+            this.adapterMany(id,json,duration)
+            this.run();
+        },
+        /*适配器 将我们需要的数据放在一起统一管理*/
+        /*就类似烹饪 先把我们需要的材料准备好，然后再去编程*/
+        adapter:function(id,json,duration){
+            /*  为了提高用户体验，我们一般将框架需要的参数越简单，越少越好，
+             但是 我们在编程的需要的不是这些数据，我们需要加个适配器，将用户传进来的数据转成我们需要的数据*/
+            /*请问：我们需要哪些数据 变量值*/
+            /*为了编程方便，我们可以定义一个json变量来保存运行动画框架需要的一切数据*/
+           var obj ={};
+            obj.id = id;
+            obj.now  = +new Date();
+            obj.pass= +new Date();
+            obj.tween = 0;
+            obj.duration = duration
+            obj.styles=this.getStyles(id,json)
+            return obj;
+        },
+        adapterMany:function(id,json,duration){
+            var obj = this.adapter(id,json,duration)
+            this.queen.push(obj)
+           /* 请问同学：这个方法到底需要返回值吗？ 需要 为什么  不需要 为什么*/
+        },
+        /*获取多个样式*/
+        getStyles:function (id,source){
+            var styles=[]
+            for(var item in source){
+                /*思路*/
+                /*   name :item
+                 start:parseFloat($$.css(id,item))
+                 juli:最终的位置 -- 起始位置  source[item] - start*/
+                var style={};
+                style.name = item;
+                style.start = parseFloat($$.css(id,item))
+                style.juli = parseFloat(source[item]) - style.start
+                styles.push(style)
+
+            }
+            return styles;
+        },
+
+
+
+        /*后勤部*/
+        /*擦屁股部门 内存回收*/
+        /*企业：HR 做饭的 卫生 看病的 洗衣的 信息化的 */
+        destroy:function(){}
+
+    }
+
+
+    /*入口*/
+    /*    我们再编写框架的目的：让用户使用起来 方便 -- 傻瓜式用户体验
+     /*我们写框架最核心的就是提高用户体验*/
+    /*极限：你把这个框架拿给使用者，你不用说一句话 他就能够会使用*/
+    var animate = new Animate();
+    animate.add('#box1',{top:200,left:100,width:'100'},2000);
+    animate.add('#box2',{top:200,left:100,width:'100'},2000);
+    animate.add('#box3',{top:200,left:100,width:'100'},2000);
+    animate.add('#box4',{top:200,left:100,width:'100'},2000);
+</script>

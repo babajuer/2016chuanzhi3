@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src='common.js'></script>
+<style>
+#name h1 {
+    line-height: 1.5em;
+    overflow: hidden;
+    font-weight: 700;
+    font-family: arial,"microsoft yahei";
+    font-size: 16px;
+}
+#name .p-ad {
+    font-family: arial,"microsoft yahei";
+    color: #E3393C;
+    font-size: 14px;
+    line-height: 20px;
+    word-break: break-all;
+}
+#summary-price {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    padding-right: 81px;
+    height: 30px;
+    line-height: 30px;
+    background: #F7F7F7 none repeat scroll 0% 0%;
+}
+#summary-price .p-price {
+    display: inline-block;
+    vertical-align: middle;
+    color: #E4393C;
+    font-size: 20px;
+}
+button{margin-top: 50px;}
+</style>
+</head>
+
+<body>
+<div id="name">
+    <h1>
+        <span class="hl_red" id="tuan-tag">[团购] </span>
+        <span id='name'></span>
+    </h1>
+    <div id='des' class='p-ad'></div>
+</div>
+
+<div style="margin: 5px 0px;" id="summary-price">
+    <div class="dt">京 东 价：</div>
+     <div class="dd">
+        ￥<strong class="p-price" id="jd-price"></strong>
+     </div>
+</div>
+
+<button id='btn'>加入购物车</button>
+
+</body>
+</html>
+<script>
+    //产品基本信息模块
+	var Product = function(name,des,price) {
+		this.name=name;
+		this.des=des;
+		this.price=price;
+	}
+	Product.prototype={
+			init:function()
+			{}
+		}
+	
+	//购物车模块
+//	var gouwuche = function()
+//	{
+//		this.price = 0;
+//		this.product=[];
+//	}
+//	gouwuche.prototype={
+//
+//		    init:function()
+//			{}
+//			,add:function(product){
+//					this.product.push(product);
+//					this.price+=product.price;
+//				}
+//	}
+
+
+	var gouwuche = (function(){
+		var instantiated;
+		var price = 0;
+		var product=[];
+		function init(){
+			/*singleton code here*/
+			return {
+				init:function()
+				{}
+				,add:function(product){
+					this.product.push(product);
+					this.price+=product.price;
+				}
+			};
+		}
+
+		return {
+			getInstance: function(){
+				if (!instantiated) {
+					instantiated = init();
+				}
+				return instantiated;
+			}
+		};
+	})();
+
+
+
+
+    //定义页面的模块
+	//产品基础模块
+	var productModule = function(p) {
+	  this.product = p;
+	  this.gouwuche = gouwuche.getInstance();
+	}
+	productModule.prototype={
+		init:function()
+		{
+			this.bindData();
+			this.bindEvents();
+		}
+		,bindData:function()
+		{
+			//绑定名称，绑定价格，绑定描述
+			document.getElementById('name').innerHTML = this.product.name;
+			//document.getElementById('des').innerHTML = this.product.des;
+			document.getElementById('jd-price').innerHTML=this.product.price;
+		}
+		,bindEvents:function()
+	    {
+			$.event.on('#btn','click',function(){
+					//g.add(p);
+					alert('123');
+				});
+	    }
+	}
+	
+	
+	var p = new Product(' 欧尼尔(OUNIER)DS600A嵌入式家用商用烘焙电烤箱上下独立控温多功能大容量电烤箱 嵌入式电烤箱','6.1 6.10活动期间 领券更优惠',1999);
+//	var g = new gouwuche();
+	var pModule = new productModule(p);
+	pModule.init();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		//产品详细信息模块
+	var productDetailModule = function()
+	{
+			
+	}
+	productDetailModule.prototype={
+		init:function()
+		{
+			
+		}
+	}
+	
+	//产品评论模块
+	var productCommentsModule = function()
+	{
+			
+	}
+	productCommentsModule.prototype={
+		init:function()
+		{
+			
+		}
+	}
+	
+	    //页面
+	var page = function(pModule,pdModule,cModule)
+	{
+		this.productModule = pModule;
+		this.productDetailModule = pdModule;
+		this.productCommentsModule = cModule;
+	}
+	page.prototype={
+			init:function()
+			{
+				this.productModule.init();
+			}
+		
+		}
+		
+</script>

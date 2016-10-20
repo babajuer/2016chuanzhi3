@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	#sum{color:red; font-size:18px}
+</style>
+</head>
+
+<body>
+<h1>我的购物车</h1>
+<h2>产品总数：<span id='psum'></span></h2>
+<h2>金钱总数：<span id='shoppingCar'></span></h2>
+</body>
+</html>
+<script>
+/** 
+ * 单例模式一 
+ * 个人更倾向这种，代码简介 
+ */ 
+ 
+  function Product(id,price,name){
+	    this.id = id;
+	 	this.price = price;
+	    this.name = name;
+	 } 
+
+var xiyiji = new Product(1,2000,'海尔洗衣机');
+var tv = new Product(2,3000,'电视机');
+var phone = new Product(3,2000,'小米手机');
+//alert(phone.price);
+
+
+var ShoppingCar = (function(){  
+    var instantiated;
+	var sum = 0;  
+	var psum=0;
+    function init(){  
+        /*singleton code here*/  
+        return {  
+            addProduct: function(product){  
+                sum=sum+product.price;
+				psum ++;
+				document.getElementById('psum').innerHTML = psum+"元";
+				document.getElementById('shoppingCar').innerHTML = sum+"元";
+				//真实场景
+				//这里需要更新界面
+				//ajax连接数据库等保存信息
+            }, 
+			getProductSum:function(){
+				return psum;			
+			} 
+			,SumOrder:function(){
+				alert(sum);
+			}
+        };  
+    }  
+      
+    return {
+		//		返回的是json字面量
+        getInstance: function(){  
+            if (!instantiated) {  
+                instantiated = init(); {} //字面量
+            }  
+            return instantiated;  
+        }  
+    };  
+})();  
+
+/*calling public methods is then as easy as:*/  
+ShoppingCar.getInstance().addProduct(xiyiji);  
+ShoppingCar.getInstance().addProduct(tv);  
+ShoppingCar.getInstance().addProduct(phone);  
+ShoppingCar.getInstance().SumOrder();
+
+
+var psum = ShoppingCar.getInstance().getProductSum(); 
+alert("产品总数"+psum);
+
+//比较一下他们其实指向同一个内存区域
+//alert(ShoppingCar.getInstance().addProduct(phone)  === ShoppingCar.getInstance().addProduct(tv));
+
+
+</script>

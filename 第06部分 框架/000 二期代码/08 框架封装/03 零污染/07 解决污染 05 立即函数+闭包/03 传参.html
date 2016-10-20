@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+</head>
+
+<body>
+
+</body>
+</html>
+<script>
+    //    定义一个含有闭包特性的匿名函数
+    (function(w,aa,undefined){
+        var name = 'SK';
+        var sex = '男';
+        function get1(){
+            return name + ':' + sex;
+        }
+        function get2(){
+            return name + ':' + sex;
+        }
+        var itcast = {
+            name:name,
+            sex:sex,
+            get1:get1,
+            get2:get2,
+            on:function(){
+                console.log('事件框架 - on')
+            },
+            html:function(){}
+        }
+//        外界无法访问闭包中的函数，方法
+//        通过如下方式访问  相当于给全局对象扩充一个属性
+        w.$$ = itcast;
+    })(window,$);
+
+
+
+    //    alert(get1());
+    //get2成为全局变量
+    $$.on()
+
+</script>

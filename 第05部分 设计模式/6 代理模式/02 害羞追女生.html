@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+// 范冰冰  
+var girl = function (name) {  
+    this.name = name;  
+};  
+ 
+// 李晨
+var boy = function (girl) {  
+    this.girl = girl;  
+    this.sendGift = function (gift) {  
+        alert("Hi " + girl.name + ", dudu送你一个礼物：" + gift);  
+    }  
+};  
+ 
+// 邓超是代理  
+var proxy = function (girl) {  
+    this.girl = girl;  
+    this.sendGift = function (gift) {  
+        (new boy(girl)).sendGift(gift); // 替dudu送花咯  
+    }  
+}; 
+
+var proxy = new proxy(new girl("范冰冰"));  
+proxy.sendGift("999朵玫瑰"); 
+</script>

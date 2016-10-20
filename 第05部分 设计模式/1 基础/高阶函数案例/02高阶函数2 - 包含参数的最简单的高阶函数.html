@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+//这里的知识点必须熟练掌握，前面大家大多是熟悉，知道，从现在开始大家要能灵活使用高阶函数
+	function SecondGaojie(a,b,fn){
+			fn(a,b);
+		}	
+	function simple(a,b)
+	{	
+		alert(a+b);
+	}
+SecondGaojie(40,50,simple);
+SecondGaojie(4,5,function(a,b){alert( a+b)});
+</script>

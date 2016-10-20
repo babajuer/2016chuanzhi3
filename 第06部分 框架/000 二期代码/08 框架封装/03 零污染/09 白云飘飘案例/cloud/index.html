@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script></script>
+    <style></style>
+</head>
+<body>
+    <!--编写静态文件-->
+    <img id="sun" src="img/sun.png"/>
+    <img id="cloud_sun" src="img/cloud.png" width="300" />
+    <img id="cloud" src="img/cloud.png" width="600" />
+    <img id="cloud_1" src="img/cloud.png" width="500" />
+    <img id="cloud_2" src="img/cloud.png" width="900" />
+</body>
+</html>
+
+<script>
+    var ani = new Animal()
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    var animate = new Animate();
+    var sun = document.getElementById('sun')
+    animate.add({
+        main : function(){
+            C.setStyle(sun,'left',document.body.offsetWidth * this.tween + 'px');
+        }
+    });
+</script>

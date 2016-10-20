@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>脚本之家</title>
+    <style type="text/css">
+        table{
+            width:300px;
+            height:60px;
+            background-color:green;
+        }
+        table td{
+            background-color:white;
+        }
+    </style>
+    <script type="text/javascript" src='jquery-1.11.2.min.js'></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+//            在以上代码中，使用bind()方法为每一个td绑定了一个click事件处理函数，这样当点击单元格的时候，
+//            就会重新设置单元格中的文本。虽然此中方式实现了需要的效果，看起来非常的完美，
+//            其实并非这样，如果当单元格非常多时候，遍历单元格和为每一个单元格绑定事件处理函数将会大大降低代码的性能，
+//            如果让单元格的父元素监听事件，只要判断最初触发事件的DOM元素是否是td即可。
+//            这里是给每个元素绑定事件  -- 如果元素少还可以，那么如果元素很多。。。
+            $("td").bind("click",function(){
+                $(this).text("哈哈");
+            })
+        })
+    </script>
+</head>
+<body>
+<table cellspacing="1">
+    <tr>
+        <td>单元格</td>
+        <td>单元格</td>
+        <td>单元格</td>
+        <td>单元格</td>
+        <td>单元格</td>
+    </tr>
+    <tr>
+        <td>单元格</td>
+        <td>单元格</td>
+        <td>单元格</td>
+        <td>单元格</td>
+        <td>单元格</td>
+    </tr>
+</table>
+</body>
+</html>
+ 

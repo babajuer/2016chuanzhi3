@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+	/*基类*/
+	var Base= function() {
+		update:function(){alert('基础对象，放置公共属性方法');}
+	}
+
+
+    /*对象层次： 人：女人 女人
+    人：学生 老师
+
+    方法级别：比如产品 购买  但是普通类产品（手机）和 电子书产品购买是完全不一样（代码）
+    普通产品：生成一个订单，物流，货到付款 钻石会员
+    电子书购买：不需要物流。。。让你可以看到电子书的全部章节
+*/
+	/*子类*/
+	/*多态*/
+    /*接口和抽象的概念*/
+	var player = function() {
+		update:function()
+		{
+			alert("当打完一场比赛，更新球员统计信息，比如个人平均分，篮板平均分");
+		}
+	}
+	
+	
+	
+	
+	var JiaoLian =function() {
+		update:function(){
+			
+			alert("当打完一场比赛，更新教练执教经历，比如执教过1000场，胜利500场");	
+		}
+	}
+
+</script>

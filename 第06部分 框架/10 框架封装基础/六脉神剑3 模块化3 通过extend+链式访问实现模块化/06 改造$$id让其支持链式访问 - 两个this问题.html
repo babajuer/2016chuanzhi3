@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    //我们的框架
+    //第一个问题：最外层的是什么玩意 -- 匿名函数+闭包
+    //第二个问题：我为什么在最下面下window 下JQuery
+    //第三个问题： window.ICD = $ = ICD;
+    ;(function(w){
+        var itcast = {
+            //去除左边空格
+            ltrim:function(str){
+                return str.replace(/(^\s*)/g,'');
+            },
+            //去除右边空格
+            rtrim:function(str){
+                return str.replace(/(\s*$)/g,'');
+            },
+            //去除空格
+            trim:function(str){
+                return str.replace(/(^\s*)|(\s*$)/g, '');
+            },
+            //简单的数据绑定formateString
+            formateString:function(str, data){
+                return str.replace(/@\((\w+)\)/g, function(match, key){
+                    return typeof data[key] === "undefined" ? '' : data[key]});
+            },
+            extend:function(tar,source) {
+                //遍历对象
+                for(var i in source){
+                    tar[i] = source[i];
+                }
+                return tar;
+            },
+            //随机数
+            random: function (begin, end) {
+                return Math.floor(Math.random() * (end - begin)) + begin;
+            },
+            extend:function(tar,source) {
+                //遍历对象
+                for(var i in source){
+                    tar[i] = source[i];
+                }
+                return tar;
+            },
+            //数据类型检测
+            isNumber:function (val){
+                return typeof val === 'number' && isFinite(val)
+            },
+            isBoolean:function (val) {
+                return typeof val ==="boolean";
+            },
+            isString:function (val) {
+                return typeof val === "string";
+            },
+            isUndefined:function (val) {
+                return typeof val === "undefined";
+            },
+            isObj:function (str){
+                if(str === null || typeof str === 'undefined'){
+                    return false;
+                }
+                return typeof str === 'object';
+            },
+            isNull:function (val){
+                return  val === null;
+            },
+            isArray:function (arr) {
+                if(arr === null || typeof arr === 'undefined'){
+                    return false;
+                }
+                return arr.constructor === Array;
+            }
+        };
+
+        //封装事件框架
+        itcast.extend(itcast,{
+            on: function (id, type, fn){
+                var dom = $$.isString(id)?document.getElementById(id):id;
+                //如果支持
+                //W3C版本 --火狐 谷歌 等大多数浏览器
+                //如果你想检测对象是否支持某个属性，方法，可以通过这种方式
+                if(dom.addEventListener ){
+                    dom.addEventListener(type, fn, false);
+                }else if(dom.attachEvent){
+                    //如果支持 --IE
+                    //
+                    dom.attachEvent('on' + type, fn);
+                }
+            },
+        })
+
+        //封装选择框架
+        itcast.extend(itcast,{
+            //id选择器
+            $id:function(id){
+                return document.getElementById(id);
+                return this
+                //这里有两个this 当然就不起作用了？？ 怎么办？？
+            },
+            //html5实现的选择器
+            $all:function(selector,context){
+                context = context || document;
+                return  context.querySelectorAll(selector);
+            },
+        })
+
+        //封装css框架
+        itcast.extend(itcast,{
+            //显示
+            show:function (content){
+                var doms =  $$.$all(content)
+                for(var i= 0,len=doms.length;i<len;i++){
+                    $$.css(doms[i], 'display', 'block');
+                }
+            },
+            //隐藏和显示元素
+            hide:function (content){
+                var doms =  $$.$all(content)
+                for(var i= 0,len=doms.length;i<len;i++){
+                    $$.css(doms[i], 'display', 'none');
+                }
+            }
+        })
+
+        w.itcast = w.$$ = w.AA  = itcast;
+    })(window);
+</script>

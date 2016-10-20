@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h2>测试页面</h2>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    var params= window.location.search;//params:?id,date
+    var arr = params.substring(1).split(",");
+    var id = arr[0];
+    console.log(id)
+    console.log(arr[1])
+
+
+
+/*
+    function query(){
+        var params= window.location.search;//params:?id,date
+        var arr = params.substring(1).split(",");
+        return arr;
+    }*/
+    var arr = $$.query();
+
+</script>

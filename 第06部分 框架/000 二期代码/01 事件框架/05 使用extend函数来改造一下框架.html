@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            background: red;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id='div'></div>
+</body>
+</html>
+<script src='itcast3.js'></script>
+<script>
+
+    var dom =$$.$id('div')
+    /*比较一下：使用原型 和使用对象的字面量的形式的区别*/
+    $$.on('div','click',function(e){
+      /*  alert('使用框架编写事件')*/
+        /*event对象有个属性：target 已将保存了当前dom对象*/
+       /* this.style.background = 'green'*/
+        /*问题：不能够兼容不同厂商的不同的版本的浏览器*/
+
+        /*e.target.style.background = 'green'*/
+        //解决浏览器兼容性问题
+        /*为什么我们不用原生的js去编程 因为原生的js并不能保证的所有的浏览器都兼容*/
+        /*以后尽量拷贝不要自己写*/
+      /*  $$.getEvent(e).target.style.background ='green'*/
+        $$.getTarget(e).style.background ='green'
+    })
+
+
+
+
+</script>

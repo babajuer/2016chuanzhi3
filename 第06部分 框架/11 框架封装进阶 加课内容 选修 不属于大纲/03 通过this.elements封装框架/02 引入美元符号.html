@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="button">点击我</button>
+<img id="image" src="../test.png">
+</body>
+</html>
+<script>
+    var itcast = function(id) {
+        return this.getElementById(id);
+    };
+    itcast.prototype.getElementById = function(id) {
+        this.element = document.getElementById(id);
+        return this;
+    };
+    itcast.prototype.hide = function() {
+        this.element.style.display = "none";
+    };
+
+    //    我不喜欢new, 我喜欢$
+    //    new F("image")这种写法我好不喜欢，我喜欢$, 我就是喜欢$, 我要换掉。
+    //     好吧，把new什么什么藏在$方法中把~
+
+
+    //    $的本质其实是个方法名而已
+
+    //这里的美元符号其实就是实例的别称
+    var $ = function(id) {
+        return new itcast(id);
+    };
+
+    $("image").hide()
+</script>

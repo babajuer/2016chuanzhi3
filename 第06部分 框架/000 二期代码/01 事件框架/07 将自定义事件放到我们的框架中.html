@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <style>
+        div{
+            background: red;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id='div'></div>
+</body>
+</html>
+<script src='itcast3.js'></script>
+<script>
+
+    var dom = $$.$id('div')
+    $$.hover('div',function(){
+        dom.style.background = 'green'
+    },function(){
+        dom.style.background = 'red'
+    })
+
+   /* on函数我们目前是使用dom2实现的
+    用观察者模式实现事件机制 on trigger dalegate*/
+</script>

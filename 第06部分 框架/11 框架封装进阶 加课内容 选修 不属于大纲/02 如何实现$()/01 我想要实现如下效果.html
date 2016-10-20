@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="button1">隐藏</button>
+<button id="button2">显示</button>
+<img id="image1" src="../test.png">
+</body>
+</html>
+<script>
+
+        var $ = function(id) {
+            /*因为这个函数返回的是dom对象，而dom对象里面没有hide方法*/
+            return document.getElementById(id);
+            /*HTMLElement*/
+        };
+
+  /*      function hide(dom){
+            dom.style.display = 'none'
+        }
+*/
+        $("button1").onclick = function() {
+            $("image1").hide();
+        };
+
+        $("button2").onclick = function() {
+            $("image1").show();
+        };
+
+        HTMLElement.prototype.hide=function(){
+            this.style.display = 'none'
+        }
+
+        HTMLElement.prototype.show=function(){
+            this.style.display = 'block'
+        }
+</script>

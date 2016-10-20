@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class='div'></div>
+<div class='div'></div>
+<div class='div'></div>
+<button id='btnhide'>隐藏</button>
+<button id='btnshow'>显示</button>
+</body>
+</html>
+<script src = 'jquery-1.11.2.min.js'></script>
+
+<script>
+    $('#btnhide').click(function(){
+        $('.div').hide()
+    })
+    $('#btnshow').click(function(){
+        $('.div').show()
+    })
+
+</script>

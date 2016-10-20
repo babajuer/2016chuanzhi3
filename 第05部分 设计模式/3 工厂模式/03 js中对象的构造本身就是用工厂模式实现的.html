@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+function createCar(sColor,iDoors,iMpg) {
+  var oTempCar = new Object;
+  oTempCar.color = sColor;
+  oTempCar.doors = iDoors;
+  oTempCar.mpg = iMpg;
+  oTempCar.showColor = function() {
+    alert(this.color);
+  };
+  return oTempCar;
+}
+
+var oCar1 = createCar("red",4,23);
+var oCar2 = createCar("blue",3,25);
+
+oCar1.showColor();        //输出 "red"
+oCar2.showColor();        //输出 "blue"
+
+</script>

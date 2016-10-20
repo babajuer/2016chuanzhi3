@@ -1,0 +1,79 @@
+
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title> new document </title>
+    <style>
+    p{
+            font-size:12px;
+            margin:0px;padding:0px;  
+    }
+    </style>
+    </head>
+
+    <body>
+    <p>全选<input type="checkbox" id="allSel" />反选<input type="checkbox" id="unSel" /></p>
+    --------------------------------
+    <p>选项一<input type="checkbox" id="" /></p>
+    <p>选项二<input type="checkbox" id="" /></p>
+    <p>选项三<input type="checkbox" id="" /></p>
+    <p>选项四<input type="checkbox" id="" /></p>
+    <p>选项五<input type="checkbox" id="" /></p>
+
+    <script type="text/javascript">
+	/* 多个复选框的全选与反选:
+	 * 规则为：
+	 * 1. 如果是全选，则所有的复选框同步到全选状态，反选框切换到未选
+	 * 2.如果是反选，则所有的复选框同步到自身的反状态，全选框切换到未选
+	 * 3.如果是其它普通复选框, 则把全选与反选框复位到未选
+	 * 也就是每个复选框状态的改变，都会影响其它复选框的状态，观察者模式很好实现了这个一呼百应的功能
+	 */
+    btns=document.getElementsByTagName("input");
+    Observer={
+            list:[]
+            ,add:function (o){
+                    this.list.push(o);
+                    o.onclick=function (){
+                            Observer.send(this)
+                    }
+            }
+            ,send:function (sender){
+                    for (var i=0;i<this.list.length;i++ ) {
+                            var $=this.list[i];
+                            switch (sender.id){
+                            case 'allSel':
+                                    /* 如果是全选，则所有的复选框同步到全选状态，反选框切换到未选 */
+                                    if($.id!='unSel'){
+                                            $.checked=sender.checked;
+                                    }else{
+                                            $.checked=false;
+                                    }
+                                    break;
+                            case 'unSel':
+                                    /* 如果是反选，则所有的复选框同步到自身的反状态，全选框切换到未选 */
+                                    if($!=sender){
+                                            if($.id=='allSel'){
+                                                    $.checked=false;
+                                            }else{
+                                                    $.checked=!$.checked;                                       
+                                            }
+                                    }
+                                    break;
+                            default:
+                                    /* 如果是其它普通复选框, 则把全选与反选框复位到未选 */
+                                    if($.id=='allSel'||$.id=='unSel'){
+                                                    $.checked=false;
+                                    }                       
+                            }
+                    };
+            }
+    }
+
+    // 把每个复选框添加到观察列表中
+    for (var i=0;i<btns.length;i++ ) {
+            Observer.add(btns[i]);
+    }
+
+    </script>
+    </html>

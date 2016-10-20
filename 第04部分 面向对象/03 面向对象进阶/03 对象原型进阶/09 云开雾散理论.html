@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //该函数 用于创建对象 其除了是一个函数之外，我们又称之为构造对象的函数 - 简称构造函数
+    function Product(){
+        //属性
+        this.name='神仙';
+        // 属性
+        this.description = ''
+        this.buy = function(){
+            console.log('构造函数对象')
+        }
+    }
+
+    Product.prototype={
+        name:'魔鬼',
+        /*buy并没有被删掉，只是被暂时屏蔽了---乌云蔽日*/
+        buy:function(){
+            console.log('原型对象')
+        }
+    }
+
+
+
+    var product = new Product()
+    product.buy()//构造函数对象
+    console.log(product.name)  //神仙
+
+    /*通过delete 来清除乌云*/
+    /*   delete product.buy
+     product.buy()  //原型对象*/
+
+    /*被屏蔽之后如何获取 */
+    Product.prototype.buy()
+
+</script>

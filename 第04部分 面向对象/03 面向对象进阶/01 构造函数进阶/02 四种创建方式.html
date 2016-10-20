@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*传参形式*/
+    function Product(name){
+        this.name = name
+       /* 方法的定义和属性的定义一模一样
+        方法的使用和属性的使用一模一样
+        方法再内存中存储和属性一模一样*/
+        /*方法的使用和属性一模一样*/
+        this.buy = function(){}
+    }
+    Product.prototype={ }
+
+
+    var iphone = new Product('iphone8s')
+    iphone.name
+    iphone.buy()
+
+    /*默认值*/
+    function Product(){
+        this.name = ''
+        this.price=0
+    }
+    Product.prototype={}
+
+
+    var iphone = new Product()
+    /*动态添加形式*/
+    iphone.description='XXXXXXXXXX'
+    iphone.images=[]
+
+
+
+
+    /*混合模式*/
+    function Product(name,price){
+        this.name = name
+        this.price=price
+        this.version=1.0
+        this.add=function(){}
+    }
+    Product.prototype={}
+
+
+    var iphone = new Product()
+    /*动态添加形式*/
+    iphone.description='XXXXXXXXXX'
+    iphone.images=[]
+
+
+    console.log(iphone instanceof Product)//true
+
+
+</script>

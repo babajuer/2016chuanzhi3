@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <script src='template.js'></script>
+    <script src='itcast.js'></script>
+    <style>
+        .title{
+            color:red
+        }
+    </style>
+</head>
+
+<body>
+<h1>最新上映电影：</h1>
+<div id='mydiv'>
+
+</div>
+</body>
+</html>
+
+<!--模板王者演示-->
+<script  type="text/html">
+    <strong>电影名称：</strong>{{name}}<br>
+    <strong style='color:red'>导演</strong>{{lead}}<br>
+    <strong style='color:green'>主演:</strong>{{role}}
+</script>
+
+<!--带坑的html-->
+<!--固定格式-->
+<script type="text/html" id="arttemplate">
+    <h2 class='title'>2016年精彩电影介绍</h2>
+    <div><strong>电影名称：</strong>{{name}}</div>
+    <div><strong>导演：</strong>{{lead}}</div>
+    <div><strong>主演：</strong>{{role}}</div>
+</script>
+
+<!--所以说：模板就是合体法则：就是将数据和代码进行绑定：把代码里面的坑用真实的数据填充-->
+<!--既然模板框架是用来合体的，合谁？？ 和的就是带坑的html，真实的数据-->
+<!--所以：框架必须支持传递两个参数：带坑的html，真实的数据-->
+<script>
+    //标准json定义-- 必须有标题，必须有双引号
+
+    var film = {
+        name: "美人鱼",
+        lead: "周星驰",
+        role: "邓超",
+    };
+
+    /*合体：将真实的数据和带坑的html进行合体--数据绑定 --也就是替换坑*/
+
+   /* var str = template('arttemplate',film)*/
+
+    var div = $$.$id('mydiv')
+    div.innerHTML = $$.getTemplateHtml('arttemplate',film)
+
+
+
+
+
+   /* var html = template('arttemplate', film);
+    document.getElementById('mydiv').innerHTML = html;
+    bindTemplate('arttemplate',film)
+*/
+  /*  document.getElementById('mydiv').innerHTML = $$.bindTemplate('arttemplate',film);*/
+
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style>
+        div{
+            color:red;
+            font-size:50px
+        }
+        .div{
+            background:green
+        }
+    </style>
+</head>
+
+<body>
+<div id='div'>传智播客</div>
+</body>
+</html>
+<script src='itcast_new.js'></script>
+<script>
+    $$.$all('#div').html('笑傲江湖')
+            .css('color','yellow')
+            .hide()
+            .show()
+            .on('click',function(){
+                console.log('事件绑定测试1')
+            })
+            .on('click',function(){
+                console.log('事件绑定测试2')
+            })
+            .on('click',function(){
+                console.log('事件绑定测试2')
+            })
+            .on('click',function(){
+                console.log('事件绑定测试2')
+            })
+            .on('click',function(){
+                console.log('事件绑定测试2')
+            })
+            .on('click',function(){
+                console.log('事件绑定测试2')
+            })
+            .on('click',function(){
+                console.log('事件绑定测试2')
+            })
+            .on('click',function(){
+                console.log('事件绑定测试2')
+            })
+            .attr('name','传智播客')
+            .addClass('div')
+</script>

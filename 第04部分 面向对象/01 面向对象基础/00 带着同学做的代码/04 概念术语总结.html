@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*抽象对象  -- 类*/
+    /*构造函数*/
+    function Product(){
+        /*属性*/
+        /*属性的定义方式：this.属性名称*/
+        this.name ='';
+        this.price ='';
+        this.description = '';
+        this.comments ='';
+    }
+    /*原型  原型对象*/
+    Product.prototype = {
+        //方法
+        buy:function(){},
+        //添加到购物车
+        addCart:function(){}
+    }
+
+    /*手机这个概念*/
+
+
+   /* 怎么具体：实例化 ：new*/
+
+    /*console.log(Product.name)*/
+    /*用代码实现具体*/
+    /*实例化：将一个抽象的对象（类）具体化*/
+   /* 如何具体化：new*/
+    /*iphone6s  实例名称*/
+    var iphone6s = new Product();
+    iphone6s.price = '4888.00';
+    iphone6s.name = 'Apple iPhone 6s (A1700) 16G 金色 移动';
+    iphone6s.comments = '66227';
+    iphone6s.description = '手机中的战斗机'
+    //使用
+    console.log(iphone6s.name)
+
+
+
+    /*学生*/
+    /*抽象 -- 共性*/
+    function Student(){
+        this.name = ''
+        this.sex=''
+        this.age=''
+        this.aihao=''
+    }
+    Student.prototype = {
+        studyAjax:function(){},
+        chidao:function(){},
+        huodong:function(){}
+    }
+
+    /*具体*/
+    var xiaoying = new Student()
+    xiaoying.name = 'sonngpeiying'
+    xiaoying.aihao = '学习 音乐 美术 武术 高尔夫 编程'
+    xiaoying.sex = '男'
+
+
+    /*使用 -- 点语法*/
+    console.log(xiaoying.name)
+</script>

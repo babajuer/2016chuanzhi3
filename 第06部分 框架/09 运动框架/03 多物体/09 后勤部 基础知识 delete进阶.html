@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //delete用法：可以删除某个对象的属性
+    var o = { x: 1 ,y:2,test:function(){alert('123');}};
+    delete o.x; // true  
+    alert(o.x); // undefined 
+    alert(o.y); // 2
+    o.test()
+    delete o.test; // true  
+    o.test()
+
+
+
+    //delete用法进阶：
+    // 不能用来删除普通的变量和函数
+    // 他是用来删除对象的某个属性的
+    var x = 1;
+    delete x; // false  
+    x; // 1  
+
+    function x(){}
+    delete x; // false  
+    typeof x; // "function"
+</script>

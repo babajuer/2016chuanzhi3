@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="itemInfo">
+        <div id="name">
+            <h1 id='pname'>乐视TV（ Letv） S50 Air 全配版 50英寸2D智能LED液晶 超级电视</h1>
+            <div id="p-ad" class="p-ad J-ad-1510479">各地区货源已陆续到库，我们将在十月十号左右发货，对于此次延迟发货给您带来的不便表示致歉，望您谅解。</div>
+            <div id="p-ad-phone" class="p-ad"></div>
+    </div>
+</div>
+<button id='btn'>加入购物车</button>
+
+
+<!--购物车：-->
+
+<!--产品列表 -->
+<!--产品的总价格-->
+<div>价格：<strong id='pprice'>23445</strong></div>
+
+</body>
+</html>
+<script>
+
+    //工厂模式 -- 计算价格--- 会员 普通用户 钻石用户
+
+
+    //团队1
+    //算法家族 --放在同一的命名空间中
+    var Price={};
+    //vip 客户优惠策略类   单一职责原则---
+    Price.vipPrice = function() {
+        this.discount = 0.5;
+        this.getPrice = function(price) {
+            return price * this.discount;
+        }
+    }
+    //老客户优惠策略类:
+    Price.oldPrice = function() {
+        this.discount = 0.3;
+        this.getPrice = function(price)
+        {
+            return price * this.discount;
+        }
+    }
+    //普通客户
+    Price.NormlPrice = function() {
+        this.discount = 1;
+        this.getPrice = function(price)
+        {
+            return price ;
+        }
+    }
+    //核心点：面向未来编程： 以后在维护的时候需求编程：比如新增钻石客户
+    Price.DiamondPrice = function() {
+        this.discount = 0.98;
+        this.getPrice = function(price)
+        {
+            return price *discount;
+            //送我京东豆
+//            专属的电话频道。。。
+        }
+    }
+
+
+    //工厂 -- 专门负责生成不同的实例 --就比如 吃货不用关心东西是如何制造的一样。。。
+    Price.factory = function (typeType) {
+        return new Price[typeType];
+    }
+
+
+
+
+
+    //产品对象
+    //购物车对象
+    function Product(name,price,des){
+        this.name =name;
+        this.price=price;
+//        this.type
+        this.description = des;
+    }
+
+    Product.prototype={
+        init:function() {},
+         getPrice:function(type,sourcePrice){
+             return Price.factory(type).getPrice(sourcePrice);
+         }
+    }
+
+
+    //我们要做的事情，我们要把之前的购物车对象用单例模式来实现
+        //购物车对象
+    //    function gouwuche(){
+    //        this.products=[]; //关联关系 1：n
+    //        this.price=0
+    //    }
+
+//    var ShoppingCar={}
+    var ShoppingCar = (function(){
+        var instantiated;
+        //私有
+        var price=0;
+        //私有
+        var products=[];
+        function init(){
+            /*singleton code here*/
+            return {
+                //是一个字面量对象，也就是一个实例
+                getSumPrice:function(){
+                    return price;
+                },
+                getProductList:function(){
+                    return products;
+                },
+                addProduct:function(product){
+                    products.push(product)
+                    price+=product.price;
+                }
+            };
+        }
+        return {
+            getInstance: function(){
+                if (!instantiated) {
+                    instantiated = init();
+                }
+                return instantiated;
+            }
+        };
+    })();
+
+
+
+    //产品基本信息模块  -- pg 是依赖关系  产品模块依赖两个对象
+    function ProductBasic(p){
+            this.product =p;
+        }
+
+    //init bindevent  createDom
+    ProductBasic.prototype={
+        init:function(){
+            this.bindevent()
+            this.bindData()
+        },
+        bindData:function(){
+            //绑定产品名称
+            document.getElementById('pname').innerHTML = this.product.name;
+            //绑定描述
+            document.getElementById('p-ad').innerHTML = this.product.description;
+            //绑定价格
+            document.getElementById('pprice').innerHTML =this.product.getPrice(type,sourceprice)
+
+        },
+        bindevent:function(){
+            //依赖关系：一个对象的方法中使用了另一个对象
+            //var gouwuche = new ();
+            //gouwuche.
+            var that = this;
+            document.getElementById('btn').onclick=function(){
+                //1第一步  读取这个产品的详细信息 -- ajax
+                ShoppingCar.getInstance().addProduct(p)
+                //that.shoppingCar.products.push(that.product)
+                //that.shoppingCar.price+= that.product.price;
+                //绑定价格
+                document.getElementById('pprice').innerHTML = ShoppingCar.getInstance().getSumPrice();
+            }
+        }
+    }
+
+
+
+
+
+    //这些数据是来自后台，目前我们暂时用假数据
+    //产品对象数据
+    //ajax  读取数据
+    var p = new Product('iphone7',8999,'手机中的战斗机')
+    //购物车对象
+    //var g = new gouwuche()
+    //产品基础模块 --依赖两个对象
+    var pb = new ProductBasic(p)
+    pb.init()
+</script>

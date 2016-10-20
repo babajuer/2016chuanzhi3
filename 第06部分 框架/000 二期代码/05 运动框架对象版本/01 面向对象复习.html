@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+
+<script>
+    /*复习面向对象*/
+    /*第一点：对象的好处*/
+    /*框架就是一个对象*/
+    /*封装性：封装一些属性和方法 -- 为什么需要封装  --从前面的封装的动画框架的函数版本
+    其实：对象的好处和函数的好处很类似的，都是封装性 函数 封装一个功能 对象可以封装多个函数*/
+
+   /* 第二点：如何定义对象 --就是提炼属性和方法的过程
+    产品对象  属性：名称 描述 价格 颜色 功能描述   方法：购买 加入购物车 删除方法 获取产品详细信息 更改方法 */
+
+    /*第三点 对象的语法规范（理论知识 实例进阶 原型进阶）*/
+    function Animate(){
+        this.timer;
+        this.name;
+        this.version;
+    }
+    Animate.prototype={
+        add:function(){},
+        run:function(){},
+        fn1:function(){},
+        //如果fn1只是被一个方法使用的话 就可以通过子函数的形式定义
+        /*但是如果一个函数被很多方法使用，那么我们一般将其定义成一个方法*/
+        /*重点：理解什么场景用子函数*/
+        move:function(){
+            function fn1(){}
+        },
+    }
+
+    /*第四点：对象的字面量形式*/
+    /*场景：将前面动画框架需要用到的一些变量统一的放在一个json字面量里面统一管理*/
+    /*复习一下动画框架需要哪些变量*/
+    var json = {id:'div',tween:0.3,pass:+new Date(), now:+new Date,styles:[]}
+
+
+    /*第五点：如何访问对象中的属性和方法*/
+    /*原型：先实例化*/
+    var animate = new Animate()
+        animate.add()
+
+    /*字面量形式 json形式如何访问*/
+    /*点语法*/
+    json.tween;
+
+    /*中括号*/
+    json['tween']
+
+
+    /*第六点：面向对象的原型链*/
+  /*  双对象中的原型链
+    继承的原型链：万物都继承在object 其他对象都可以访问object中的方法
+    自定义对象的原型链  --属性搜索机制*/
+
+    /*第七点 面向对象的三大作用*/
+
+    /*第八点 多种方式实现继承*/
+
+    /*第九点 从对象认识整个js世界*/
+
+</script>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+
+<br/>
+
+<button id="hide">隐藏</button>
+<button id="show">显示</button>
+</body>
+</html>
+
+<script>
+    /*对象1*/
+    var itcast = function(selector, context) {
+        return this.getNodeList(selector, context);
+    };
+    itcast.prototype.getNodeList = function(selector, context) {
+        context = context || document;
+        this.element = context.querySelectorAll(selector);
+        return this;
+    };
+
+    itcast.prototype.each = function(fn) {
+        var i=0, length = this.element.length;
+        for (; i<length; i+=1) {
+            /*相当于给每个元素对象添加each函数，且each函数的this指向该元素对象*/
+            fn.call(this.element[i]);
+            //fn.call(this.element[i],i,this.element[i]);
+        }
+        return this;
+    };
+    itcast.prototype.hide = function() {
+        this.each(function() {
+            this.style.display = "none";
+        });
+    };
+    itcast.prototype.show = function() {
+        this.each(function() {
+            this.style.display = "block";
+        });
+    };
+
+
+    /*对象2 - 美元符号*/
+    var $ = function(selector, context) {
+        return new itcast(selector, context);
+    };
+
+
+    /*测试 -- 基本接近jquery*/
+    var btnhide = document.getElementById("hide")
+    btnhide.onclick = function() {
+        $('.image').hide()
+    };
+
+    var btnshow = document.getElementById("show")
+    btnshow.onclick = function() {
+        $('.image').show()
+    };
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id='div'></div>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    var div = $$.$id('div')
+    div.style.background  ='yellow'
+
+  /*  var div =     $$.$id('div').css()
+    $$.css('div','backround,'red)*/
+
+
+
+
+    //css使用麻烦 如下使用无法实现  无法实现连贯性：
+    /*比如：
+    我通过$$.$id('div')之后，希望直接调用css将其改变样式，如下：*/
+    $$.$id('div').css('div','background','yellow').hide()
+    div.css('background','yellow')
+    /*框架只能通过如下方式实现，非常的不友好*/
+    /*体验jquey中使用*/
+    css('div','background','yellow')
+</script>

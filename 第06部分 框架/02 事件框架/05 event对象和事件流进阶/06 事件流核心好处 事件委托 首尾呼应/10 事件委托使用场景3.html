@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="ul">
+    <li>产品1</li>
+    <li>产品2</li>
+    <li>产品3</li>
+    <li class='teshu'>产品4</li>
+    <li>产品5</li>
+    <li>产品6</li>
+    <li>产品7</li>
+    <li>产品8</li>
+    <li>产品9</li>
+    <li>产品10</li>
+    <li>产品11</li>
+    <li>产品12</li>
+    <li>产品13</li>
+    <li>产品14</li>
+    <li>产品15</li>
+    <li>产品16</li>
+    <li>产品17</li>
+    <li>产品18</li>
+</ul>
+</body>
+</html>
+<script>
+
+    window.onload = function(){
+        var oUl = document.getElementById("ul");
+        var aLi = oUl.getElementsByTagName("li");
+
+        /*
+         这里要用到事件源：event 对象，事件源，不管在哪个事件中，只要你操作的那个元素就是事件源。
+         ie：window.event.srcElement
+         标准下:event.target
+         nodeName:找到元素的标签名
+         */
+        oUl.onmouseover = function(ev){
+            var ev = ev || window.event;
+            var target = ev.target || ev.srcElement;
+            /*target.className*/
+            //alert(target.innerHTML);
+            if(target.nodeName.toLowerCase() == "li"){
+                target.style.background = "red";
+            }
+        }
+        oUl.onmouseout = function(ev){
+            var ev = ev || window.event;
+            var target = ev.target || ev.srcElement;
+            //alert(target.innerHTML);
+            if(target.nodeName.toLowerCase() == "li"){
+                target.style.background = "";
+            }
+        }
+    }
+</script>

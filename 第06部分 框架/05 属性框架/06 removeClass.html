@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            color:red;
+            font-size:50px;
+        }
+        .hide{display: none}
+        .show{display: block}
+    </style>
+</head>
+<body>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<button id='removehideclass'>去除hide class</button>
+<button id='addhideclass'>添加hide class</button>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+
+    $$.$id('addhideclass').onclick=function(){
+        $$.addClass('.div','hide')
+    }
+    $$.$id('removehideclass').onclick=function(){
+        $$.removeClass('.div','hide')
+    }
+
+
+
+    //动态添加和移除class
+/*    function addClass(context, name){
+        var doms = $$.$all(context);
+        //如果获取的是集合
+        if(doms.length){
+            for(var i= 0,len=doms.length;i<len;i++){
+                addName(doms[i]);
+            }
+        //如果获取的不是集合
+        }else{
+            addName(doms);
+        }
+        function addName(dom){
+            dom.className = dom.className + ' ' + name;
+        }
+    }
+
+
+    function removeClass(context, name){
+        var doms = $$.$all(context);
+        for(var i= 0,len=doms.length;i<len;i++){
+            removeName(doms[i],name);
+        }
+        function removeName(dom,name){
+            /!*'add buy hide' --- 'add buy'*!/
+            dom.className =  dom.className.replace(name,'')
+           /!* dom.className = dom.className + ' ' + name;*!/
+        }
+    }*/
+
+
+    function removeClass(context,name){
+        context = $$.isString(context)?$$.$all(context):context;
+        for (var i = 0 ; i < context.length ; i++) {
+            //var cla = eval("/"+name+"$/");
+//		console.log(Object.toString.call() context[i].className)eval("   ")
+//		var reg = new RegExp("/"+name+"\s|\s"+name+"/g");
+//		console.log(eval("  \  "))
+//		eval('console.log("\")')
+            context[i].className = context[i].className.replace(eval("/"+name+"\\\s|\\\s"+name+"/g")," ");
+        }
+    }
+</script>

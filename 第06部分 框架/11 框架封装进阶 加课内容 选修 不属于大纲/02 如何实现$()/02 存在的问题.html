@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="button">点击我</button>
+<img id="image" src="xxx.jpg">
+</body>
+</html>
+
+<script>
+    var $ = function(id) {
+        return document.getElementById(id);
+    };
+
+    $("button").onclick = function() {
+        $("image1").hide();
+        $("image2").hide();
+    };
+   /* $("image1")本质是个DOM元素，
+    dom元素对象上没有hide()这个方法*/
+
+    /*那么怎么办
+    我们可以给对象扩展一个方法*/
+
+
+</script>

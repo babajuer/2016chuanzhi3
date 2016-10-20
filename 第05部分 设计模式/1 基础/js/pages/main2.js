@@ -1,0 +1,22 @@
+
+		   $.pages.product={
+			   	init:function(){
+				      $.Modules.product.init();
+				    //productDetailModule.init();
+					//productDetailModule.init();
+				}		     
+		   };
+		   $.pages.mainPage={
+			   	init:function(){
+				      $.Modules.product.init();
+				    //productDetailModule.init();
+					//productDetailModule.init();
+				}		     
+		   };
+		    $.pages.order={
+			   	init:function(){
+				      $.Modules.product.init();
+				    //productDetailModule.init();
+					//productDetailModule.init();
+				}		     
+		   };

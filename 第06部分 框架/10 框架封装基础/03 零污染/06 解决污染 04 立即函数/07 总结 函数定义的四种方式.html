@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+//传统
+function double(x){ return 2 * x}
+alert(double(10));
+
+//函数对象：
+var double = new Function('x', 'return 2 * x;'); 
+alert(double(10));
+
+//半匿名函数：
+var double = function(x) { return 2* x; } 
+alert(double(10));
+
+//全匿名函数：定义，调用一条龙
+//匿名函数基本结构
+(function(){ });
+//不带参数
+alert('王书奎');
+//带参数
+(function(x, y){ alert(x + y); })(2, 3); 
+//带返回参数
+var num = (function(x, y){ return x+y })(2, 3); 
+alert("带返回的匿名函数"+num);
+
+</script>

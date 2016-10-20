@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class='div'></div>
+<div class='div'></div>
+<div class='div'></div>
+</body>
+</html>
+<script>
+   /* 两步：
+    第一步 获取元素  选择器
+    第二步：链式调用对象中的方法 */
+
+    /*下面我们先来学习链式访问的语法点*/
+    /*jquery中的链式访问*/
+   /*第一步：先调用选择框架获取所有元素
+   第二步：在访问对象中的css方法*/
+
+
+   var json= {
+       css:function(){
+          /* return dom元素
+           dom元素也是一个对象，但是这个对象里面根本没有hide这个方法
+           hide方法是放在json里面的，
+           所以如果你想访问到hide方法，css必须返回的是json对象*/
+
+
+       },
+       hide:function(){
+          /*  必须让hide返回json对象，
+           如果返回的也是dom对象 同样的 如果没有返回值 也访问不到这个show方法*/
+       },
+       show:function(){}
+
+
+     /*  总结：jquery内部为了实现链式访问，他的每个方法的返回值都是json（本身--就是一个对象）*/
+   }
+
+
+
+
+
+   /*请问css的返回值是什么 */
+   /*如何规定css 的返回值 才能访问hide方法*/
+    $('.div').css('background','red').hide().show().hide().show()
+
+
+</script>

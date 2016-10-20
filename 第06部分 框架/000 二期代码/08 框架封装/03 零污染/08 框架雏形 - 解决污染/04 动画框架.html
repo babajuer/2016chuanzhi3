@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style type="text/css">
+        *{padding: 0;margin: 0;}
+        body{background: url(../09%20白云飘飘案例测试/img/body_bg.jpg) no-repeat top center;-webkit-background-size: cover;
+            background-size: cover;overflow:hidden;}
+        img{position: absolute;}
+        #sun{top: 40px;}
+        #cloud_sun{top: 70px;}
+        #cloud{top: 200px;}
+        #cloud_1{top: 30px;}
+        #cloud_2{top: 200px;}
+
+    </style>
+</head>
+
+<body>
+<img id="sun" src="../09%20白云飘飘案例测试/img/sun.png"/>
+<img id="cloud_sun" src="../09%20白云飘飘案例测试/img/cloud.png" width="300" />
+<img id="cloud" src="../09%20白云飘飘案例测试/img/cloud.png" width="600" />
+<img id="cloud_1" src="../09%20白云飘飘案例测试/img/cloud.png" width="500" />
+<img id="cloud_2" src="../09%20白云飘飘案例测试/img/cloud.png" width="900" />
+</body>
+</html>
+<script src='../09%20白云飘飘案例测试/itcast.js'></script>
+<script>
+
+    var width = document.body.offsetWidth
+    $$.animate.add('sun', {left:width},80000);
+    $$.animate.add('cloud', {left:width},90000);
+    $$.animate.add('cloud_sun', {left:-width},600000);
+    $$.animate.add('cloud_1', {right:width},70000);
+    $$.animate.add('cloud_2', {right:width},120000);
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            background: red;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id='div'></div>
+</body>
+</html>
+<script src='itcast2.js'></script>
+<script>
+
+    /*比较一下：使用原型 和使用对象的字面量的形式的区别*/
+    $$.on('div','click',function(){
+        alert('使用框架编写事件')
+    })
+
+
+</script>

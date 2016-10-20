@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+//这种实现方式很简单，为了保证只有一个实例，我们设置一个变量，如果没有实例则实例，如果实例了就直接使用，通俗易懂
+    function ShoppingCar(){
+        // 确保只有单例
+        if( ShoppingCar.unique !== undefined ){
+            return ShoppingCar.unique;
+        }
+        // 其他代码
+        this.sum = 0;
+        this.addProduct=function(price)
+		{	this.sum+=price;
+			return this.sum;
+		};
+        ShoppingCar.unique = this;
+    }
+
+    var t1 = new ShoppingCar() ;
+    var t2 = new ShoppingCar() ;
+	alert(t1.addProduct(1000));
+	alert(t2.addProduct(1000));
+	
+    alert(t1 === t2);
+
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            background: blue;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+
+        }
+    </style>
+</head>
+<body>
+<button id="btn">按钮</button>
+    <div>传智播客</div>
+    <div>传智播客</div>
+    <div>传智播客</div>
+    <div>传智播客</div>
+    <div>传智播客</div>
+</body>
+</html>
+<script src='itcast2.js'></script>
+<script>
+    var btn = $$.$id('btn')
+    var divs = $$.$tag('div')
+    btn.onclick = function(){
+        for(var i= 0,len=divs.length;i<len;i++){
+            divs[i].style.background='red'
+        }
+    }
+</script>
+

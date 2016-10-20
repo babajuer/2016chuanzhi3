@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<div id='main'>首页版块：比赛未开始</div>
+<div id='paiming'>球队排名版块：双方：0:0</div>
+<div id='tongji'>技术统计版块：比赛未开始</div>
+
+<button  onclick="ObserverManager.Change({status:'进行中'});">比赛状态改变：比赛进行中</button>
+<button onclick="ObserverManager.Change({status:'结束'});">比赛状态状态改变：结束</button>
+<button onclick="ObserverManager.Change({lastTime:2});">监控比赛剩余时间</button> 
+</body>
+</html>
+<script>
+
+var game = { 
+     /*依赖对象*/
+	status: "未开始",
+	//得分
+	score: '100:90',
+	//剩余时间
+	lastTime:10 
+}
+
+//实现观察者模式有这么几个属性和方法：
+//队列
+//入队 -- 添加监听者 ---比如买房的人想要知道房价的变化，每个人都可以在这里注册
+//发送通知   -- 一旦房价变化，就会通知所有注册的人 --房价变化了--这些注册的人得到这个通知后做不同的事情，比如买房，筹钱，上门询问
+
+//对象之间的关系运用了关联关系，依赖关系
+//三要素之一：链家地产 - 售楼中心
+var ObserverManager = {
+  /*队列 保存所有监听者，一旦房价变化，遍历这个数组，依次通知每个人*/
+    //三要素之二 -- 监听者
+   Observers:[],
+ 
+ /*入队， 类似需要了解房价的人*/
+  AddObserver: function(item){
+	/**//*加入观察对象*/
+   this.Observers.push(item);
+  },
+
+//当我们要检测的主题改变的时候，比如比赛，改变状态 --发送消息
+//三要素之三 -- 通知要素：一旦房价变化，触发该事件通知监听数组中的每个人
+ Change: function(obj){
+		 /**//*改变对象行为*/
+		 //定义一个对象保存旧值
+		 var old = game.status;
+		 //赋予新值
+		for(var item in obj){
+		   game[item] = obj[item];
+        }
+		//检测旧的和新的是否相等来判断属性是否变化
+		if(old !=game.status)
+		{
+			//如果属性变化 更新各个模块
+			 //改变数据依赖对象数据
+	       for(var i = 0,len = this.Observers.length; i < len; i++){
+		    var item = this.Observers[i];
+			//当改变状态，则所有注册了模块都会更新界面
+		    item.update(); 
+		    //对象改变后，改变观察对象的行为Display; 为统一的接口
+		   }
+		}
+       
+    }
+}
+
+
+//如下是三个监听者，也就是想了解房价的人，一旦房价发生变化，链家地产会通知这些人
+//这些人会根据价格的变化执行不同的方法：
+// 比如有的购买楼房，有得开始借钱，有的开始贷款，有的开始打劫银行。。
+//新闻主页版块 --运用了封装性 多态性
+var NewsMain = function(){ /**//*观察对象Header*/
+	this.update = function(){
+	    document.getElementById('main').innerHTML = '勇士逆转骑士：比分：100:97';
+     }
+}
+
+//排名板块
+var Paiming = function(){ /**//*观察对象Content*/
+    this.update = function(){
+        document.getElementById('paiming').innerHTML = '排名：勇士1:骑士0';
+    }
+}
+
+
+//球员统计板块
+var Tongji = function(){ /**//*观察对象Foot*/
+    this.update = function(){
+        document.getElementById('tongji').innerHTML = '技术统计：詹姆斯44分，库里：35分';
+   }
+} 
+
+
+
+
+/***绑定观察器动作***/
+//注册监听者： 新闻板块 排名板块 统计板块  -- 前面讲过监听者可以有多个
+ObserverManager.AddObserver(new NewsMain());
+ObserverManager.AddObserver(new Paiming());
+ObserverManager.AddObserver(new Tongji());
+
+//    面向未来编程
+
+
+//    原则： 单一职责  开放封闭
+
+
+</script>

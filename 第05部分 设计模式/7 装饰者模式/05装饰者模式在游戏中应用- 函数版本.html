@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+	//让同学分析实现原理
+	 //同学回答之后揭晓答案
+	var plane = {
+		fire: function(){
+			alert( '发射普通子弹' );
+		}
+	}
+	var missileDecorator = function(){
+		alert( '发射导弹' );
+	}
+	var atomDecorator = function(){
+		alert( '发射原子弹' );
+	}
+	//先备份普通子弹发射
+	var fire1 = plane.fire;
+	//修改成导航
+	plane.fire = function(){
+		fire1();
+		missileDecorator();
+	}
+	//备份导弹
+	var fire2 = plane.fire;
+	//修改成原子弹
+	plane.fire = function(){
+		fire2();
+		atomDecorator();
+	}
+	
+	//最后 
+	//fire1：普通
+	//fire2：导弹
+	//plane.fire 原子弹
+	plane.fire();
+	// 分别输出： 发射普通子弹、发射导弹、发射原子弹
+
+
+</script>

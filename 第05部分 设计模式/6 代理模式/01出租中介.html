@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+//1. 房东出租类;
+function Fangdong() {
+    this.room = '房间名';
+}
+
+//房东出租房子接口 -- 需要被代理的方法
+Fangdong.prototype.chuzu = function() {
+    console.log('房东出租房间: ' + this.room);
+}
+
+//房东还可能有其他方法不需要被代理
+Fangdong.prototype.other = function() {
+    console.log('其他方法');
+}
+
+//房东也可能有多个方法被不同的代理人代理
+Fangdong.prototype.sall = function() {
+    console.log('房东销售房屋');
+}
+
+
+
+
+//2. 中介代理类:
+function Proxy() {
+    this.fangdong = new Fangdong();
+}
+
+Proxy.prototype.chuzu = function() {
+    this.fangdong.chuzu();
+    console.log('出租后收中介费');
+}
+
+//3. 使用方法:
+//房客请中介帮找房子;
+//隐藏和保护房东对象
+var proxy = new Proxy();
+proxy.chuzu();	
+	
+
+
+
+//房东对象可能存在多个代理
+function SallProxy() {
+    this.fangdong = new Fangdong();
+}
+SallProxy.prototype.sall = function() {
+    this.fangdong.sall();
+    console.log('帮助其出售房子后收取中介费');
+}
+var sallProxy = new SallProxy();
+sallProxy.sall();	
+		
+</script>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+
+/*
+命名空间 ：在js中是通过对象的字面量形式实现的。
+
+语法规范
+第一点: 定义根命名空间   语法规范： var 根名称 = {}  ,比如var jd ={};
+第二点：定义二级命名空间 语法规范：根.二级命名空间的名称 = {} ,比如 jd.tongwei = {}
+第三点：定义三级命名空间 语法规范 根名称.二级命名规范名称.三级命名规范名称 = {} ,比如jd.tongwei.jinrong ={};
+*/
+
+
+var jd ={};
+jd.tongwei = {
+        i:111,
+        add:function(){},
+        sum:function(){}
+}
+jd.tongwei.jinrong ={};
+jd.tongwei.tuangou={}
+
+jd.banzhang = {
+    i:222,
+    add:function(){},
+    sum:function(){},
+}
+
+/*金融部  众筹部 官网部 团购部*/
+console.log(jd.tongwei.i)
+console.log(jd.banzhang.i)
+
+/*
+console.log(jd.banzhang.add())
+*/
+
+/*
+
+
+
+
+    var i  = 100
+    var j = 10;
+    var sum = i+j; /!*i j 都是全局变量*!/
+
+
+    console.log(f1.i+f2.i+i)
+*/
+
+
+    /*问题；如果你将一个变量定义为全局变量 ---两个人写的代码可能会彼此受到影响*/
+
+    /*万星级别的知识点*/
+
+
+    可能是很多一起开发这个页面
+</script>

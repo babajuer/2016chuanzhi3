@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+
+<br/>
+
+<button id="button">点击我</button>
+</body>
+</html>
+
+<script>
+    //    在IE8+浏览器中，我们有选择器API，
+    //    document.querySelector与document.querySelectorAll，
+    //    前者返回唯一Node，后者为NodeList集合。大统一起见，我们使用后者。于是，就有：
+    var itcast = function(selector, context) {
+        return this.getNodeList(selector, context);
+    };
+    itcast.prototype.getNodeList = function(selector, context) {
+        context = context || document;
+        this.element = context.querySelectorAll(selector);
+        return this;
+    };
+
+    //    F.prototype.hide = function(){
+    //        this.element.style.display = "none";
+    //    }
+
+    //改造后
+    itcast.prototype.hide = function() {
+        var i=0, length = this.element.length;
+        for (; i<length; i+=1) {
+            this.element[i].style.display = "none";
+        }
+    };
+
+
+    var $ = function(selector, context) {
+        return new itcast(selector, context);
+    };
+
+
+    var button = document.getElementById("button")
+    button.onclick = function() {
+        console.log($('.image'))
+        $('.image').hide() //发现报错，为什么。。。因为this.element是一个集合
+    };
+</script>

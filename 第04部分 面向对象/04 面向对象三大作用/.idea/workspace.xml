@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="abd96e86-710d-45ff-b52a-aa26d82cef86" name="默认的" comment="" />
+    <ignored path="02 面向对象进阶.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="02 面向对象进阶" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="56" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/scripts/product.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+              <folding>
+                <element signature="e#540#1529#0" expanded="false" />
+                <element signature="e#1564#2593#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="01 模板基础语法.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/01 模板基础语法.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="面向对象案例 - 百度星座模块.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/11 百度星座案例/面向对象案例 - 百度星座模块.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="220" column="4" selection-start-line="220" selection-start-column="4" selection-end-line="220" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="03 属性屏蔽理论.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03 原型对象/03 属性屏蔽理论.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="01 只使用构造函数创建对象.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/02 构造函数和构造对象/01 只使用构造函数创建对象.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="02 面试题.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/02 构造函数和构造对象/02 面试题.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="04 面试题目.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03 原型对象/04 面试题目.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="05 面试题目.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03 原型对象/05 面试题目.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.172414">
+              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="itcast.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/08 对象常用方法bindDOM进阶/itcast.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.8448277">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Html5" />
+      </list>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/05 对象常用方法bindDOM进阶/07 replace高级用法.html" />
+        <option value="$PROJECT_DIR$/02滚动.html" />
+        <option value="$PROJECT_DIR$/01 滚动.html" />
+        <option value="$PROJECT_DIR$/02 构造函数和构造对象/01 商城改造.html" />
+        <option value="$PROJECT_DIR$/03 原型对象/01.html" />
+        <option value="$PROJECT_DIR$/03 原型对象/02 属性屏蔽理论.html" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/学生练习 产品对象/02 字面量.html" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/学生练习 产品对象/03 工厂模式.html" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/学生练习 产品对象/04 构造函数.html" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/学生练习 产品对象/05 原型对象.html" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/学生练习 产品对象/06 拷贝.html" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/学生练习 产品对象/07 第三方框架.html" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/学生练习 产品对象/01 object.html" />
+        <option value="$PROJECT_DIR$/03 原型对象/02 原型链.html" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方改造前面的商城案例.html" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/index.html" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/scripts/product.js" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/scripts/index.js" />
+        <option value="$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/scripts/cart.js" />
+        <option value="$PROJECT_DIR$/07 复习对象的三种作用/01 正则表达式复习.html" />
+        <option value="$PROJECT_DIR$/07 复习对象的三种作用/02 封装trim.html" />
+        <option value="$PROJECT_DIR$/07 复习对象的三种作用/03 封装tab.html" />
+        <option value="$PROJECT_DIR$/07 复习对象的三种作用/04 封装ajax.html" />
+        <option value="$PROJECT_DIR$/07 复习对象的三种作用/05 封装你在网上看到的其他.html" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/index.html" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/scripts/product.js" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/scripts/index.js" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/scripts/cart.js" />
+        <option value="$PROJECT_DIR$/10 使用format改造列表案例/index.html" />
+        <option value="$PROJECT_DIR$/10 使用format改造列表案例/index.js" />
+        <option value="$PROJECT_DIR$/10 使用format改造列表案例/new/index.js" />
+        <option value="$PROJECT_DIR$/02 构造函数和构造对象/01 只使用构造函数创建对象.html" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/02 绑定集合.html" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/01 模板基础语法.html" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/03 封装成一个函数.html" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/03 放入框架中.html" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/04 绑定集合.html" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/06 封装成一个函数.html" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/05 字符串拼接中使用模板语法.html" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/itcast.js" />
+        <option value="$PROJECT_DIR$/09 使用format改造案例/07 放入框架中.html" />
+        <option value="$PROJECT_DIR$/10 使用模板技术改造案例/js/itcast.js" />
+        <option value="$PROJECT_DIR$/10 使用模板技术改造案例/scripts/index.js" />
+        <option value="$PROJECT_DIR$/10 使用模板技术改造案例/scripts/product.js" />
+        <option value="$PROJECT_DIR$/10 使用模板技术改造案例/index.html" />
+        <option value="$PROJECT_DIR$/10 使用模板技术改造案例/scripts/cart.js" />
+        <option value="$PROJECT_DIR$/10 使用模板技术改造案例/01 模板基础语法.html" />
+        <option value="$PROJECT_DIR$/12 面向对象面试题/01.html" />
+        <option value="$PROJECT_DIR$/02 构造函数和构造对象/02 面试题.html" />
+        <option value="$PROJECT_DIR$/03 原型对象/04 面试题目.html" />
+        <option value="$PROJECT_DIR$/03 原型对象/05 面试题目.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <OptionsSetting value="true" id="添加" />
+    <OptionsSetting value="true" id="移除" />
+    <OptionsSetting value="true" id="签出" />
+    <OptionsSetting value="true" id="更新" />
+    <OptionsSetting value="true" id="状态" />
+    <OptionsSetting value="true" id="编辑" />
+    <ConfirmationsSetting value="0" id="添加" />
+    <ConfirmationsSetting value="0" id="移除" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 面向对象进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 面向对象进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 面向对象进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 面向对象进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 面向对象进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="09 使用format改造案例" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 面向对象进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 面向对象进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="08 对象常用方法bindDOM进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 面向对象进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 面向对象进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="03 原型对象" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 面向对象进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 面向对象进阶" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="02 构造函数和构造对象" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="options.lastSelected" value="configurable.group.appearance" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="recentsLimit" value="5" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\传智播客\传智播客web前端和移动学院\第04部分 面向对象\02 面向对象进阶\10 使用模板技术改造案例" />
+      <recent name="E:\传智播客\传智播客web前端和移动学院\第04部分 面向对象\02 面向对象进阶\09 使用format改造案例" />
+      <recent name="E:\传智播客\传智播客web前端和移动学院\第04部分 面向对象\02 面向对象进阶\10 使用format改造列表案例\new" />
+      <recent name="E:\传智播客\传智播客web前端和移动学院\第04部分 面向对象\02 面向对象进阶\10 使用format改造列表案例\js" />
+      <recent name="E:\传智播客\传智播客web前端和移动学院\第04部分 面向对象\02 面向对象进阶\10 使用format改造列表案例" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\传智播客\传智播客web前端和移动学院\第04部分 面向对象\02 面向对象进阶\02 构造函数和构造对象" />
+      <recent name="E:\传智播客\传智播客web前端和移动学院\第04部分 面向对象\02 面向对象进阶\10 使用模板技术改造案例" />
+      <recent name="E:\传智播客\传智播客web前端和移动学院\第04部分 面向对象\02 面向对象进阶\10 使用模板技术改造案例\js" />
+      <recent name="E:\传智播客\传智播客web前端和移动学院\第04部分 面向对象\02 面向对象进阶\10 使用format改造列表案例\old" />
+      <recent name="E:\传智播客\传智播客web前端和移动学院\第04部分 面向对象\02 面向对象进阶\09 使用format改造案例\js" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.04 面试题目.html">
+    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/04 面向对象复习和各种术语总结/03 互联网世界都是二进制世界/index.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="02滚动.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/02滚动.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="09 封装成一个函数.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/08 对象常用方法bindDOM进阶/09 封装成一个函数.html">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JsTestDriver-test-runner" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="html5webpiano.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="$PROJECT_DIR$/05 面向对象复习和各种术语总结/03 互联网世界都是二进制世界/html5webpiano.js" working-dir="$PROJECT_DIR$/05 面向对象复习和各种术语总结/03 互联网世界都是二进制世界">
+      <method />
+    </configuration>
+    <configuration default="false" name="jquery-1.11.3.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="jquery-1.11.3.js" working-dir="$PROJECT_DIR$">
+      <method />
+    </configuration>
+    <configuration default="false" name="01 滚动.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/01 滚动.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="01 只使用构造函数创建对象.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/02 构造函数和构造对象/01 只使用构造函数创建对象.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="01.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/03 原型对象/01.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="03 属性屏蔽理论.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/03 原型对象/03 属性屏蔽理论.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="index.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/index.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="basic.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="basic.js" working-dir="$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/scripts">
+      <method />
+    </configuration>
+    <configuration default="false" name="index.html (2)" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/09 使用format改造案例/index.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="01 模板基础语法.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/10 使用模板技术改造案例/01 模板基础语法.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="template.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="template.js" working-dir="$PROJECT_DIR$/09 使用format改造案例">
+      <method />
+    </configuration>
+    <configuration default="false" name="02 封装成一个函数.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/10 使用模板技术改造案例/02 封装成一个函数.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="03 放入框架中.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/10 使用模板技术改造案例/03 放入框架中.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="04 绑定集合.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/10 使用模板技术改造案例/04 绑定集合.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="05 字符串拼接中使用模板语法.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/10 使用模板技术改造案例/05 字符串拼接中使用模板语法.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="06 封装成一个函数.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/10 使用模板技术改造案例/06 封装成一个函数.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="07 放入框架中.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/10 使用模板技术改造案例/07 放入框架中.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="itcast.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="itcast.js" working-dir="$PROJECT_DIR$/09 使用format改造案例">
+      <method />
+    </configuration>
+    <configuration default="false" name="itcast.js (1)" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="itcast.js" working-dir="$PROJECT_DIR$/10 使用模板技术改造案例/js">
+      <method />
+    </configuration>
+    <configuration default="false" name="index.html (3)" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/10 使用模板技术改造案例/index.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="02 面试题.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/02 构造函数和构造对象/02 面试题.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="04 面试题目.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/02 面向对象进阶/03 原型对象/04 面试题目.html">
+      <method />
+    </configuration>
+    <list size="25">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.html5webpiano.js" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.jquery-1.11.3.js" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.01 滚动.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.01 只使用构造函数创建对象.html" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.01.html" />
+      <item index="5" class="java.lang.String" itemvalue="JavaScript Debug.03 属性屏蔽理论.html" />
+      <item index="6" class="java.lang.String" itemvalue="JavaScript Debug.index.html (1)" />
+      <item index="7" class="java.lang.String" itemvalue="Node.js.basic.js" />
+      <item index="8" class="java.lang.String" itemvalue="JavaScript Debug.index.html (2)" />
+      <item index="9" class="java.lang.String" itemvalue="JavaScript Debug.01 模板基础语法.html" />
+      <item index="10" class="java.lang.String" itemvalue="Node.js.template.js" />
+      <item index="11" class="java.lang.String" itemvalue="JavaScript Debug.02 封装成一个函数.html" />
+      <item index="12" class="java.lang.String" itemvalue="JavaScript Debug.03 放入框架中.html" />
+      <item index="13" class="java.lang.String" itemvalue="JavaScript Debug.04 绑定集合.html" />
+      <item index="14" class="java.lang.String" itemvalue="JavaScript Debug.05 字符串拼接中使用模板语法.html" />
+      <item index="15" class="java.lang.String" itemvalue="JavaScript Debug.06 封装成一个函数.html" />
+      <item index="16" class="java.lang.String" itemvalue="JavaScript Debug.07 放入框架中.html" />
+      <item index="17" class="java.lang.String" itemvalue="Node.js.itcast.js" />
+      <item index="18" class="java.lang.String" itemvalue="Node.js.itcast.js (1)" />
+      <item index="19" class="java.lang.String" itemvalue="JavaScript Debug.index.html (3)" />
+      <item index="20" class="java.lang.String" itemvalue="JavaScript Debug.02 面试题.html" />
+      <item index="21" class="java.lang.String" itemvalue="JavaScript Debug.04 面试题目.html" />
+      <item index="22" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      <item index="23" class="java.lang.String" itemvalue="JavaScript Debug.02滚动.html" />
+      <item index="24" class="java.lang.String" itemvalue="JavaScript Debug.09 封装成一个函数.html" />
+    </list>
+    <recent_temporary>
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.09 封装成一个函数.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.02滚动.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="abd96e86-710d-45ff-b52a-aa26d82cef86" name="默认的" comment="" />
+      <created>1449458782542</created>
+      <option name="number" value="Default" />
+      <updated>1449458782542</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27306548" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方改造前面的商城案例.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04 多种方式创建对象/12 第三方框架 simple.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.551724">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/scripts/basic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0344827">
+          <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/scripts/product.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="12" selection-start-line="0" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/scripts/cart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/scripts/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04 多种方式创建对象/13 使用第三方框架创建对象形式改造案例/js/simplejavascriptinheritance.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04 多种方式创建对象/06 多种方式创建对象 - 类的原型属性.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04 多种方式创建对象/07 拷贝创建对象原理.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="15.931034">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04 多种方式创建对象/03 工厂模式创建对象.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0689654">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/09 使用format改造案例/js/classie1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/09 使用format改造案例/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/07 复习对象的三种作用/01 正则表达式复习.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/09 使用format改造案例/js/itcast.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/07 复习对象的三种作用/02 封装trim.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="12.137931">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/09 使用format改造案例/scripts/basic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/09 使用format改造案例/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.62069">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/09 使用format改造案例/scripts/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/09 使用format改造案例/scripts/product.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/09 使用format改造案例/scripts/cart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08 对象常用方法bindDOM进阶/01 为什么需要动态生成元素.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.655172">
+          <caret line="71" column="18" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08 对象常用方法bindDOM进阶/05 数据绑定 format.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.37931">
+          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08 对象常用方法bindDOM进阶/06 将format放入框架中.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08 对象常用方法bindDOM进阶/07 replace高级用法.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="148" column="42" selection-start-line="148" selection-start-column="29" selection-end-line="148" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/09 使用format改造案例/template.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/02 封装成一个函数.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.931034">
+          <caret line="29" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/03 放入框架中.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3448277">
+          <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/04 绑定集合.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.8965516">
+          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08 对象常用方法bindDOM进阶/08 replace用法案例.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08 对象常用方法bindDOM进阶/02 动态生成元素jquery版本.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7586207">
+          <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/js/template.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/05 字符串拼接中使用模板语法.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.689655">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/06 封装成一个函数.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.413794">
+          <caret line="16" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="28" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/07 放入框架中.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/09 使用format改造案例/itcast.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="114" column="1" selection-start-line="104" selection-start-column="4" selection-end-line="114" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/js/itcast.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="110" column="15" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="15" />
+          <folding>
+            <element signature="e#152#202#0" expanded="false" />
+            <element signature="e#237#286#0" expanded="false" />
+            <element signature="e#321#370#0" expanded="false" />
+            <element signature="e#402#459#0" expanded="false" />
+            <element signature="e#509#2060#0" expanded="false" />
+            <element signature="e#994#2054#0" expanded="false" />
+            <element signature="e#2093#2800#0" expanded="false" />
+            <element signature="e#2866#2997#0" expanded="false" />
+            <element signature="e#3083#3243#0" expanded="false" />
+            <element signature="e#3284#3420#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/scripts/basic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/scripts/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/scripts/cart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+          <folding>
+            <element signature="e#160#271#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="56" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/scripts/product.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding>
+            <element signature="e#540#1529#0" expanded="false" />
+            <element signature="e#1564#2593#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10 使用模板技术改造案例/01 模板基础语法.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/11 百度星座案例/面向对象案例 - 百度星座模块.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="220" column="4" selection-start-line="220" selection-start-column="4" selection-end-line="220" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03 原型对象/03 属性屏蔽理论.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02 构造函数和构造对象/01 只使用构造函数创建对象.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02 构造函数和构造对象/02 面试题.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03 原型对象/04 面试题目.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03 原型对象/05 面试题目.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.172414">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08 对象常用方法bindDOM进阶/itcast.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.8448277">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

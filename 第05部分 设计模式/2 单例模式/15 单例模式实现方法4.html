@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+var ShoppingCar = (function(){
+    var unique;
+	 var sum = 0;
+    function getInstance(){
+		alert('11111');
+        if(!unique){
+            unique = construct();
+            return unique;
+        }
+    }
+      function construct(){
+
+        function private_method(){}
+        return {
+			//这里才是真正的单例对象
+            public_member:'',
+            addProduct:function(){alert("111");}
+           }
+	   }
+	})();
+ShoppingCar.getInstance().addProduct();
+
+
+
+
+
+
+</script>

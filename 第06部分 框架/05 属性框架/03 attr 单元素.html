@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    *{padding: 10px;}
+    div{
+        color:red;
+        font-size:50px;
+    }
+    .div{
+        color:black;
+        font-size:100px;
+    }
+</style>
+<body>
+<div id="container">
+    传智播客
+</div>
+<button id="mybtn">按钮</button>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script type="text/javascript">
+
+    $$.$id('mybtn').onclick = function(){
+        attr('#container','name','hello');
+        attr('#container','class','div');
+    }
+
+    console.log( attr('container','name'))
+
+
+    function attr(context,key,value){
+        var doms = $$.$all(context)
+        //设置模式
+        if(value){
+            for(var i =0;i<doms.length;i++){
+                doms[i].setAttribute(key,value)
+            }
+        }else{
+            //获取模式
+          return doms[0].getAttribute(key)
+        }
+    }
+
+</script>

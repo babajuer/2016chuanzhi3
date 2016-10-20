@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+
+<script type="text/javascript">
+	//构造器里的this 就指向返回的这个对象，见如下代码：
+	var 传智播客1 = function(){
+		this.name = '王书奎';
+	};
+
+	var obj1 = new 传智播客1();
+	alert ( obj1.name );   //王书奎
+
+
+
+
+    //对于返回一个对象的情况，则
+	var 传智播客2 = function(){
+		this.name = '王书奎';
+		return { // 显式地返回一个对象
+			name: '刘小强'
+		}
+	};
+	var obj2 = new 传智播客2();
+	alert ( obj2.name ); //刘小强
+
+
+
+ 
+    //如果返回的不是对象，则
+	var 传智播客3 = function(){
+		this.name = '王书奎'
+		return '刘小强'; // 返回string 类型
+	};
+
+	var obj3 = new 传智播客3();
+	alert ( obj3.name ); //王书奎
+
+
+</script>

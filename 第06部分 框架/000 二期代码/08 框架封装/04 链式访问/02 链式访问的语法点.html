@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+
+    function Animate() {}
+    Animate.prototype = {
+        add:function(){
+            console.log('添加部');
+            //表示返回当前对象
+            return this;
+        }
+        ,run:function(){
+            console.log('运行部');
+            return this;
+        },
+        houqin:function(){
+            console.log('后勤部');
+            return this;
+        }
+    };
+
+    var animate = new Animate();
+    animate.add().run().houqin().run().houqin()
+</script>

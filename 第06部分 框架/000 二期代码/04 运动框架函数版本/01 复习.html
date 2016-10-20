@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        div{
+            height:300px;
+            width:300px;
+            background:#CCC;
+            position:absolute;
+        }
+    </style>
+</head>
+
+<body>
+<button id='btn'>确认</button>
+<div id='div'></div>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+
+
+    /*将一个物体div 从0移动到500*/
+   /* 动画：就是一个循环 每次改变left 的值 100 110*/
+    /*思路：循环 执行某个函数*/
+    var timer;
+    var speed = 10
+    var btn = document.getElementById('btn')
+    var div = document.getElementById('div')
+
+    function move(){
+        //就是改变某个元素的left的值
+       /* s = s+speed*/
+        /*思路 骨架 if else*/
+        if(div.offsetLeft > 500){
+            clearInterval(timer)
+        }else{
+            div.style.left  =  div.offsetLeft+speed+'px'
+        }
+
+    }
+  /*  function setOneProperty(id,){
+        $$.css(id,'left','')
+    }*/
+
+    //动画时间进程
+    function getTween(){
+
+    }
+
+
+
+
+    btn.onclick=function(){
+        timer = setInterval(move,20)
+    }
+
+
+
+
+
+
+/*
+
+
+    var btn = document.getElementById('btn');
+    var div = document.getElementById('div');
+    var timer;
+    var speed =10;
+
+    //要将一个物体从0---500px  时间5秒
+    /!*动画很简单 --- 就是循环 -- 每次改变left的值 不断的增大，让我们看起来像是运动一样*!/
+    btn.onclick =function() {
+        //用settimeout/interval实现动画
+        timer = setInterval(move,16);
+    }
+
+    function move (){
+       /!* div.style.left= div.offsetLeft +speed+'px'*!/;
+
+        if(div.offsetLeft>500) {
+            clearInterval(timer);
+        }else {
+            div.style.left= div.offsetLeft +speed+'px';
+        }
+    }
+*/
+
+
+</script>

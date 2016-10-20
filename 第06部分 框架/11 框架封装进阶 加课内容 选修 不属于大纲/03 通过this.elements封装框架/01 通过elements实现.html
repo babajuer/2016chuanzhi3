@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            background: red;
+            margin:10px
+        }
+    </style>
+</head>
+<body>
+<button id="button">点击我</button>
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+<div class='div'></div>
+<div class='div'></div>
+<div class='div'></div>
+<div class='div'></div>
+
+
+</body>
+</html>
+
+<script>
+    var itcast =function(context){
+        this.elements = [];
+        context = context || document;
+        this.elements = context.querySelectorAll(selector);
+    }
+    itcast.prototype={
+       /* $all:function(selector,context){
+         context = context || document;
+         this.elements = context.querySelectorAll(selector);
+         },*/
+        //显示
+        show:function (){
+            for(var i=0;i<this.elements.length;i++){
+                this.elements[i].style.display = 'block'
+            }
+            return this;
+        },
+
+        //隐藏
+        hide:function (){
+            /*var doms = $$.$all(context)*/
+            var doms = this.elements;
+            for(var i=0;i<this.doms.length;i++){
+                this.doms[i].style.display = 'none'
+            }
+            return this;
+        },
+        css:function(key, value){
+            var doms = this.elements
+            //如果是数组
+            if(doms.length){
+                //先骨架骨架 -- 如果是获取模式 -- 如果是设置模式
+                //如果value不为空，则表示设置
+                if(value){
+                    for(var i = doms.length - 1; i >= 0; i--){
+                        setStyle(doms[i],key, value);
+                    }
+                    //            如果value为空，则表示获取
+                }else{
+                    return getStyle(doms[0]);
+                }
+                //如果不是数组
+            }else{
+                if(value){
+                    setStyle(dom,key, value);
+                }else{
+                    return getStyle(dom);
+                }
+            }
+            function getStyle(dom){
+                if(dom.currentStyle){
+                    return dom.currentStyle[key];
+                }else{
+                    return getComputedStyle(dom,null)[key];
+                }
+            }
+            function setStyle(dom,key,value){
+                dom.style[key] = value;
+            }
+        },
+        /*attr， addClass， removeClass*/
+    }
+
+    /*双对象  函数+对象法则*/
+    var $ = function(context) {
+        return new itcast(context);
+    };
+
+
+    var btn = document.getElementById('button')
+    btn.onclick =function(){
+        $('.div').hide().show().css('background','yellow')
+    }
+
+
+</script>

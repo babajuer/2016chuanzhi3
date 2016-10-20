@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src='common.js'></script>
+<script src="model/product.js"></script>
+<script src='model/gouwuche.js'></script>
+<script src='modules/product/base.js'></script>
+<script src="modules/product/pdetail.js"></script>
+<style>
+#name h1 {
+    line-height: 1.5em;
+    overflow: hidden;
+    font-weight: 700;
+    font-family: arial,"microsoft yahei";
+    font-size: 16px;
+}
+#name .p-ad {
+    font-family: arial,"microsoft yahei";
+    color: #E3393C;
+    font-size: 14px;
+    line-height: 20px;
+    word-break: break-all;
+}
+#summary-price {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    padding-right: 81px;
+    height: 30px;
+    line-height: 30px;
+    background: #F7F7F7 none repeat scroll 0% 0%;
+}
+#summary-price .p-price {
+    display: inline-block;
+    vertical-align: middle;
+    color: #E4393C;
+    font-size: 20px;
+}
+button{margin-top: 50px;}
+</style>
+</head>
+
+<body>
+<div id="name">
+    <h1>
+        <span class="hl_red" id="tuan-tag">[团购] </span>
+        <span id='name'></span>
+    </h1>
+    <div id='des' class='p-ad'></div>
+</div>
+
+<div style="margin: 5px 0px;" id="summary-price">
+    <div class="dt">京 东 价：</div>
+     <div class="dd">
+        ￥<strong class="p-price" id="jd-price"></strong>
+     </div>
+</div>
+
+<button id='btn'>加入购物车</button>
+<h1>当前购物车中产品数量</h1>
+<h2 id='gprice'></h2>
+<h2 id='num'></h2>
+</body>
+</html>
+<script>
+   
+	var p = new Product(' 欧尼尔(OUNIER)DS600A嵌入式家用商用烘焙电烤箱上下独立控温多功能大容量电烤箱 嵌入式电烤箱','6.1 6.10活动期间 领券更优惠',1999);
+	var g = new gouwuche();
+	var pModule = new productModule(p,g);
+	pModule.init();
+	
+</script>

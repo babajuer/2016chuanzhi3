@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<div id ='div'></div>
+</body>
+<script src='itcast4.js'></script>
+<script type="text/javascript">
+  /*  var div = $$.$id('div')
+    div.addEventListener('click',function(){
+        this.style.background='red'
+    },false)*/
+
+    click('div',function(){
+        this.style.background='red'
+    })
+
+    function click(id,fn) {
+        $$.on(id,'click',fn)
+    }
+
+  function mouseover(id,fn) {
+      $$.on(id,'mouseover',fn)
+  }
+
+  function mouseout(id,fn) {
+      $$.on(id,'mouseout',fn)
+  }
+
+
+
+
+
+</script>
+</html>

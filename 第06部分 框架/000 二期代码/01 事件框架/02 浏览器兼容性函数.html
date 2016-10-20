@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            background: red;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id='div'></div>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+
+    on('div','click',function(){
+        alert('使用框架编写事件')
+    })
+
+
+    //我们需要编写一个函数 让他同时能够兼容所有的浏览器
+    function on(id,type,fn){
+        /*  判断浏览器是否支持某个功能其实就是判断：某个对象是否存在，如果对象存在就去判断其是否含有某个方法*/
+
+        /*整个js世界全是面向对象的，所有的功能都是对象里面的某个方法*/
+
+        //如果浏览器支持addEventListener 我们就使用它来编写事件
+        var dom = $$.$id(id)
+        if(dom.addEventListener){
+            /*使用addEventListener来编写事件*/
+            dom.addEventListener(type, fn, false);
+        }else{
+            if(dom.attachEvent){
+                /*使用微软公司的技术来编写事件*/
+                dom.attachEvent('on' + type, fn);
+            }
+        }
+
+
+        /* 如果浏览器不支持addEventListener，我们可以认定是一个微软公司的，就可以使用attachEvent*/
+        /*如何去判断浏览器是否支持某个功能*/
+
+    }
+
+</script>

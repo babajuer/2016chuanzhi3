@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #container{
+            height: 400px;
+            position: relative;
+            width: 100%;
+            border-bottom: 1px black solid;
+            text-align: center;
+            top: 50px;
+        }
+        #container div{
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            background: red;
+            float: left;
+            top:10px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+</div>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    $$.animate('#box1',{top:200,left:100,width:'100'},2000);
+    $$.animate('#box2',{top:200,left:100,width:'100'},2000);
+    $$.animate('#box3',{top:200,left:100,width:'100'},2000);
+    $$.animate('#box4',{top:200,left:100,width:'100'},2000);
+</script>

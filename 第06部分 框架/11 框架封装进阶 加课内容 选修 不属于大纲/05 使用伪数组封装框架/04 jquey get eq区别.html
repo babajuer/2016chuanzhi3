@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+
+<br/>
+
+<button id="hide">隐藏</button>
+<button id="show">显示</button>
+<button id="show2">只显示一张图片 get版本</button>
+<button id="show3">只显示一张图片 eq版本</button>
+</body>
+</html>
+
+<script>
+
+    var F = function(selector, context) {
+        return this.init(selector,context)
+    };
+
+    /*原型 init*/
+    F.prototype.initOld = function(selector, context) {
+        var nodeList = (context || document).querySelectorAll(selector);
+        this.length = nodeList.length;
+        //这里遍历应从第1个开始到倒数第二个，而不是最后一个，因为最后一个属性是length
+        for (var i=0; i<this.length; i+=1) {
+            this[i] = nodeList[i];
+        }
+        //这里是关键，return的是this，表示当前对象
+        return this;
+    };
+    /*改造后的init：如果只有一个元素，返回一个只有一个元素的伪数组*/
+    F.prototype.init = function(selector, context) {
+        if(typeof selector === 'string'){
+            var nodeList = (context || document).querySelectorAll(selector);
+            this.length = nodeList.length;
+            //这里遍历应从第1个开始到倒数第二个，而不是最后一个，因为最后一个属性是length
+            for (var i=0; i<this.length; i+=1) {
+                this[i] = nodeList[i];
+            }
+        }else if(selector.nodeType){
+            this[0] = selector;
+            this.length=1;
+        }
+
+        return this;
+    };
+    //each
+    F.prototype.each = function(fn) {
+        var i=0, length = this.length;
+        for (; i<length; i+=1) {
+            fn.call(this[i]);
+            //fn.call(this.element[i],i,this.element[i]);
+        }
+        return this;
+    };
+    /*hide*/
+    F.prototype.hide = function() {
+        this.each(function() {
+            this.style.display = "none";
+        });
+    };
+    /*show*/
+    F.prototype.show = function() {
+        this.each(function() {
+            this.style.display = "block";
+        });
+    };
+    //get
+    F.prototype.get = function(num) {
+        return this[num] ? this[num] : null;
+    };
+
+    F.prototype.eq = function(num) {
+        //前面我们改造了init函数，如果是nodetype，则返回只有一个元素的jquery对象
+        return new F(this.get(num))
+    };
+
+
+    //对象+函数法则 - 引入美元符号
+    var $ = function(selector, context) {
+        return new F(selector, context);
+    };
+
+
+    /*测试 -- 基本接近jquery*/
+    var btnhide = document.getElementById("hide")
+    btnhide.onclick = function() {
+        $('.image').hide()
+    };
+
+    var btnshow = document.getElementById("show")
+    btnshow.onclick = function() {
+        $('.image').show()
+    };
+
+
+    /* get：获取某个元素对象，不返回当前对象，
+     eq：获取某个元素对象，同时返回当前对象
+     如果你想获取某个元素之后，使用元素的方法，需要使用get
+     如果你想获取某个元素之后，继续使用F对象的方法，需要使用eq*/
+
+
+    /*get实现显示*/
+    var btnshow2 = document.getElementById("show2")
+    btnshow2.onclick = function() {
+        $(".image").get(1).style.display = 'block'
+    };
+
+
+    /*eq实现显示*/
+    var btnshow3 = document.getElementById("show3")
+    btnshow3.onclick = function() {
+        $(".image").eq(1).show()
+    };
+
+</script>

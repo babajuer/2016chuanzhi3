@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+//普通函数
+function A(name){
+ 	this.name = name;
+}
+//基于普通函数采用工厂模式实现new
+function ObjectFactory(){
+	var obj = {},
+	Constructor = Array.prototype.shift.call( arguments );
+	obj.__proto__ =  typeof Constructor .prototype === 'number' ? Object.prototype:  Constructor .prototype;
+	var ret = Constructor.apply( obj, arguments );
+	return typeof ret === 'object' ? ret : obj;
+}
+//使用
+var a = ObjectFactory( A, 'svenzeng' );
+alert(a.name);  
+
+</script>

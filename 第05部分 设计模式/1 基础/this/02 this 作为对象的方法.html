@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+	//当函数作为对象的方法被调用时，this 指向该对象：
+
+	var 传智播客= {
+		name: '王书奎',
+		getName: function(){
+			alert ( this === 传智播客 ); // 输出：true
+			alert ( this.name ); // 输出: 1
+		}
+	};
+
+	传智播客.getName();
+
+</script>

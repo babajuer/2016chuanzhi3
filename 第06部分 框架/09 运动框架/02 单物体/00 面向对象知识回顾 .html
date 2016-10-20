@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+
+<script>
+
+    //动画对象
+    function Animate(){
+        /*XXXX*/
+        this.name = ''
+        /*XXXX*/
+        this.des='动画框架的对象版本'
+    }
+    Animate.prototype={
+        /*XXXX*/
+        add:function(){
+        alert('动画框架方法')
+    }
+    }
+
+    /*使用对象之前必须先实例化*/
+    var animate = new Animate()
+    alert(animate.name)
+    alert(animate.add())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	复习js 的面向对象
+	//定义一个动画对象
+	//属性 方法
+	//采用函数式
+
+	function Fruit() {
+		//构造函数
+		//属性
+		this.name='水果';
+	}
+
+	//原型 -- 我们一般吧对象的属性放在构造函数里面
+	//把方法（函数）方法原型里面
+	Animate.prototype={
+		//方法
+		getName:function(){}
+
+}
+
+
+
+
+
+
+
+	 
+	 //定义对象 -- 先把模子搭建起来 -- 整体思考--搭建对象骨架
+	function Animate()
+	{
+		//1 动画每帧间隔时间
+		//2 timer
+		//3 test1 test2:闭包,test3
+		this.timer =0;
+		this.interval = 16;
+	}
+
+Animate.prototype ={
+		test:function()
+		{
+			alert('测试');	
+		}
+		,test2:{
+			test3:function()
+				{
+					alert('闭包功能测试');
+				}
+			}
+	}
+
+var animate = new Animate();
+	//alert(animate.timer);
+	animate.test();
+    animate.test2.test3();
+ 
+</script>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>模拟现实物体动画的js动画库框架-Anima|Infinite_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" href="css/main.css">
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header bgcolor-10">
+			<h1>模拟现实物体动画的js动画库框架-Anima : : Infinite <span>Anima is the only animation framework that has elementary physics integrated</span></h1>
+			<div class="htmleaf-links">
+				<a class="htmleaf-icon icon-home" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+				<a class="htmleaf-icon icon-arrow-right3" href="http://www.htmleaf.com/jQuery/Layout-Interface/201502041326.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+			</div>
+			<div class="htmleaf-demo center">
+				<a href="bounce.html">bounce</a>
+		        <a href="delay.html">delay</a>
+		        <a href="infinite.html" class="current">infinite</a>
+		        <a href="keyboard.html">keyboard</a>
+		        <a href="parallel.html">parallel</a>
+		        <a href="parallel_physics.html">parallel_physics</a>
+		        <a href="parallel_sequence.html">parallel_sequence</a>
+		        <a href="physics.html">physics</a>
+		        <a href="timeline.html">timeline</a>
+			</div>
+		</header>
+		<div class="ball" style="left: 200px;top:200px;"></div>
+	</div>
+	
+	<script src="js/anima.js"></script>
+<script>
+  var world = anima.world(),
+      item = world.add(document.querySelector('.ball'))
+
+  item
+    .animate({
+      translate: [0, 300, 0]
+    }, 500, 'ease-in-quad')
+    .animate({
+      scale: [.1, -.2, 0]
+    }, 50)
+    .animate({
+      scale: [-.1, .2, 0]
+    }, 50)
+    .animate({
+      translate: [0, -300, 0]
+    }, 500, 'ease-out-quad')
+    .infinite()
+</script>
+</body>
+</html>

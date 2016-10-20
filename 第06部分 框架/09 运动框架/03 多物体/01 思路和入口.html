@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style type="text/css">
+        #container{
+            height: 400px;
+            position: relative;
+            width: 100%;
+            border-bottom: 1px black solid;
+            text-align: center;
+            top: 50px;
+        }
+        #container div{
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            background: red;
+            float: left;
+            top:10px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container">
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+</div>
+</body>
+</html>
+<script src='../itcast.js'></script>
+<script>
+    function Animate() {
+
+        //一般再编写框架的时候都会定义一个配置对象保存控制动画的一些值，允许用户自定义
+        //我们首先定义好默认值
+        this.config={
+            interval:300,
+            ease:'linear',
+        }
+
+        this.timer =0;
+        //我们使用数组来保存每个每个物体的运动数据
+        this._queen=[]
+        //调用初始化函数
+        this._init();
+    }
+    Animate.prototype ={
+
+
+        /* ------------------------------------------------
+         *公共部门
+         *放置其他部门都会使用的公共方法属性
+         *-------------------------------------------------*/
+
+
+        /* ------------------------------------------------
+         *运行部 老大:run
+         *部门职责描述: 根据添加进来的元素属性创建动画,并运行起来
+         *-------------------------------------------------*/
+
+        /* ------------------------------------------------
+         *添加部  -- add
+         *部门职责描述: 添加元素 以及确定我要对哪个属性做动画
+         *-------------------------------------------------*/
+
+
+        /* ------------------------------------------------
+         *后勤部
+         *部门职责描述: 辅助运行动画  比如清除 比如内存回收
+         *-------------------------------------------------*/
+
+    }
+
+
+    var animate = new Animate();
+    //思考入口
+    animate.setConfig({interval:16,ease:'easeOutBounce'})
+    animate.add('#box1',{top:200,left:100,width:'100'},2000);
+
+    //如果我新增一个物体 -- 如何将其运动起来
+    //分析为什么使用数组
+    animate.add('#box2',{top:200,left:100,width:'100'},2000);
+    animate.add('#box3',{top:200,left:100,width:'100'},2000);
+    animate.add('#box4',{top:200,left:100,width:'100'},2000);
+</script>

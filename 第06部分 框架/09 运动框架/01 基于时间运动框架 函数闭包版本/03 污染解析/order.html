@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .checkout-buttons .checkout-submit {
+            float: right;
+            position: relative;
+            width: 135px;
+            height: 36px;
+            line-height: 36px;
+            margin: 8px 10px 0 0;
+            padding: 0;
+            background-color: #e00;
+            overflow: hidden;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .btn-1 {
+            font-family: arial,"microsoft yahei";
+            display: inline-block;
+            height: 25px;
+            line-height: 25px;
+            background-color: #e74649;
+            background-image: -moz-linear-gradient(top,#e74649,#df3134);
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#e74649),color-stop(1,#df3134));
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e74649', endColorstr='#df3134', GradientType='0');
+            -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e74649', endColorstr='#df3134');
+            background-image: linear-gradient(to top,#e74649 0,#df3134 100%);
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 400;
+            padding: 0 15px;
+            cursor: pointer;
+            border: 0;
+            float: none;
+        }
+        button, html input[type=button], input[type=submit] {
+            -webkit-apperance: button;
+            cursor: pointer;
+        }
+        user agent stylesheetinput[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+                                                                                                                            padding: 1px 6px;
+                                                                                                                        }
+        user agent stylesheetinput[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+                                                                                                                            align-items: flex-start;
+                                                                                                                            text-align: center;
+                                                                                                                            cursor: default;
+                                                                                                                            color: buttontext;
+                                                                                                                            padding: 2px 6px 3px;
+                                                                                                                            border: 2px outset buttonface;
+                                                                                                                            border-image-source: initial;
+                                                                                                                            border-image-slice: initial;
+                                                                                                                            border-image-width: initial;
+                                                                                                                            border-image-outset: initial;
+                                                                                                                            border-image-repeat: initial;
+                                                                                                                            background-color: buttonface;
+                                                                                                                            box-sizing: border-box;
+                                                                                                                        }
+        user agent stylesheetinput, textarea, keygen, select, button {
+            margin: 0em;
+            font: normal normal normal 12.6666669845581px/normal Arial;
+            text-rendering: auto;
+            color: initial;
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-transform: none;
+            text-indent: 0px;
+            text-shadow: none;
+            display: inline-block;
+            text-align: start;
+        }
+        user agent stylesheetinput, textarea, keygen, select, button, meter, progress {
+            -webkit-writing-mode: horizontal-tb;
+        }
+        user agent stylesheetbutton {
+            -webkit-appearance: button;
+        }
+        Inherited from
+        body {
+            font: 12px/150% Arial,Verdana,"\5b8b\4f53";
+            color: #666;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<button type="submit" class="checkout-submit btn-1" id="order-submit" onclick="javascript:submit_Order();">
+    提交订单<b></b>
+</button>
+</body>
+</html>
+<script>
+    function Order(){
+
+        this.shouhuoren = 'tianpeiyao';
+        this.zhifufangshi = '微信支付';
+        this.peisongfangshi = '货到付款';
+    }
+
+    Order.prototype = {
+        Confirm: function () {
+            alert('提交订单');
+        }
+    }
+
+
+
+</script>

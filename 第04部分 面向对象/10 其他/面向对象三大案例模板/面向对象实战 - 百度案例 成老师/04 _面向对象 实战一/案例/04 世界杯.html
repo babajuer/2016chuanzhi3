@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+*{margin: 0 auto;padding: 0;list-style: none;border: 0; text-align: center;}
+body{background: url(baidu/bg.jpg); -webkit-background-size: cover;
+background-size: cover;}
+.logo{margin-top: 30px; display: block;}
+.links{width: 740px; margin: 0 auto;}
+.links a{color: #fff; margin-right: 10px;}
+.search{margin-bottom: 40px; margin-top: 10px;}
+.search input{width: 537px; height: 40px;}
+.search button{width: 104px; height: 40px;}
+.container{width: 911px;}
+.menu{width: 80px; height: 318px; float: left; background: rgba(0,0,0,0.4);}
+.menu span{width: 80px; height: 35px; line-height: 35px; color: #fff; display: inline-block; font-weight: bold; font-size: 14px;}
+.menu span.choose{background: rgba(255,255,255,0.6) url(baidu/menu.png);}
+.card{width: 813px; height: 318px; float: right; background: rgba(255,255,255,0.6) url(baidu/football.png) no-repeat;}
+
+.worldcup{
+	width: 250px;
+	height: 318px;
+	float: right;
+}
+.looper{
+	width: 230px;
+	height: 130px;
+	position: relative;
+	overflow: hidden;
+	margin: 54px 12px 0 0;
+}
+.looper .viewer{
+	width: 230px;
+	height: 130px;
+	overflow: hidden;
+}
+.looper .viewer img{
+	border: none;
+}
+.looper .arrow{
+	position: absolute;
+	width: 16px;
+	height: 28px;
+	top: 45px;
+	overflow: hidden;
+	cursor: pointer;
+	background: url(worldcup/sprite.png) no-repeat 0 0;
+	display: none;
+}
+.looper .arrow.show{display: inline-block;}
+.looper .arrow.pre{
+	left: 5px;
+	background-position: 2px 1px;
+}
+.looper .arrow.pre:hover{
+	background-position: -33px 1px;
+}
+.looper .arrow.next{
+	right: 5px;
+	background-position: -17px -2px; 
+}
+.looper .arrow.next:hover{
+	background-position: -52px -2px;
+}
+.looper .mask, .looper .title{
+	width: 100%;
+	height: 27px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.looper .mask{
+	background: #000;
+	opacity: .3;
+	filter: alpha(opacity=30);	
+}
+.looper .title a{
+	padding-left: 10px;
+	display: block;
+	font: 14px/27px Microsoft YaHei;
+	text-decoration: none;
+	color: #e6e6e6;
+	letter-spacing: 1px;
+	width: 160px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: left;
+	margin: 0;
+}
+.looper .dot{
+	position: absolute;
+	height: 10px;
+	width: 55px;
+	right: 2px;
+	bottom: 7px;
+	overflow: hidden;
+	line-height: 10px;
+	cursor: pointer;
+}
+.looper .dot a{
+	width: 5px;
+	height: 5px;
+	float: left;
+	background: #fff;
+	margin: 0 2px;
+	overflow: hidden;
+	border: 1px solid rgba(255,255,255,.7);
+}
+.looper .dot a:hover, .looper .dot a.choose{
+	background: none;
+}
+.yuner{
+	margin: 8px 12px 0 0;
+	width: 230px;
+}
+.yuner .viewer{
+	background: url(worldcup/bg.png) repeat-x;
+	height: 90px;
+	position: relative;
+}
+.yuner .viewer a{
+	position: absolute;
+	color: #fff;
+	font-size: 16px;
+	text-decoration: none;
+}
+.yuner .link{
+	border-top: 2px solid #459467;
+	background: #377f56;
+	height: 24px;
+	font-size: 12px;
+	line-height: 24px;
+	text-align: center;
+}
+.yuner .link a{
+	border-left: 2px solid rgba(72,152,106,.7);
+	color: #e4f4eb;
+	padding-left: 4px;
+	margin-right: 4px;
+}
+.yuner .link a.is-start{
+	border-left: none;
+}
+</style>
+<script type="text/javascript" src="ICD.js"></script>
+<script type="text/javascript">
+var	looperData = [
+	{
+		img: '1.jpg',
+		title: '德国太太团PK 谁最美？'
+	}
+	,{
+		img: '2.jpg',
+		title: '德国4-0大胜葡萄牙'
+	}
+	,{
+		img: '3.jpg',
+		title: '2014世界杯热门排行榜'
+	}
+	,{
+		img: '4.jpg',
+		title: '金妍儿力挺韩国队'
+	}
+	,{
+		img: '5.jpg',
+		title: '世界杯超级大富翁'
+	}
+],
+yunerData = [
+	{
+		title: '首个帽子戏法'
+	}
+	,{
+		title: '不满裁判竖双指'
+	}
+	,{
+		title: '德迷李宇春'
+	}
+	,{
+		title: '29秒最快进球'
+	}
+	,{
+		title: '德国更衣室合影'
+	}
+	,{
+		title: '佩佩挑衅'
+	}
+];
+</script>
+<script type="text/javascript">
+$(function(){
+	var Looper = function(data){
+		this.data = data;
+		this.num = 0;
+		this.length = data.length;
+		this.init();
+	}
+	Looper.prototype = {
+		init : function(){
+			this.create();
+			this.bindEvent();
+		},
+		create : function(){
+			var looper = [
+			'<div class="viewer">',
+				'<a hidefocus>',
+					'<img width="230" height="130" src="worldcup/@(img)">',
+				'</a>',
+			'</div>',
+			'<a hidefocus class="arrow pre"></a>',
+			'<a hidefocus class="arrow show next"></a>',
+			'<div class="mask"></div>',
+			'<p class="title">',
+				'<a href="#" hidefocus>@(title)</a>',
+			'</p>',
+			'<div class="dot">',
+				'<a hidefocus class="choose" data-order="0"></a>',
+				'<a hidefocus data-order="1"></a>',
+				'<a hidefocus data-order="2"></a>',
+				'<a hidefocus data-order="3"></a>',
+				'<a hidefocus data-order="4"></a>',
+			'</div>'
+			].join('');
+			$('#looper').html($.formateString(looper, this.data[0]));
+		},
+		bindEvent : function(){
+			var that = this;
+			$('#looper .dot a').on('mouseover', function(e){
+				that.num = $.getICDTarget(e).attr('data-order');
+				that.change();
+			});
+			$('#looper .pre').on('click', function(e){
+				that.num--;
+				that.change();
+			})
+			$('#looper .next').on('click', function(e){
+				that.num++;
+				that.change();
+			})
+		},
+		change : function(){
+			$('#looper .viewer img').attr('src', 'worldcup/' + this.data[this.num].img);
+			$('#looper .title a').html(this.data[this.num].title);
+			$('#looper .dot a').removeClass('choose');
+			var chooseBtn = $('#looper .dot a').get(this.num);
+			$(chooseBtn).addClass('choose');
+			if(this.num >= this.length - 1){
+				$('#looper .next').removeClass('show');
+			}else{
+				$('#looper .next').addClass('show');
+			}
+			if(this.num <= 0){
+				$('#looper .pre').removeClass('show');
+			}else{
+				$('#looper .pre').addClass('show');
+			}
+		}
+	}
+	new Looper(looperData);
+
+
+
+	var Yun = function(dom, dir, top, left){
+		this.dom = dom;
+		this.dir = dir;	// true 向下  false 向上
+		this.top = top;
+		this.left = left;
+		this.fontSize = 16;
+		this.zIndex = 0;
+		this.opacity = 1;
+		this.init();
+	}
+	Yun.prototype = {
+		height : 90,
+		speed : 0.5,
+		init : function(){
+			$(this.dom).css('top', this.top+'px');
+			$(this.dom).css('left', this.left+'px');
+			this.loop();
+		},
+		loop : function(){
+			this.move();
+			this.draw();
+		},
+		move : function(){
+			if(this.dir){
+				this.top += this.speed;
+			}else{
+				this.top -= this.speed;
+			}
+			if(this.top <= 0){
+				this.dir = true;
+			}
+			if(this.top > 72){
+				this.dir = false;
+			}
+			var t = parseInt(this.top / 5);
+			switch(t){
+				case 1:
+				case 13:
+					this.fontSize = this.dir ? 11 : 10;
+					this.zIndex = this.dir ? 1 : 0;
+					this.opacity = this.dir ? 0.5 : (t == 13 ? 0.3 : 0);
+					break;
+				case 2:
+				case 12:
+					this.fontSize = this.dir ? 12 : 10;
+					this.zIndex = this.dir ? 2 : 0;
+					this.opacity = this.dir ? 0.6 : (t == 12 ? 0.3 : 0);
+					break;
+				case 3:
+				case 11:
+					this.fontSize = this.dir ? 13 : 10;
+					this.zIndex = this.dir ? 3 : 0;
+					this.opacity = this.dir ? 0.7 : (t == 11 ? 0.3 : 0.1);
+					break;
+				case 4:
+				case 10:
+					this.fontSize = this.dir ? 14 : 10;
+					this.zIndex = this.dir ? 4 : 0;
+					this.opacity = this.dir ? 0.8 : (t == 10 ? 0.2 : 0.1);
+					break;
+				case 5:
+				case 9:
+					this.fontSize = this.dir ? 15 : 10;
+					this.zIndex = this.dir ? 5 : 0;
+					this.opacity = this.dir ? 0.9 : (t == 9 ? 0.2 : 0.1);
+					break;
+				case 6:
+				case 7:
+				case 8:
+					this.fontSize = this.dir ? 16 : 10;
+					this.zIndex = this.dir ? 6 : 0;
+					this.opacity = this.dir ? 1 : 0.2;
+					break;
+				case 0:
+				case 14:
+				default:
+					this.fontSize = 10;
+					this.zIndex = 0;
+					this.opacity = this.dir ? 0.4 : (t == 14 ? 0.3 : 0);
+			}
+		},
+		draw : function(){
+			$(this.dom).css({
+				fontSize : this.fontSize + 'px',
+				zIndex : this.zIndex,
+				opacity : this.opacity,
+				top : this.top + 'px'
+			});
+		}
+	}
+	var Yuner = function(data){
+		this.data = data;
+		this.length = data.length;
+		this.timeBar = null;
+		this.doms = [];
+		this.init();
+	}
+	Yuner.prototype = {
+		init : function(){
+			this.create();
+			this.bindEvent();
+			this.go();
+		},
+		create : function(){
+			var yuner = [
+			'<div class="viewer">@(title)</div>',
+			'<div class="link">',
+				'<a href="#" hidefocus class="is-start">积分榜</a>',
+				'<a href="#" hidefocus>射手榜</a>',
+				'<a href="#" hidefocus>微博讨论区</a>',
+				'<a href="#" hidefocus>比赛规则</a>',
+			'</div>'
+			].join('');
+			var html = '';
+			for(var i = 0; i < this.length; i++){
+				html += $.formateString('<a href="#">@(title)</a>', this.data[i])
+			}
+			// html 追加时原内容的事件会丢失，相当于重新添加内容
+			$('#yuner').html($.formateString(yuner, {title : html}));
+			var dom = $('#yuner .viewer a');
+			for(var i = 0; i < dom.length; i++){
+				var w = (226 - parseInt($(dom[i]).css('width'))) * Math.random() + 2,
+					d = i % 2 ? true : false;
+					t = 70 / dom.length * (i + Math.random()) + 5;
+				this.doms.push(new Yun(dom[i], d, t, w));
+			}
+		},
+		bindEvent : function(){
+			var that = this;
+			var dom = $('#yuner .viewer a');
+			for(var i = 0; i < dom.length; i++){
+				$(dom[i]).on('mouseover', function(){
+					that.stop();
+				}).on('mouseout', function(){
+					that.go();
+				})
+			}
+		},
+		stop : function(){
+			clearInterval(this.timeBar);
+			this.timeBar = null;
+		},
+		go : function(){
+			var that = this;
+			that.stop();
+			that.timeBar = setInterval(function(){
+				for(var i = 0; i < that.doms.length; i++){
+					that.doms[i].loop();
+				}
+			}, 33)
+		}
+	}
+	new Yuner(yunerData);
+})
+</script>
+<body>
+<img class="logo" width="270" src="baidu/logo_white.png" alt="">
+<p class="links">
+	<a href="http://news.baidu.com" target="_blank">新闻</a>
+	<a href="http://www.baidu.com" target="_blank">网页</a>
+	<a href="http://tieba.baidu.com" target="_blank">贴吧</a>
+	<a href="http://zhidao.baidu.com" target="_blank">知道</a>
+	<a href="http://music.baidu.com" target="_blank">音乐</a>
+	<a href="http://image.baidu.com" target="_blank">图片</a>
+	<a href="http://v.baidu.com" target="_blank">视频</a>
+	<a href="http://map.baidu.com" target="_blank">地图</a>
+	<a href="http://baike.baidu.com" target="_blank">百科</a>
+	<a href="http://wenku.baidu.com" target="_blank">文库</a>
+	<a href="http://www.baidu.com/more/" target="_blank">更多&gt;&gt;</a>
+</p>
+<div class="search">
+	<input type="text"><button>百度一下</button>
+</div>	
+<div class="container">
+	<div class="menu">
+		<span>导航</span>
+		<span>音乐</span>
+		<span>新闻</span>
+		<span class="choose">世界杯</span>
+	</div>
+	<div id="card" class="card">
+		<div id="worldcup" class="worldcup">
+			<div id="looper" class="looper"></div>
+			<div id="yuner" class="yuner"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            background: red;
+        }
+        span{
+            color:red
+        }
+    </style>
+</head>
+<body>
+<span class='span'>文字</span>
+<span class='span'>文字</span>
+<span class='span'>文字</span>
+<span class='span'>文字</span>
+
+
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    var dom = document.getElementById('span')
+    /*console.log(window.getComputedStyle(dom,null).color)*/
+    /*css(dom,'color','blue')*/
+    $$.css('.span','color','blue')
+
+    /*span
+    console.log(css(dom,'color'))*/
+
+    //将这两个函数合二为一
+    /*当传递的是两个参数，表示是设置模式，如果传递是一个参数，是不是获取模式*/
+    /*我们可以判断，判断value是不是undefined，
+    如果是undefined，表示获取模式，否则就是设置模式*/
+
+
+
+</script>

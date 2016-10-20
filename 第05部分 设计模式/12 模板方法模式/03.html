@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+function ListCommon2() {  
+    var urlAdd;  
+    var urlAjax;  
+    var tableid;  
+    var titleText="";  
+    var winid = "#win";  
+    var columns;  
+    var toolbars;  
+    var queryParams;  
+    var colkey;  
+    var toolbarsType  
+    this.initList = function (aurlAdd, aurlAjax, atableid, atitleText, awinid, acolumns, atoolbarsType) {  
+      
+    };  
+    this.initData = function () {  
+     
+        });  
+   
+        $("#add").click(function (e) {  
+            Add();  
+        })  
+         
+        $("#edit").bind('click', { obj: this }, function (event) {  
+           event.data.obj. Edit();  
+   
+       })  
+       $("#del").bind('click', { obj: this }, function (event) {  
+           event.data.obj.delMsg();  
+       })       
+        $("#btnQuery").bind('click', { obj: this }, function (event) {  
+            var queryParamsnew = event.data.obj.GetqueryParams();  
+            $(tableid).datagrid('load', queryParamsnew)  
+        })  
+    }  
+    this.GetqueryParams = function () {  
+        var NameList = this.Getcolsinfo();  
+        var otherQueryParams = this.GetOtherQueryParams();  
+        if (!otherQueryParams) {  
+            return { colkey: colkey, colsinfo: NameList }  
+        }  
+        else {  
+            return otherQueryParams;  
+        }  
+    }  
+   
+    this.GetOtherQueryParams = function () {  
+        return null;  
+    }  
+    this.Getcolsinfo = function () {  
+        var fieldNameList = [];  
+        if (columns.length > 0) {  
+            for (var i = 0; i < columns[0].length; i++) {  
+                fieldNameList.push(columns[0][i].field);  
+            }  
+        }  
+        else {  
+            alert("未绑定数据");  
+        }  
+        colkey = fieldNameList[fieldNameList.length-1];  
+        var NameList = fieldNameList.join(",");  
+        return NameList  
+    }  
+    function Add() {  
+        var _content = '<iframe id="FRMdetail"  frameborder="0"  src=' + urlAdd + ' style="width:100%;height:100%;" ></iframe>';  
+        $(winid).dialog({  
+            width: 600,  
+            height: 400,  
+            modal: true,  
+            content: _content,  
+            title: "增加" + titleText,  
+            draggable: true,  
+            resizable: true,  
+            shadow: true,  
+            minimizable: false 
+        });  
+    }  
+    this.Edit = function (editId) {  
+        var id; var obj = typeof (editId);   
+        if (!editId || obj == "object") {  
+            var items = $(tableid).datagrid('getSelections');  
+            var length = items.length;  
+            if (length == 0) {  
+                $.messager.alert('提示', '请选择一条记录然后编辑');  
+
+                return;  
+            } else if (length > 1) {  
+                $.messager.alert('提示', '由于一次只能编辑一条记录，所以只能修改第一条记录');  
+                return;  
+            }  
+           id = GetId(items[0]);  
+        }  
+        else {  
+            id = editId;  
+        }  
+   
+        var _content = '<iframe id="FRMdetail"  frameborder="0"  src=' + urlAdd + '?Id=' + id + ' style="width:100%;height:100%;" ></iframe>';  
+        $(winid).dialog({  
+            width: 600,  
+            height: 400,  
+            modal: true,  
+            content: _content,  
+            title: "修改" + titleText,  
+            draggable: true,  
+            resizable: true,  
+            shadow: true,  
+            minimizable: false 
+        });  
+    }  
+    this.windowclose = function () {  
+        $(winid).window('close');  
+    }  
+    this.SaveOkCallback = function () {  
+        this.windowclose();  
+        $(tableid).datagrid('reload');  
+        $(tableid).datagrid('unselectAll');  
+    }  
+     this.delMsg = function (delId) {  
+         var length = 1;  
+         var id;  
+         var items; var obj = typeof (delId);  
+         if (!delId || obj == "object") {  
+              items = $(tableid).datagrid('getSelections');  
+              length = items.length;  
+             if (length == 0) {  
+                 $.messager.alert('提示', '请至少选择一条记录然后删除');  
+                 return;  
+             }  
+         }  
+         else {  
+             id = delId;  
+         }  
+         var text = '你确认删除' + length + '条记录吗?';  
+         if (length == 1) {  
+             text = '你确认删除该条记录吗?';  
+         }  
+         $.messager.confirm('提示', text, function (r) {  
+             if (r) {  
+                 if (!delId) {  
+                     var idList = [];  
+                     $.each(items,  
+                            function (key, value) {  
+                                var id = GetId(value); // in case we're changing the key   
+                                idList.push(id);  
+                            });  
+                     id = idList.join(",");  
+                 }  
+                 del(id)  
+             }  
+         });  
+     }  
+   
+    function del(id) {  
+        $.ajax({ type: "post",  
+            url: urlAjax + "?OperationType=del&id=" + id,  
+            success: function (msg) {  
+                var obj = jQuery.parseJSON(msg);  
+                if (obj.IsSuccess == true) {  
+                    $.messager.alert('提示', obj.Msg);                 
+                    selectcallback();  
+                }  
+                else {  
+                    $.messager.alert('提示', obj.Msg);  
+                }  
+            }  
+        });  
+    }  
+   
+    function selectcallback() {  
+        SaveOkCallback();          
+    }     
+}  
+ 
+function ListCommon2() {
+    var urlAdd;
+    var urlAjax;
+    var tableid;
+    var titleText="";
+    var winid = "#win";
+    var columns;
+    var toolbars;
+    var queryParams;
+    var colkey;
+    var toolbarsType
+    this.initList = function (aurlAdd, aurlAjax, atableid, atitleText, awinid, acolumns, atoolbarsType) {
+        urlAdd = aurlAdd;
+        urlAjax = aurlAjax;
+        if (atableid) {
+            tableid = atableid;
+        }
+        if (atitleText) {
+            titleText = atitleText;
+        }
+        if (atitleText) {
+            winid = awinid;
+        }
+       
+        columns = acolumns;
+        toolbarsType = atoolbarsType;
+    };
+    this.initData = function () {
+        if (!toolbarsType) {
+            toolbars = [{ text: '添加', iconCls: 'icon-add', handler: Add }, '-', { text: '编辑', iconCls: 'icon-edit', handler: this.Edit }
+                            , '-', { text: '删除', iconCls: 'icon-cancel', handler: this.delMsg }
+                           ];
+        } else {
+            toolbars = toolbarsType;
+        }      
+        queryParams = this.GetqueryParams();
+        $(tableid).datagrid({
+            url: urlAjax + '?OperationType=list',
+            columns: columns,
+            toolbar: toolbars,
+            idField: colkey,
+            pagination: true,
+            pageSize: 20,
+            sortName: colkey,
+            sortOrder: 'desc',
+            rownumbers: true, fitColumns: true,
+            striped: true,
+            method: "post",
+            striped: true,
+            queryParams: this.GetqueryParams(),
+            showFooter: true
+            , pageList: [10, 20, 30, 40, 50]
+        });
+ 
+        $("#add").click(function (e) {
+            Add();
+        })
+       
+        $("#edit").bind('click', { obj: this }, function (event) {
+           event.data.obj. Edit();
+ 
+       })
+       $("#del").bind('click', { obj: this }, function (event) {
+           event.data.obj.delMsg();
+       })     
+        $("#btnQuery").bind('click', { obj: this }, function (event) {
+            var queryParamsnew = event.data.obj.GetqueryParams();
+            $(tableid).datagrid('load', queryParamsnew)
+        })
+    }
+    this.GetqueryParams = function () {
+        var NameList = this.Getcolsinfo();
+        var otherQueryParams = this.GetOtherQueryParams();
+        if (!otherQueryParams) {
+            return { colkey: colkey, colsinfo: NameList }
+        }
+        else {
+            return otherQueryParams;
+        }
+    }
+ 
+    this.GetOtherQueryParams = function () {
+        return null;
+    }
+    this.Getcolsinfo = function () {
+        var fieldNameList = [];
+        if (columns.length > 0) {
+            for (var i = 0; i < columns[0].length; i++) {
+                fieldNameList.push(columns[0][i].field);
+            }
+        }
+        else {
+            alert("未绑定数据");
+        }
+        colkey = fieldNameList[fieldNameList.length-1];
+        var NameList = fieldNameList.join(",");
+        return NameList
+    }
+    function Add() {
+        var _content = '<iframe id="FRMdetail"  frameborder="0"  src=' + urlAdd + ' style="width:100%;height:100%;" ></iframe>';
+        $(winid).dialog({
+            width: 600,
+            height: 400,
+            modal: true,
+            content: _content,
+            title: "增加" + titleText,
+            draggable: true,
+            resizable: true,
+            shadow: true,
+            minimizable: false
+        });
+    }
+    this.Edit = function (editId) {
+        var id; var obj = typeof (editId); 
+        if (!editId || obj == "object") {
+            var items = $(tableid).datagrid('getSelections');
+            var length = items.length;
+            if (length == 0) {
+                $.messager.alert('提示', '请选择一条记录然后编辑');
+                return;
+            } else if (length > 1) {
+                $.messager.alert('提示', '由于一次只能编辑一条记录，所以只能修改第一条记录');
+                return;
+            }
+           id = GetId(items[0]);
+        }
+        else {
+            id = editId;
+        }
+ 
+        var _content = '<iframe id="FRMdetail"  frameborder="0"  src=' + urlAdd + '?Id=' + id + ' style="width:100%;height:100%;" ></iframe>';
+        $(winid).dialog({
+            width: 600,
+            height: 400,
+            modal: true,
+            content: _content,
+            title: "修改" + titleText,
+            draggable: true,
+            resizable: true,
+            shadow: true,
+            minimizable: false
+        });
+    }
+    this.windowclose = function () {
+        $(winid).window('close');
+    }
+    this.SaveOkCallback = function () {
+        this.windowclose();
+        $(tableid).datagrid('reload');
+        $(tableid).datagrid('unselectAll');
+    }
+     this.delMsg = function (delId) {
+         var length = 1;
+         var id;
+         var items; var obj = typeof (delId);
+         if (!delId || obj == "object") {
+              items = $(tableid).datagrid('getSelections');
+              length = items.length;
+             if (length == 0) {
+                 $.messager.alert('提示', '请至少选择一条记录然后删除');
+                 return;
+             }
+         }
+         else {
+             id = delId;
+         }
+         var text = '你确认删除' + length + '条记录吗?';
+         if (length == 1) {
+             text = '你确认删除该条记录吗?';
+         }
+         $.messager.confirm('提示', text, function (r) {
+             if (r) {
+                 if (!delId) {
+                     var idList = [];
+                     $.each(items,
+                            function (key, value) {
+                                var id = GetId(value); // in case we're changing the key
+                                idList.push(id);
+                            });
+                     id = idList.join(",");
+                 }
+                 del(id)
+             }
+         });
+     }
+ 
+    function del(id) {
+        $.ajax({ type: "post",
+            url: urlAjax + "?OperationType=del&id=" + id,
+            success: function (msg) {
+                var obj = jQuery.parseJSON(msg);
+                if (obj.IsSuccess == true) {
+                    $.messager.alert('提示', obj.Msg);               
+                    selectcallback();
+                }
+                else {
+                    $.messager.alert('提示', obj.Msg);
+                }
+            }
+        });
+    }
+ 
+    function selectcallback() {
+        SaveOkCallback();        
+    }   
+}
+</script>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="itemInfo">
+    <div id="name">
+        <h1 id='pname'>乐视TV（ Letv） S50 Air 全配版 50英寸2D智能LED液晶 超级电视</h1>
+        <div id="pdes">各地区货源已陆续到库，我们将在十月十号左右发货，对于此次延迟发货给您带来的不便表示致歉，望您谅解。</div>
+        <div>价格：<strong id='pprice'>6000</strong>元</div>
+    </div>
+</div>
+<button id='btn'>加入购物车</button>
+
+</body>
+</html>
+<script>
+    //定义变量 保存值
+
+ /*通过ajax 从后台读取数据*/
+/*var json = {name:'iphone7',price:6666,des:'手机中的战斗机'}*/
+
+    /*JSON是面向对象的简化写法：简化了抽象这样一个环节*/
+
+    /*------------------创建对象--------------------------*/
+
+    var config = {}
+
+   /*面向对象编程：
+    1：获取对象：通过自定义形式获取对象*/
+    function Product(){
+        this.name ='';
+        this.price ='';
+        this.description = '';
+        this.comments ='';
+        //保存对象可能需要的一些临时变量
+       /* this.config = {}*/
+    }
+    Product.prototype = {
+        //购买
+        buy:function(){},
+        //添加到购物车
+        addCart:function(){},
+        /*添加零件*/
+        //我们可以将绑定相关的代码放在这里
+        bindDOM:function(){
+            //获取元素
+            var domName = document.getElementById('pname')
+            var domPrice = document.getElementById('pprice')
+            var domDes = document.getElementById('pdes')
+            var btnAddCart = document.getElementById('btn')
+
+            config.domName = domName
+            config.domPrice = domPrice
+            config.domDes = domDes
+            config.btnAddCart = btnAddCart
+
+            //绑定元素
+            domName.innerHTML = this.name
+            domPrice.innerHTML =this.price
+            domDes.innerHTML =this.description
+        },
+        /*添加一个零件，把和事件绑定相关的代码放里面*/
+        /*对象的作用：就是对代码分类管理*/
+        bindEvents:function(){
+            var btnAddCart = config.btnAddCart
+            //绑定事件
+            btnAddCart.onclick = function(){
+                //关于加入购物车的代码
+                alert('添加产品到购物车的代码')
+            }
+        },
+        //零部件
+        /*部件：多个零件组成的*/
+        init:function(){
+            this.bindDOM()
+            this.bindEvents()
+        }
+    }
+
+    /*实例化*/
+    var iphone6s = new Product();
+    iphone6s.price = '4888.00';
+    iphone6s.name = 'Apple iPhone 6s (A1700) 16G 金色 移动';
+    iphone6s.comments = '66227';
+    iphone6s.description = '手机中的战斗机'
+
+    /*------------------使用对象--------------------------*/
+
+    /*面向对象编程  - 组装汽车*/
+  /*  隐藏细节
+    一般：中高级写对象里面的内容，
+    然后初级：使用对象
+    学习使用对象：alert getElementByID*/
+    iphone6s.init()
+
+
+</script>

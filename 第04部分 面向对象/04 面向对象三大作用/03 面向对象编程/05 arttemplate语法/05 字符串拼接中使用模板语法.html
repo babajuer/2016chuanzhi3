@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>compile-demo</title>
+    <script src='template.js'></script>
+    <script src='itcast.js'></script>
+    <style>
+        .title{
+            color:red
+        }
+    </style>
+</head>
+
+<body>
+<h1>在javascript中存放模板</h1>
+<div id="content"></div>
+
+<script type="text/html" id="arttemplate">
+    <h2 class='title'>2016年精彩电影介绍</h2>
+    <div><strong>电影名称：</strong>{{name}}</div>
+    <div><strong>导演：</strong>{{lead}}</div>
+    <div><strong>主演：</strong>{{role}}</div>
+</script>
+
+<script>
+
+    //带坑的html
+    var str =''
+    str+='<h2 class="title">2016年精彩电影介绍</h2>'
+    str+='<div><strong>电影名称：</strong>{{name}}</div>'
+    str+=' <div><strong>导演：</strong>{{lead}}</div>'
+    str+='<div><strong>主演：</strong>{{role}}</div>'
+
+    /*数据*/
+    var film = {name:'美人鱼',lead:'周星驰',role:'邓超'}
+
+   //合体
+   /* var render = template.compile(str);
+    var html = render(film)*/
+
+    var domDIV = $$.$id('content')
+    domDIV.innerHTML = $$.bindArttemplate(str,film)
+
+    //绑定数据 将带坑的html和数据进行绑定
+    function bindArttemplate(str,data){
+        var render = template.compile(str);
+        var html = render(data)
+        return html;
+    }
+
+
+
+
+
+
+
+
+   /*
+    document.getElementById('content').innerHTML = $$.artTemplate(source,film);
+
+    //函数的作用：隐藏复杂性*/
+
+</script>
+</body>
+</html>

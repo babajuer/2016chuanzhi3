@@ -1,0 +1,59 @@
+·<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        div{
+            height:300px;
+            width:300px;
+            background:#CCC;
+            position:absolute;
+        }
+    </style>
+</head>
+
+<body>
+<button id='btn'>确认</button>
+<div id='div'></div>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    /*将一个物体div在5秒钟以内 从0移动到500*/
+    var timer;
+    var speed = 10;
+    var juli = 500;
+    var start = 0;
+    var tween;
+    /*必须将秒转为毫秒值*/
+    var duration = 5000;
+    //获取当前时间 -- 并转为毫秒值
+  /*  为什么要把事件转为毫秒值 （2014-09-09 12:23:11）*/
+   /* 因为我们目前是在写运动框架
+    运动框架的背后都是数学公式 --需要的数字 -所以我们需要将时间也转为数字*/
+    var now = +new Date();
+    var btn = document.getElementById('btn')
+    var div = document.getElementById('div')
+
+    function move(){
+        //就是改变某个元素的left的值
+        /* s = s+speed*/
+        /*思路 骨架 if else*/
+        /*表示计算当前时间  并转为毫秒值*/
+        var pass = +new Date();
+       /* tween:动画时间进程  物体已经走得时间 /总时间
+        物体已经走得时间：计算每次循环后当前系统的时间  -- 运动开始之间的时间*/
+        /*pass - now 每次循环用时*/
+        tween =  (pass - now) /duration;
+        if(div.offsetLeft > 500){
+            clearInterval(timer)
+        }else{
+            /*div.style.left = 物体起始位置 + 总距离X动画时间进程（百分比）+'px'*/
+            div.style.left = start + juli*tween+'px'
+        }
+
+    }
+    btn.onclick=function(){
+        timer = setInterval(move,16)
+    }
+</script>

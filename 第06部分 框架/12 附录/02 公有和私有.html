@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    (function(w){
+        var itcast={
+            //子属性法：
+            //我们可以定义一个elements属性，来保存获取的元素
+            elements:[],
+            extend:function(tar,source) {
+                //遍历对象
+                for(var i in source){
+                    tar[i] = source[i];
+                }
+                return tar;
+            },
+        }
+
+        w.itcast = w.$$ = itcast;
+
+
+    })(window);
+
+    /*字符串操作*/
+    (function($$){
+        //去除左边空格
+        $$.ltrim = function(str){
+            return str.replace(/(^\s*)/g,'');
+        }
+        //去除右边空格
+        $$.rtrim = function(str){
+            return str.replace(/(\s*$)/g,'');
+        }
+        //去除空格
+        $$.trim = function(str){
+            return str.replace(/(^\s*)|(\s*$)/g, '');
+        },
+            //简单的数据绑定formateString
+                $$.formateString  = function(str, data){
+                    return str.replace(/@\((\w+)\)/g, function(match, key){
+                        return typeof data[key] === "undefined" ? '' : data[key]});
+                }
+    })(itcast);
+
+    /*类型转换*/
+    (function($$){
+        //数据类型检测
+        $$.isNumber = function (val){
+            return typeof val === 'number' && isFinite(val)
+        }
+        $$.isBoolean = function (val) {
+            return typeof val ==="boolean";
+        }
+        $$.isString = function (val) {
+            return typeof val === "string";
+        }
+        $$.isUndefined = function (val) {
+            return typeof val === "undefined";
+        }
+        $$.isObj = function (str){
+            if(str === null || typeof str === 'undefined'){
+                return false;
+            }
+            return typeof str === 'object';
+        }
+        $$.isNull = function (val){
+            return  val === null;
+        }
+        $$.isArray = function (arr) {
+            if(arr === null || typeof arr === 'undefined'){
+                return false;
+            }
+            return arr.constructor === Array;
+        }
+
+    })(itcast);
+
+     /*选择框架*/
+    (function($$){
+
+    //        私有 只在框架中使用
+            //封装重复的代码
+            function pushArray(doms,result){
+                for(var j= 0, domlen = doms.length; j < domlen; j++){
+                    result.push(doms[j])
+                }
+            }
+
+            //公有
+            //html5实现的选择器
+            $$.$all=function(selector,context){
+                context = context || document;
+                this.elements = context.querySelectorAll(selector);
+                //这里返回this,也就是当前对象，这样就可以访问这个对象的其他属性方法了
+                return this;
+            }
+            //id选择器
+            $$.$id=function(id){
+                return document.getElementById(id);
+            },
+            //tag选择器
+            $$.$tag=function(tag,context){
+                if(typeof context == 'string'){
+                    context = $$.$id(context);
+                }
+
+                if(context){
+                    return context.getElementsByTagName(tag);
+                }else{
+                    return document.getElementsByTagName(tag);
+                }
+            },
+            //class选择器
+            $$.$class=function(className,context){
+                var i=0,len,dom=[],arr=[];
+                //如果传递过来的是字符串 ，则转化成元素对象
+                if($$.isString(context)){
+                    context = document.getElementById(context);
+                }else{
+                    context = document;
+                }
+    //        如果兼容getElementsByClassName
+                if(context.getElementsByClassName){
+                    return context.getElementsByClassName(className);
+                }else{
+                    //如果浏览器不支持
+                    dom = context.getElementsByTagName('*');
+
+                    for(i;len=dom.length,i<len;i++)
+                    {
+                        if(dom[i].className)
+                        {
+                            arr.push(dom[i]);
+                        }
+                    }
+                }
+                return arr;
+            },
+            //分组选择器
+            $$.$group=function(content) {
+                var result=[],doms=[];
+                var arr = $$.trim(content).split(',');
+                //alert(arr.length);
+                for(var i=0,len=arr.length;i<len;i++) {
+                    var item = $$.trim(arr[i])
+                    var first= item.charAt(0)
+                    var index = item.indexOf(first)
+                    if(first === '.') {
+                        doms=$$.$class(item.slice(index+1))
+                        //每次循环将doms保存在reult中
+                        //result.push(doms);//错误来源
+
+                        //陷阱1解决 封装重复的代码成函数
+                        pushArray(doms,result)
+
+                    }else if(first ==='#'){
+                        doms=[$$.$id(item.slice(index+1))]//陷阱：之前我们定义的doms是数组，但是$id获取的不是数组，而是单个元素
+                        //封装重复的代码成函数
+                        pushArray(doms,result)
+                    }else{
+                        doms = $$.$tag(item)
+                        pushArray(doms,result)
+                    }
+                }
+                return result;
+
+
+            },
+            //层次选择器
+            $$.$cengci=function (select){
+                //个个击破法则 -- 寻找击破点
+                var sel = $$.trim(select).split(' ');
+                var result=[];
+                var context=[];
+                for(var i = 0, len = sel.length; i < len; i++){
+                    result=[];
+                    var item = $$.trim(sel[i]);
+                    var first = sel[i].charAt(0)
+                    var index = item.indexOf(first)
+                    if(first ==='#'){
+                        //如果是#，找到该元素，
+                        pushArray([$$.$id(item.slice(index + 1))]),result;
+                        context = result;
+                    }else if(first ==='.'){
+                        //如果是.
+                        //如果是.
+                        //找到context中所有的class为【s-1】的元素 --context是个集合
+                        if(context.length){
+                            for(var j = 0, contextLen = context.length; j < contextLen; j++){
+                                pushArray($$.$class(item.slice(index + 1), context[j]),result);
+                            }
+                        }else{
+                            pushArray($$.$class(item.slice(index + 1)),result);
+                        }
+                        context = result;
+                    }else{
+                        //如果是标签
+                        //遍历父亲，找到父亲中的元素==父亲都存在context中
+                        if(context.length){
+                            for(var j = 0, contextLen = context.length; j < contextLen; j++){
+                                pushArray($$.$tag(item, context[j]),result);
+                            }
+                        }else{
+                            pushArray($$.$tag(item),result);
+                        }
+                        context = result;
+                    }
+                }
+
+                return context;
+
+
+            },
+            //多组+层次
+            $$.$select=function(str) {
+                var result = [];
+                var item = $$.trim(str).split(',');
+                for(var i = 0, glen = item.length; i < glen; i++){
+                    var select = $$.trim(item[i]);
+                    var context = [];
+                    context = $$.$cengci(select);
+                    pushArray(context,result);
+
+                };
+                return result;
+            }
+        })(itcast);
+
+    /*事件框架*/
+    (function($$){
+
+
+    })(itcast);
+</script>

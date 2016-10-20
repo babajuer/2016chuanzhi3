@@ -1,0 +1,44 @@
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            color:red;
+            font-size:40px;
+        }
+    </style>
+</head>
+<body>
+<div id='div'>笑傲江湖</div>
+<input type="input" id="input"/>
+<button id="btn">button</button>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    var dom = $$.$id('div')
+    $$.on('btn','click',function(){
+        $$.html('#div','黑马')
+        console.log( $$.html('#div'))
+    })
+
+    //innerHTML的函数版本
+    /*利用arguments实现重载*/
+    function html(context,value){
+        var doms = $$.$all(context)
+        //设置模式
+        if(value){
+            for(var i = 0;i<doms.length;i++){
+                doms[i].innerHTML = value
+            }
+        }else{
+            /*获取模式*/
+            return doms[0].innerHTML
+        }
+    }
+
+</script>

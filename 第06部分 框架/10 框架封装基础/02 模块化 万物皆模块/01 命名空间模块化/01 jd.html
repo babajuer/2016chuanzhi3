@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*1000个人一起开发页面*/
+    var jd={
+        verstion:'1.0'
+    }
+    //公共模块 -- 成员1
+    /*5个人开发*/
+    jd.common={
+        each:function(){},
+        map:function(){},
+        isArray:function(){},
+        isString:function(){}
+    }
+    /*ui模块 ：pc端的ui组件  移动端  成员2*/
+    /*10个人开发*/
+    jd.ui={}
+    jd.ui.pc={
+        /*tab组件*/
+        tab:function(){
+            console.log('pc端tab组件')
+        },
+        /*幻灯片*/
+        ppt:function(){},
+        /*导航*/
+        nav:function(){}
+    }
+    jd.ui.mobile={
+        /*tab组件*/
+        tab:function(){
+            console.log('移动端tab组件')
+        },
+        /*幻灯片*/
+        ppt:function(){},
+        /*导航*/
+        nav:function(){}
+    }
+    /*页面*/
+    /*100人开发*/
+    jd.page={}
+    /*产品相关的页面 3*/
+    jd.page.prdouct={}
+    /*订单相关的页面 4*/
+    jd.page.order={}
+    /*用户管理相关的页面 5*/
+    jd.page.user={}
+    jd.page.finance={}
+    jd.page.pay={}
+
+
+   /* 如何访问version
+    如何访问pc端这个tab方法
+    如何访问移动端tab方法*/
+    console.log(jd.verstion)
+    jd.ui.pc.tab()
+    jd.ui.mobile.tab()
+</script>

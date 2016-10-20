@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p{
+            background:red;
+            font-size:40px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <p>英雄联盟</p>
+    <p>梦幻西游</p>
+</div>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    var dom = $$.$all('p')
+    /*dom[0].style.color='yellow'*/
+    //style访问方式有两种：
+    /*  style.background
+     style['background']*/
+    dom[0].style['color']='yellow'
+
+
+    //封装起来
+    function setStyle(dom,key,value){
+        //style访问方式有两种：
+        /*  style.background
+         style['background']*/
+        dom.style[key] = value;
+    }
+    /* setStyle(dom[0],'color','green')
+     setStyle(dom[0],'opacity','0.5')*/
+
+
+</script>

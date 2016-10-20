@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            background: red;
+        }
+        span{
+            color:red
+        }
+    </style>
+</head>
+<body>
+<div id='div'></div>
+<span class='span'>文字</span>
+<span class='span'>文字</span>
+<span class='span'>文字</span>
+<span class='span'>文字</span>
+</body>
+</html>
+<script src='jquery-1.11.2.min.js'></script>
+<script>
+
+    /*样式框架*/
+    //不用框架的时候
+   /* var div = document.getElementById('div')*/
+    /*原生语言如何给一个元素穿衣服：style*/
+    /*  div.style.background='red*/
+
+    $('.span').css('color','blue')
+
+
+    /*如何获取一个样式值*/
+    var span = document.getElementById('span')
+
+    /*通过这种形式获取样式值存在一定的问题*/
+    console.log(span.style.color)
+
+
+
+    /* jquery：*/
+
+    $('#div').click(function(){
+       /* jquery : 给一个属性设置样式
+        获取样式*/
+        /*当传递的是两个参数，表示是设置模式，如果传递是一个参数，是不是获取模式*/
+        $(this).css('background','blue')
+
+        console.log($(this).css('background'))
+    })
+
+
+
+
+    //    样式框架包含两大部分：获取元素的样式的值，设置样式的值
+    //    看看jquery中如何获取元素的值
+    //      css(key,value)
+    //      height width
+    //      innerHeight innerWidth
+    //      outerHeight outerWidth
+    //      offset offetParent
+    //      position
+    //      scollLeft scollRight scollTop scrollParent
+    //        hide show
+
+
+</script>

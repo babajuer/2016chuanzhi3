@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+//饮料
+function Beverage()
+{
+    this.description="基础对象 记录产品基本价格";
+    this.cost=function()
+    {
+        return 0;
+    }
+}
+ 
+//饮料一  不添加任何物质的咖啡的价格
+function Coffee(beverage)
+{
+    this.description="咖啡";
+    this.cost=function()
+    {
+        return 1+beverage.cost();
+    }
+}
+ 
+//饮料二 不添加任何物质可乐的价格
+function kele(beverage)
+{
+    this.description="可乐";
+    this.cost=function()
+    {
+        return 8+beverage.cost();
+    }
+}
+
+
+//调料 牛奶
+function Milk(beverage)
+{
+    this.description="牛奶";
+    this.cost=function()
+    {
+        return 2+beverage.cost(); 
+    }
+ 
+}
+
+//调料 巧克力
+function Chocolate (beverage)
+{
+    this.description="巧克力";
+    this.cost=function()
+    {
+        return 100+beverage.cost(); 
+    }
+ 
+}
+
+
+
+ //咖啡
+//接受的参数是一个对象，不管这个对象是什么，只要有coat方法就可以了
+//也可以这么理解，这里接收的是一个字面量对象{}，我不关心名称，只要有cost方法就不会报错
+var coffee=new Coffee(new Beverage());
+//咖啡加牛奶之后
+var coffee_Milk=new Milk(coffee);
+
+alert("买一杯加了"+coffee_Milk.description+"的"+coffee.description+"共花了"+coffee_Milk.cost()+"元");
+
+
+
+var coffee_Milk_Chocolate = new Chocolate(coffee_Milk);
+
+alert("咖啡加了牛奶，又加巧克力之后的价格："+coffee_Milk_Chocolate.cost()+"元");
+</script>

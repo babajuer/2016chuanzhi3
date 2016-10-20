@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style>
+        div{height:200px;width:200px;background:#F00;position:absolute}
+    </style>
+</head>
+
+<body>
+<button id='btn'>确认</button>
+<div id='div'></div>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+   /* 第一步：入口
+    var json ={top:'200px',height:'200px',width:'300px'}
+    第二步：修改函数的参数
+    第三步：将单属性改成多属性 添加要给适配器将用户传递进来的json格式的值改成我们需要的格式
+     var styles=[
+     {name:'top',start:0,juli:200},
+     {name:'height',start:0,juli:200},
+     {name:'width',start:0,juli:300}
+     ]
+
+    第四步：完善我们的代码
+        4.1 调用适配器函数获取styles
+        4.2 修改move函数，将单属性的代码修改成多属性  for*/
+
+    $$.click('btn',function(){
+        /*入口*/
+        var json ={top:'200px',height:'200px',width:'300px',opacity:0.2}
+        animate('div',json,5000)
+
+    })
+    function animate(id,json,duration){
+        //案例: 将一个物体在5秒内从0px移动到400px
+        var now = +new Date();//初始化计算now时间
+        var tween;//默认动画没有走 进度是0
+        var timer;
+        //绑定事件
+        timer = setInterval(move,16);
+        //变速运动下计算动画时间进程
+        function getTweenNew(now,pass,all,ease){
+            var eases = {
+                //线性匀速
+                linear:function (t, b, c, d){
+                    return (c - b) * (t/ d);
+                },
+                //弹性运动
+                easeOutBounce:function (t, b, c, d) {
+                    if ((t/=d) < (1/2.75)) {
+                        return c*(7.5625*t*t) + b;
+                    } else if (t < (2/2.75)) {
+                        return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+                    } else if (t < (2.5/2.75)) {
+                        return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+                    } else {
+                        return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+                    }
+                },
+                //其他
+                swing: function (t, b, c, d) {
+                    return this.easeOutQuad(t, b, c, d);
+                },
+                easeInQuad: function (t, b, c, d) {
+                    return c*(t/=d)*t + b;
+                },
+                easeOutQuad: function (t, b, c, d) {
+                    return -c *(t/=d)*(t-2) + b;
+                },
+                easeInOutQuad: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t + b;
+                    return -c/2 * ((--t)*(t-2) - 1) + b;
+                },
+                easeInCubic: function (t, b, c, d) {
+                    return c*(t/=d)*t*t + b;
+                },
+                easeOutCubic: function (t, b, c, d) {
+                    return c*((t=t/d-1)*t*t + 1) + b;
+                },
+                easeInOutCubic: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t*t + b;
+                    return c/2*((t-=2)*t*t + 2) + b;
+                },
+                easeInQuart: function (t, b, c, d) {
+                    return c*(t/=d)*t*t*t + b;
+                },
+                easeOutQuart: function (t, b, c, d) {
+                    return -c * ((t=t/d-1)*t*t*t - 1) + b;
+                },
+                easeInOutQuart: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+                    return -c/2 * ((t-=2)*t*t*t - 2) + b;
+                },
+                easeInQuint: function (t, b, c, d) {
+                    return c*(t/=d)*t*t*t*t + b;
+                },
+                easeOutQuint: function (t, b, c, d) {
+                    return c*((t=t/d-1)*t*t*t*t + 1) + b;
+                },
+                easeInOutQuint: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+                    return c/2*((t-=2)*t*t*t*t + 2) + b;
+                },
+                easeInSine: function (t, b, c, d) {
+                    return -c * Math.cos(t/d * (Math.PI/2)) + c + b;
+                },
+                easeOutSine: function (t, b, c, d) {
+                    return c * Math.sin(t/d * (Math.PI/2)) + b;
+                },
+                easeInOutSine: function (t, b, c, d) {
+                    return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
+                },
+                easeInExpo: function (t, b, c, d) {
+                    return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
+                },
+                easeOutExpo: function (t, b, c, d) {
+                    return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+                },
+                easeInOutExpo: function (t, b, c, d) {
+                    if (t==0) return b;
+                    if (t==d) return b+c;
+                    if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+                    return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+                },
+                easeInCirc: function (t, b, c, d) {
+                    return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
+                },
+                easeOutCirc: function (t, b, c, d) {
+                    return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+                },
+                easeInOutCirc: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
+                    return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
+                },
+                easeInElastic: function (t, b, c, d) {
+                    var s=1.70158;var p=0;var a=c;
+                    if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+                    if (a < Math.abs(c)) { a=c; var s=p/4; }
+                    else var s = p/(2*Math.PI) * Math.asin (c/a);
+                    return -(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+                },
+                easeOutElastic: function (t, b, c, d) {
+                    var s=1.70158;var p=0;var a=c;
+                    if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+                    if (a < Math.abs(c)) { a=c; var s=p/4; }
+                    else var s = p/(2*Math.PI) * Math.asin (c/a);
+                    return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
+                },
+                easeInOutElastic: function (t, b, c, d) {
+                    var s=1.70158;var p=0;var a=c;
+                    if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
+                    if (a < Math.abs(c)) { a=c; var s=p/4; }
+                    else var s = p/(2*Math.PI) * Math.asin (c/a);
+                    if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+                    return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )*.5 + c + b;
+                },
+                easeInBack: function (t, b, c, d, s) {
+                    if (s == undefined) s = 1.70158;
+                    return c*(t/=d)*t*((s+1)*t - s) + b;
+                },
+                easeOutBack: function (t, b, c, d, s) {
+                    if (s == undefined) s = 1.70158;
+                    return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+                },
+                easeInOutBack: function (t, b, c, d, s) {
+                    if (s == undefined) s = 1.70158;
+                    if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
+                    return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+                },
+                easeInBounce: function (t, b, c, d) {
+                    return c - this.easeOutBounce (d-t, 0, c, d) + b;
+                },
+                easeInOutBounce: function (t, b, c, d) {
+                    if (t < d/2) return this.easeInBounce (t*2, 0, c, d) * .5 + b;
+                    return this.easeOutBounce (t*2-d, 0, c, d) * .5 + c*.5 + b;
+                }
+            }
+            var yongshi = pass -now;
+            return eases[ease](yongshi,0,1,all)
+        }
+
+       /* 但是传递进来的是什么*/
+     /*   var json ={top:'200',height:'200',width:'300'}*/
+        /*计算单个样式需要如下的值:id,样式名字，起始位置，距离，动画时间进程*/
+        /*计算多个样式*/
+
+       /* var styles=[
+            {name:'top',start:0,juli:200},
+            {name:'height',start:0,juli:200},
+            {name:'width',start:0,juli:300}
+        ]*/
+
+      /*  如何定义变量 ：什么时候定义字符串 什么时候定义数字 什么时候用数组 什么时候用json 什么时候用[{},{},{}]
+      什么时候用字典：{key:123,value:122}
+        var str ='123'
+        var num = 1*/
+
+
+        /*到了今天 傻到极限  1+1 1-1 */
+        /*到了现在 做出来 粗心   timr  漏了什么 忘了 思路稍微有点点的乱 听课听懂了。。*/
+        /*舒服了，大家终于在一个维度去讨论问题*/
+
+        /*呢当然了 还有10几个同学 基础确实太差了。。。我是感觉还没有 */
+
+        /*1万*/
+
+
+
+        var styles = adapter(json)
+        /*我们需要定义一个函数来专门帮我们做这个转换工作*/
+        function adapter(source){
+            var styles=[]
+            for(var item in source){
+                /*思路*/
+             /*   name :item
+                start:parseFloat($$.css(id,item))
+                juli:最终的位置 -- 起始位置  source[item] - start*/
+                var style={};
+                style.name = item;
+                style.start = parseFloat($$.css(id,item))
+                style.juli = parseFloat(source[item]) - style.start
+                styles.push(style)
+
+            }
+            return styles;
+        }
+        /*停止*/
+        function stop(){
+            clearInterval(timer);
+        }
+        //设置一个样式
+        /*体会到这点 我们未来一旦代码变化 只需要更改一个地方*/
+        function setOneProperty(id,name,start,juli,tween){
+            /*透明度 不需要px
+            但是width top height left right px*/
+            if(name == 'opacity'){
+                $$.css(id,name,start + juli*tween)
+            }else{
+                $$.css(id,name,(start + juli*tween)+'px')
+            }
+        }
+       /*10--30%  - - 不 断变化  你写的不正确 你发现更牛逼的方法 项目经理 架构师 客户*/
+        function setManyProperty(id,styles,tween){
+            for(var i =0;i<styles.length;i++){
+                var item = styles[i];
+                setOneProperty(id,item.name,item.start,item.juli,tween)
+            }
+        }
+        /*领悟到从垃圾代码 --优秀代码*/
+        //  每次循环执行的代码
+        function move() {
+            //动画停止的条件
+            if(tween>=1) {
+                /*停止动画*/
+                stop()
+            }else {
+                var pass = +new Date();
+                /*计算动画时间进程*/
+                tween = getTweenNew(now,pass,duration,'easeOutBounce')
+                /*动起来*/
+                setManyProperty(id,styles,tween)
+            }
+        }
+    }
+
+</script>

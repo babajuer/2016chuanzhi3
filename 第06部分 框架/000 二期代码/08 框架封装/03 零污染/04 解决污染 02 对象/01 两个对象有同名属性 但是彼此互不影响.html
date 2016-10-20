@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //我们以后可以定义不同的对象，来保存全局变量
+    /*就是将全局变量升级为对象的属性*/
+    var module1 = function(){
+        this.name = 1
+        this.add=function(){}
+    }
+    module1.prototype={}
+
+
+    var module2 = function(){
+        this.name =2
+        this.add=function(){}
+        }
+    module2.prototype={}
+
+    var  m1 = new module1()
+    var  m2 = new module2()
+
+    m1.name= 11111111111
+    console.log(m1.name)
+    console.log(m2.name)
+</script>

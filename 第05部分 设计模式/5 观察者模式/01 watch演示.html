@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Basic WatchJS</title>
+    <script src="watch.js"></script>
+</head>
+<body>
+<h2>Basic WatchJS Example</h2>
+<p>View Page source code</p>
+<button id='btn'>比赛结束</button>
+</body>
+</html>
+<script type="text/javascript">
+
+    //defining our object however we like
+    var NBA = {
+        gameStatus: "进行中",
+        currentScore: "100:80"
+    };
+
+    //defining a 'watcher' for an attribute
+//    监听NBA对象的属性；gameStatus  一旦该属性变化 则触发该方法
+    watch(NBA, "gameStatus", function(){
+        document.write("比赛结束，勇士队30分逆转 詹皇得分100分");
+    });
+
+
+    //遍历属性 --    old值  新值  {old  new }
+
+
+    //when changing the attribute， its watcher will be invoked
+//     当改变一个属性 ，会自动触发对应的监听事件
+    document.getElementById('btn').onclick =function(){
+        NBA.gameStatus = "比赛结束";
+    }
+</script>

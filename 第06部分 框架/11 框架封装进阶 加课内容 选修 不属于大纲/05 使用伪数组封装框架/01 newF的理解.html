@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="button">点击我</button>
+<img id="image" src="xxx.jpg">
+</body>
+</html>
+<script>
+    console.log('----------------第1种情况--------------')
+    //第1种情况：构造函数实例化之后的类型深刻理解
+    //如果构造函数返回的值类型是值类型或者无返回值，则通过new实例化返回一个匿名对象
+    //构造对象中的this，原型对象中的this都指向该匿名对象
+    var F = function(id) {
+        return id;
+        console.log(this)
+    };
+    F.prototype.hide = function() {
+        console.log(this)
+    };
+
+    //构造函数返回的是值类型，这个时候通过new创建的实例实际上是系统自动生成的一个匿名对象
+    console.log(new F("image"));
+    console.log(new F("image") == "image");// false 说明看上去返回字符串值，实际并不是字符串
+    console.log(new F("image"));
+    new F("image").hide()
+
+
+
+    console.log('----------------第2种情况--------------')
+    //第2种情况：构造函数无返回值
+    //如果构造函数无返回值，则和返回值类型一样，也是返回系统自动生成的匿名对象
+    //this指向匿名函数
+    var G = function() {};
+    G.prototype.hide=function(){
+        console.log(this)
+    }
+    console.log(new G());
+    new G().hide()
+
+
+
+
+
+    console.log('----------------第3种情况--------------')
+    //第3种情况：构造函数返回的是引用类型
+    //this指向该引用类型对应的对象
+    var H = function(id) {
+        return document.getElementById(id);
+    };
+    H.prototype.hide=function(){
+        console.log(this)
+    }
+    console.log(new H("image") == document.getElementById("image"));// true 说明看上去返回DOM对象，实际确实就是DOM对象
+    console.log(new H("image"))//返回的就是元素对象，该元素对象没有hide方法，hide方法是H对象上的
+    //那么怎么办呢()
+    new H("image").hide()//dom对象上没有hide方法
+
+
+
+</script>

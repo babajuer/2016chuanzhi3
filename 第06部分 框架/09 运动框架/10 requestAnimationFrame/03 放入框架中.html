@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="demo" style="position:absolute; width:100px; height:100px; background:#ccc; left:0; top:0;"></div>
+
+</body>
+</html>
+
+<script src='../itcast.js'></script>
+<script>
+
+    var _requestAnimateFrame = $$.animate.getAnimationFrame().requestAnimationFrame
+    var _cancelAnimateFrame = $$.animate.getAnimationFrame().cancelAnimationFrame
+
+
+    var demo = document.getElementById('demo');
+    function rander(){
+        demo.style.left = parseInt(demo.style.left) + 1 + 'px'; //每一帧向右移动1px
+    }
+    _requestAnimateFrame(function(){
+        rander();
+        //当超过300px后才停止
+        if(parseInt(demo.style.left)<=300) requestAnimationFrame(arguments.callee);
+    });
+</script>
+

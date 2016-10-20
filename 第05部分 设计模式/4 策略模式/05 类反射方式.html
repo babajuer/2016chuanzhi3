@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+//简化写法 -- 类似反射的方式
+
+	var strategies = {
+		"S": function( price ){
+			return price * 4;
+		},
+		"A": function( price ){
+			return price * 3;
+		},
+		"B": function( price ){
+			return price * 2;
+
+		}
+	};
+	var calculatePrice = function( level, price ){
+		//反射机制
+		return strategies[ level ]( price );
+	};
+
+	alert( calculatePrice( 'S', 20000 ) ); // 输出：80000
+	alert( calculatePrice( 'A', 10000 ) ); // 输出：30000
+
+
+
+
+
+
+</script>

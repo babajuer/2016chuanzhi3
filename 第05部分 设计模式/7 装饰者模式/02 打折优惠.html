@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+
+//////////////////基础的产品对象//////////////////
+
+//    打折优惠的两种形式 -- 并列式 -- 递进式
+//    什么是并列式，什么是递进式
+//产品基础对象 -- 基类
+function Product() {
+    this.description="基础对象 记录产品基本价格";
+    this.cost=function()
+    {
+        return 1000;
+    }
+}
+
+
+///////////////////各种优惠方式///////////////////
+
+//打折优惠 -- 传递了一个对象，这个对象和基类都有cost方法，这也是多态的一种体现
+function Discount(obj) {
+    this.description="打折优惠--比如5折";
+    this.cost=function()
+    {
+        return obj.cost() * 0.5;   //1000x0.5 = 500
+    }
+}
+//钻石会员 -- 抵消10元
+function VIP(obj) {
+    this.description="vip用户抵消10元";
+    this.cost=function()
+    {
+        return obj.cost()-200;//500-200=300
+    }
+}
+//京东10周年庆典日 -- 优惠10元
+function HappyDay(obj) {
+    this.description="庆典日 -- 优惠10元";
+    this.cost=function()
+    {
+        return obj.cost() - 300;
+    }
+ 
+}
+
+
+
+
+//////////////////使用///////////////////
+ //基础产品  - 原价
+var product=new Product();
+console.log(product.cost())
+
+//打折促销之后产品的价格
+var p_Discount=new Discount(product);
+console.log(p_Discount.cost())
+
+//打折促销，并且这个人还是会员，进一步优惠
+var p_Discount_VIP = new VIP(p_Discount);
+console.log(p_Discount_VIP.cost())
+
+//到了庆典，在原来的基础上再优惠
+var P_Discount_VIP_HappyDay = new HappyDay(p_Discount_VIP);
+console.log(P_Discount_VIP_HappyDay.cost())
+alert("产品经过打折优惠，VIP会员，恰逢京东十周年庆典之后的价格："+P_Discount_VIP_HappyDay.cost()+"元");
+</script>

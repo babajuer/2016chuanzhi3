@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var names = ["田佩瑶","李思","张领"];
+    //删除
+    var removed = names.splice(1,1); //(删除索引值,删除个数)
+    alert(names); //田佩瑶 张领alert(removed); //李思 -- 理解返回值是什么
+    //插入
+    var insert = names.splice(0,0,"姜昭灿");
+    //第一个参数表示：从第0个位置开始插入，
+    //第二个表示：删除零个 如果第二个参数是零，表示插入，如果是其他数字，表示替换
+    //第三个参数表示替换  用被删除的替换删除的，但是这里我们删除0个，所以就不存在替换
+    alert(insert); //返回空数组alert(names); //
+    //替换
+    //替换法则： 替换被删除的位置
+    //表示从第1个元素开始删除，那么这里删除的就是田佩瑶
+    //替换：这里用郭靖，黄蓉替换田佩瑶，所以最终的数组：姜昭灿 郭靖 黄蓉 张领
+    var replace = names.splice(1,1,"郭靖","黄蓉"); //删除一项，插入两项
+    alert(names); //姜昭灿 郭靖 黄蓉 张领alert(replace); //田佩瑶
+
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 后台人员：
+    /*后台人员会从数据库里面取出数据 */
+    /*会将其封装成json格式 然后返回给前端*/
+    var data ={
+        "name":"iphone",
+        "price":"6666",
+         "description":"手机中的战斗机"
+    }
+
+    /*产品列表*/
+    var list = {
+        products:[
+            {"Nickname":"iphone","price":"6666", "description":"手机中的战斗机"},
+            {"name":"iphone","price":"6666", "description":"手机中的战斗机"},
+            {"name":"iphone","price":"6666", "description":"手机中的战斗机"},
+        ]
+    }
+
+
+    //这是一种不规范的写法
+    var list = [
+        {"Nickname":"iphone","price":"6666", "description":"手机中的战斗机"},
+        {"name":"iphone","price":"6666", "description":"手机中的战斗机"},
+        {"name":"iphone","price":"6666", "description":"手机中的战斗机"},
+    ]
+
+
+    /*什么是标准的json格式
+    1 必须有键值对（key value）（有些框架必须要是是含有键值对）
+    2 所有的键值对必须用引用(不规范也不会报错)*/
+
+
+    /*拼接时代 -- 动态生成时代*/
+</script>

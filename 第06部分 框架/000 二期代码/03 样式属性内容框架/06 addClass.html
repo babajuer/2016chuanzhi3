@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            color:red;
+            font-size:50px;
+        }
+        .redcolor{color: blue}
+        .bigger{font-size:100px}
+        .show{display: block}
+        .hide{display:none}
+    </style>
+</head>
+<body>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<button id='show'>显示</button>
+<button id='hide'>隐藏</button>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    $$.on('show','click',function(){
+        removeClass('.div','hide')
+    })
+
+    $$.on('hide','click',function(){
+        addClass('.div','hide')
+    })
+
+    //如何编写
+    function removeClass(context,className){
+        /*思路*/
+       /* 第一步：获取所有的元素*/
+        var doms = $$.$all(context)
+       /* 第二步：遍历删除每个元素的class*/
+        for(var i=0;i<doms.length;i++){
+            //删除每个元素的class
+            deleteClassName(doms[i])
+        }
+
+        function deleteClassName(dom){
+           /* replace:用后面的字符串替换className*/
+            dom.className =  dom.className.replace(className,'')
+        }
+    }
+
+
+
+
+
+    //jqery 可以给一个元素添加一个class
+    function addClass(context,className){
+        //首先先获取元素 -- 把获取的元素放在一个集合里面
+        var doms = $$.$all(context)
+        //遍历集合，依次给每个元素添加class
+        for(var i=0;i<doms.length;i++){
+            addClassName(doms[i])
+        }
+        //给一个元素的class新增一个class
+        function addClassName(dom){
+            dom.className += " " +className
+        }
+    }
+
+
+    /*利用argument来实现零参数编程*/
+ /*   function addClass(){
+        var list=Array.prototype.slice.call(arguments);
+        //遍历元素,给每个元素添加class
+        var context=list[0];
+        var doms=$$.$all(context);
+        var names=list.slice(1);
+        var classes=names.join(" ");
+        for(var i=0;i<doms.length;i++){
+            doms[i].className=classes;
+        }
+    }*/
+</script>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .span{
+            height:300px;
+            width:300px;
+            background:#F00;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<span class='span'>点击我变成蓝色</span>
+<span class='span'>点击我变成蓝色</span>
+<div id='mydiv'>
+    <span class='span'>点击我变成蓝色</span>
+    <span class='span'>点击我变成蓝色</span>
+    <span class='span'>点击我变成蓝色</span>
+    <span class='span'>点击我变成蓝色</span>
+</div>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    //原生 getElementById getElementByTagName 是兼容所有版本的浏览器
+   /* var doms = document.getElementsByClassName('span')*/
+
+    var dom = $$.$id('mydiv')
+    var doms = $$.$classOld('span',dom)
+    for(var i= 0,len =doms.length;i<len;i++){
+        doms[i].onclick =function(){
+            this.style.background = 'blue'
+        }
+    }
+
+
+    /*完美法则*/
+    /*如果一个浏览器兼容getElementByClassName这个方法，我们就直接使用内置的这个方法来获取所有的元素
+     如果不兼容，我们采自定义这个方法*/
+    function $class(className,mycontext){
+        //第一步 获取范围容器这个dom
+        var mydom = getDOM(mycontext)
+        /*第二步：再从这个范围里面寻找元素*/
+        var elements = getElements(className,mydom)
+        return elements;
+
+
+
+
+        //第一步 获取范围容器这个dom
+        function getDOM(context){
+            if($$.isString(context)){
+                return document.getElementById(context)
+            }else{
+                return context;
+            }
+        }
+        /*第二步：再从这个范围里面寻找元素*/
+        function getElements(className,dom){
+            if(dom.getElementsByClassName){
+                /*使用原生的获取元素*/
+                return dom.getElementsByClassName(className)
+            }else{
+                /*如果不兼容 使用自定义代码来获取元素*/
+                var doms = dom.getElementsByTagName('*')
+                var elements =[];
+                for(var i = 0,len=doms.length;i<len;i++){
+                    if(doms[i].className == className){
+                        elements.push(doms[i])
+                    }
+                }
+                return elements;
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    /*但是他有什么缺点:并不是所有厂商的所有的版本的浏览器都完美支持这个方法*/
+    /*如果公司的用户群都是使用高版本浏览器：Vista w7 w8 w10
+    xp 还没有升级 --低版本的浏览器*/
+    /*为了使得所有的浏览器的不同版本都兼容，我们一般不要使用getElementsByClassName*/
+
+
+
+    /*class   搜索的范围太大*/
+    /*中午预习下 缩小范围*/
+    function $classOld(className) {
+        /*思路*/
+       /* 第一步：先获取所有的元素（定义一个数组变量来保存已经获取到的所有元素）
+        第二步：在从这个数组里面找到class是className的所有的元素（我也可以定义一个数组变量来保存这些集合）*/
+
+       /* 1，先获取整个文档中的所有元素 -先保存在一个变量里面*/
+            var doms = document.getElementsByTagName('*')
+
+        /*2，再从这个集合中找到class名字是className的所有元素*/
+       /* 循环遍历所有的元素找出所有className == className的所有元素*/
+        /*先用注释去编程*/
+        var elements =[];
+        for(var i = 0,len=doms.length;i<len;i++){
+            if(doms[i].className == className){
+                elements.push(doms[i])
+            }
+        }
+        return elements;
+    }
+
+
+
+</script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+//加入我们要开发一个在线小游戏平台
+//前端的游戏中心
+var gameCenter = function(){
+}
+//所有的游戏其实运行过程都是一样的，架构师一般称其为接口，或者抽象，面向抽象编程指的就是面向高层编程。
+//宏观的考虑问题，至于细节，架构师不用考虑。
+//别的团队想要使用这个对象，只需要知道接口就可以了。这就是依赖倒置原则，面向抽象编程。面向接口编程的好处。
+gameCenter.prototype.init = function(){
+  this.login();
+  this.gameStart();
+  this.end();
+}
+gameCenter.prototype.login= function(){
+   alert('登陆逻辑，一般是如果没有登陆则进入到登陆界面，如果登陆则继续执行');
+//do something
+}
+gameCenter.prototype.gameStart= function(){
+   alert('以后会被重写，所有游戏开始都要加载一些游戏需要的资源，每个游戏加载的资源是不一样的');
+//空函数, 留给子类去重写
+//这里为什么是空函数，因为要留在后面重写，也就说说所有子类接口一样，但是实现内容不一样。。。。
+}
+gameCenter.prototype.end= function(){
+	//游戏结束一般都一样，我们可以放在基类中，并实现
+  alert ( "欢迎下次再来玩" );
+}
+
+
+//斗地主游戏
+var 斗地主 = function(){
+}
+斗地主.prototype = new gameCenter();  
+
+斗地主.prototype.gameStart = function(){
+   alert('斗地主开始--加载斗地主需要的资源');
+//do something
+}
+斗地主.prototype.gameStart = function(){
+//do something
+}
+斗地主.prototype.end = function(){
+//do something
+}
+
+var game = new 斗地主();
+game.init();
+</script>

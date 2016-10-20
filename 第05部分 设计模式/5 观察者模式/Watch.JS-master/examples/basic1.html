@@ -1,0 +1,28 @@
+<!DOCType html>
+<html>
+<head>    
+    <title>Basic WatchJS</title>
+    <script src="../src/watch.js"></script>
+</head>
+<body>
+
+<h2>Basic WatchJS Example</h2>
+<p>View Page source code</p>
+</body>
+</html>
+<script type="text/javascript">
+
+//defining our object however we like
+var ex1 = {
+    attr1: "initial value of attr1",
+    attr2: "initial value of attr2"
+};
+
+//defining a 'watcher' for an attribute
+watch(ex1, "attr1", function(){
+    alert("attr1 changed!");
+});
+
+//when changing the attribute its watcher will be invoked
+ex1.attr1 = "other value";
+</script>

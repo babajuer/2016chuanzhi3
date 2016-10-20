@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <script src='template.js'></script>
+    <script src='itcast.js'></script>
+</head>
+
+<body>
+<div id='mydiv'></div>
+</body>
+</html>
+
+<!--模板王者演示-->
+<script id="arttemplate" type="text/html">
+    <ul>
+        {{each films as film}}
+            <li>
+                <div><strong>电影名称：</strong>{{film.name}}</div>
+                <div><strong>导演：</strong>{{film.lead}}</div>
+                <div><strong>主演：</strong>{{film.role}}</div>
+            </li>
+        {{/each}}
+    </ul>
+</script>
+<script>
+    var data  = {
+        films:[
+            {
+                name: "美人鱼",
+                lead: "周星驰",
+                role: "邓超",
+            },
+            {
+                name: "魔兽",
+                lead: "书奎",
+                role: "兽王",
+            },
+            {
+                name: "未来女战士",
+                lead: "书奎",
+                role: "女战士",
+            }
+        ]
+    }
+
+
+var str = $$.getTemplateHtml('arttemplate',data)
+var domDiv = $$.$id('mydiv')
+domDiv.innerHTML = str
+
+</script>

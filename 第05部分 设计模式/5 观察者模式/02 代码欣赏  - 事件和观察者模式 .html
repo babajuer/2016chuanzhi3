@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+div{padding:10px}
+</style>
+</head>
+
+<body>
+<div onclick ='employee()' id="employee" style="width:100px; height:100px; background:#0F0; padding:50px">
+   <div onclick="TeamLeader()" id="TeamLeader" style="width:100px; height:100px; background:#000; padding:50px">
+        <div onclick="Manager()" id="Manager" style="width:100px; height:100px; background:#03F; padding:50px">
+            <div onclick="bossOrder()" id="boss" style="width:100px; height:100px; background:#CCC"></div>
+        </div>
+   </div>
+</div>
+
+
+<script type="text/javascript">
+//这里的每一次事件 都会在js事件处理处理队列中新增一项。。。处于被观察状态。。。。
+//一旦事件被触发，js会发布一个通知，凡是注册了的dom元素（队列中的元素）都会收到这个信号，然后执行对应的方法
+//js只负责发布一个信号通知大家，通知完之后，就和他没关系了，至于做什么，完全和他没关系，也就是说 dom回调事件不是放在观察者对象这里的，而是放在订阅者这里的。
+//好处： 
+//解除了订阅者模块之间的耦合性。个个模块之间彼此没有影响
+//解除了发布者和订阅者之间的耦合性。发布者只是发布一个信号，至于做什么，是由订阅者提供的
+
+function TeamLeader()
+{
+    alert('团队队长开始工作');
+}
+
+function Manager()
+{
+    alert('经理开始工作');
+}
+function employee()
+{
+    alert('团队成员开始工作');
+}
+function bossOrder()
+{
+    alert('老板发布任务');
+}
+
+//因为下面程序自动激活单击事件，有些浏览器不允许，所以请
+//单击灰色盒子，从这里开始下命令，这样因为冒泡的原因，黑色大盒子也会收到单击事件，并调用了自己的处理程序。如果还有更多盒子嵌套，一样道理。
+
+
+bossOrder();
+
+</script>
+
+</body>
+</html>

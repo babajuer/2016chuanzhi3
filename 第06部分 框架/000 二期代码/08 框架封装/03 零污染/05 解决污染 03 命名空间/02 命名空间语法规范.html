@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var jd = {
+        version:'1.0'
+    }
+    /*公共模块*/
+    jd.common={}
+    /*团队1：开发产品模块*/
+    jd.product={
+        add:function(){},
+        addCart:function(){}
+    }
+    /*团队2：开发订单模块*/
+    jd.order={}
+    /*团队3：开发PC端UI组件*/
+    jd.ui={}
+    jd.ui.pc={
+        tab:function(){console.log('tab组件')},
+        ppt:function(){console.log('幻灯片组件')},
+        nav:function(){console.log('导航组件')},
+        acccord:function(){console.log('手风琴组件')}
+    }
+    /*团队4：开发移动端UI组件*/
+    jd.ui.mobile={
+        tab:function(){console.log('tab组件')},
+        ppt:function(){console.log('幻灯片组件')},
+        nav:function(){console.log('导航组件')},
+        acccord:function(){console.log('手风琴组件')}
+    }
+
+    /*问题：如何访问version属性
+    如何访问add方法
+    如何访问pc端的tab方法
+    如何访问移动端的tab方法*/
+
+
+</script>

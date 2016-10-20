@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    function Product(){
+        this.name =''
+    }
+    Product.prototype={
+        buy:function(){
+            return '我是对象中的一个方法'
+        }
+    }
+
+    var p1 = new Product()
+    p1.name = '苹果手机'
+    var p2 = new Product()
+    p2.name = '安卓手机'
+
+    console.log(p1.name)
+    console.log(p1.buy())
+    console.log(p2.name)
+    console.log(p2.buy())
+</script>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<div class='div'>传智播客</div>
+<br/>
+
+<button id="div">改变div内容 - 第一个和最后一个</button>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    (function(w){
+
+        /*双对象法则 - 第一个对象*/
+        var F = function(selector, context) {
+            return this.init(selector,context)
+        };
+        F.prototype.init = function(selector, context) {
+            if(!selector){
+                return this;
+            }
+            if(typeof selector === 'string'){
+                var nodeList = (context || document).querySelectorAll(selector);
+                this.length = nodeList.length;
+                //这里遍历应从第1个开始到倒数第二个，而不是最后一个，因为最后一个属性是length
+                for (var i=0; i<this.length; i+=1) {
+                    this[i] = nodeList[i];
+                }
+            }else if(selector.nodeType){
+                this[0] = selector;
+                this.length=1;
+            }
+
+            return this;
+        };
+
+        /*hide*/
+        F.prototype.hide = function() {
+            this.each(function() {
+                this.style.display = "none";
+            });
+        };
+        /*show*/
+        F.prototype.show = function() {
+            this.each(function() {
+                this.style.display = "block";
+            });
+        };
+        //get
+        F.prototype.get = function(num) {
+            return this[num] ? this[num] : null;
+        };
+        /*eq*/
+        F.prototype.eq = function(num) {
+            //前面我们改造了init函数，如果是nodetype，则返回只有一个元素的jquery对象
+            return new F(this.get(num))
+        };
+        /*HTML*/
+        F.prototype.htmlOld = function(){
+            var arg = arguments,
+                    len = arg.length;
+            //如果用户使用html（），则表示获取元素的内容
+            if(len === 0){
+                return this[0].innerHTML;
+            }else if(len === 1){
+                //如果用户这样使用html（‘王书奎’），则以此遍历对象从第一个到倒数第二个
+                for(var i =0;i< this.length; i++){
+                    this[i].innerHTML = arg[0];
+                }
+            }
+            return this;
+        }
+        F.prototype.html = function(){
+            var arg = arguments,
+                    len = arg.length;
+            //如果用户使用html（），则表示获取元素的内容
+            if(len === 0){
+                return this[0].innerHTML;
+            }else if(len === 1){
+                //如果用户这样使用html（‘王书奎’），则以此遍历对象从第一个到倒数第二个
+//            for(var i =0;i< this.length; i++){
+//                this[i].innerHTML = arg[0];
+//            }
+                this.each(function(){
+                    this.innerHTML=arg[0]
+                });
+            }
+            return this;
+        }
+        /*first*/
+        F.prototype.first = function() {
+            return this.eq(0);
+        };
+        /*last*/
+        F.prototype.last = function() {
+            return this.eq(this.length-1);
+        };
+
+
+
+
+        //双对象法则 - 第二个对象
+        /*这里itcast可以看做一个json对象*/
+        var itcast = function(selector,context){
+            if(typeof selector == 'function'){
+                window.onload = selector;
+            }else{
+                return new F(selector, context);
+            }
+        }
+        /*给json对象 - itcast添加一个方法*/
+        itcast.extend = function() {
+            /* 这段代码的意思：
+             如果只传递一个参数，表示给F对象添加功能
+             如果传递两个参数，表示给指定的对象添加功能*/
+            var key
+                ,arg = arguments
+                ,i = 1
+                ,len = arg.length
+                ,target = null;
+            if(len === 0){
+                return;
+            }else if(len === 1){
+                target = F.prototype;
+                i--;
+            }else{
+                target = arg[0];
+            }
+
+            for(; i < len; i++){
+                for(key in arg[i]){
+                    target[key] = arg[i][key];
+                }
+            }
+            return target;
+        }
+
+
+        //公共模块
+        /*需要链式访问*/
+        itcast.extend({
+            each : function(fn) {
+                var i=0, length = this.length;
+                for (; i<length; i+=1) {
+                    fn.call(this[i]);
+                    //fn.call(this.element[i],i,this.element[i]);
+                }
+                return this;
+            }
+        });
+        /*不需要链式访问*/
+        itcast.extend(itcast, {
+            camelCase : function(str){
+                return str.replace(/\-(\w)/g, function(all, letter){
+                    return letter.toUpperCase();
+                });
+            },
+            trim : function(str){
+                return str.replace(/^\s+|\s+$/g, '')
+            },
+            formateString : function(str, data){
+                return str.replace(/@\((\w+)\)/g, function(match, key){
+                    return typeof data[key] === "undefined" ? '' : data[key]});
+            }
+        });
+
+
+        /*事件模块*/
+        /*需要参与链式访问*/
+        itcast.extend({
+            // 添加事件
+            on : function(type, fn){
+                var i = this.length - 1;
+                if(document.addEventListener){
+                    for(; i >= 0; i--){
+                        this[i].addEventListener(type, fn, false);
+                    }
+                }else if(document.attachEvent){
+                    for(; i >= 0; i--){
+                        this[i].attachEvent('on' + type, fn);
+                    }
+                }else{
+                    for(; i >= 0; i--){
+                        this[i]['on' + type] = fn;
+                    }
+                }
+                return this;
+            },
+            // 解除事件
+            un : function(type, fn){
+                var i = this.length - 1;
+                if(document.removeEventListener){
+                    for(; i >= 0; i--){
+                        this[i].removeEventListener(type, fn);
+                    }
+                }else if(document.detachEvent){
+                    for(; i >= 0; i--){
+                        this[i].detachEvent(type, fn);
+                    }
+                }else{
+                    for(; i >= 0; i--){
+                        this[i]['on' + type] = null;
+                    }
+                }
+                return this;
+            },
+            /*点击*/
+            click : function(fn){
+                this.on('click',fn);
+                return this;
+            },
+            /*悬浮*/
+            hover : function(fnOver,fnOut){
+                var i =0 ;
+                for(i = 0; i < this.elements.length; i++){
+                    if(fnOver){
+                        this.on("mouseover",fnOver);
+                    }
+                    if(fnOut){
+                        this.on("mouseout",fnOut);
+                    }
+                }
+
+                return this;
+            },
+            toggle:function () {
+                var that = this;
+                var _arguments=arguments;
+
+                for(var i=0;i<this.length;i++) {
+                    addToggle(this[i]);
+                }
+
+                function addToggle(obj) {
+                    var count=0;
+                    that.on('click', function (){
+                        _arguments[count++%_arguments.length].call(obj);
+                    });
+                }
+            }
+        });
+        /*不需要参加链式访问*/
+        itcast.extend(itcast, {
+            // 获取事件对象
+            getEvent : function(event){
+                return event ? event : window.event;
+            }
+            // 获取元素
+            ,getTarget : function(event){
+                var event = this.getEvent(event);
+                return event.target || event.srcElement;
+            }
+            // 阻止冒泡以及捕获
+            ,stopPropagation : function(event){
+                var event = this.getEvent(event);
+                if(event.stopPropagation){
+                    event.stopPropagation();
+                }else{
+                    event.cancelBubble = true;
+                }
+            }
+            // 阻止默认行为
+            ,preventDefault : function(event){
+                var event = this.getEvent(event);
+                if(event.preventDefault){
+                    event.preventDefault();
+                }else{
+                    event.returnValue = false;
+                }
+            }
+            ,getDetail : function(event){
+                var event = this.getEvent(event);
+                if(event.wheelDelta){
+                    return event.wheelDelta;
+                }else{
+                    return -event.detail * 40;
+                }
+            }
+        });
+
+
+        //css样式框架
+        itcast.extend({
+            css : function(){
+                var arg = arguments,
+                        len = arg.length;
+                if(this.length < 1){
+                    return this;
+                }
+                if(len === 1){
+                    if(typeof arg[0] === 'string'){
+                        if(this[0].currentStyle){
+                            return this[0].currentStyle[name];
+                        }else{
+                            return getComputedStyle(this[0],false)[name];
+                        }
+                    }else if(typeof arg[0] === 'object'){
+                        for(var i in arg[0]){
+                            for(var j = this.length - 1; j >= 0; j--){
+                                this[j].style[itcast.camelCase(i)] = arg[0][i];
+                            }
+                        }
+                    }
+                }else if(len === 2){
+                    for(var j = this.length - 1; j >= 0; j--){
+                        this[j].style[itcast.camelCase(arg[0])] = arg[1];
+                    }
+                }
+                return this;
+            },
+            /*hide*/
+            hide : function() {
+                this.each(function() {
+                    this.style.display = "none";
+                });
+            },
+            /*show*/
+            show :function() {
+                this.each(function() {
+                    this.style.display = "block";
+                });
+            }
+
+        });
+        /*不需要链式访问*/
+        itcast.extend(itcast, {
+
+        });
+
+        w.itcast = w.$ = itcast;
+    })(window)
+
+
+    /*测试*/
+    $(function(){
+        /*事件*/
+        $('#div').click(function(){
+            $(".div").first().html('王书奎').css('color','red')
+            $(".div").last().html(' 王书奎').css('color','red')
+        })
+    });
+
+
+</script>

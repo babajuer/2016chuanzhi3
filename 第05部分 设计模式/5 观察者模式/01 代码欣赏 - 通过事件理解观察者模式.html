@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	div{height:50px;width:300px;maigin:30px}
+
+</style>
+</head>
+
+<body>
+<div id='div' style='background:#F00'></div>
+<div style='background:#0F0'></div>
+</body>
+</html>
+<script>
+	
+ var div = document.getElementById('div');
+ //
+ div.onclick = function()
+ {
+	 alert('123');
+ }
+ 
+ 
+ //注册 -- 入队列 --- div就是一个订阅者
+ div.addEventListener('click',function () {
+	  alert('12323333');  
+}); 
+
+
+
+</script>

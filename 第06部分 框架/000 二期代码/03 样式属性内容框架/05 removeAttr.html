@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p{
+            background:red;
+            font-size:40px;
+            color:yellow;
+        }
+        .add{
+            color:blue;
+            font-size:100px;
+        }
+        .hide{
+            display:none
+        }
+
+    </style>
+</head>
+<body>
+
+<p name='梦幻西游' class='hide test'>梦幻西游</p>
+<p name='魔兽世界' class='hide test'>魔兽世界</p>
+
+<button id='btn'>按钮</button>
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+    $$.on('btn','click',function(){
+        removeAttr('p','class')
+    })
+
+
+  /*
+    $$.on('btn','click',function(){
+        removeAttrNew('.game','name','class')
+    })*/
+
+   /* $('.div').removeAttr('name')*/
+    /*系统会自动生成一个arguments来保存所有的实参*/
+    /*属性*/
+    //属性操作 新增
+    /* $$.attr('.game','name','游戏')*/
+    /*$$.attr('.game','class','hide')*/
+
+    /* removeAttr('.game','name')*/
+    function removeAttrOld(context,name) {
+        //思路 骨架
+        var doms = $$.$all(context)
+        /*设置模式 获取模式*/
+        if (name) {
+            //设置模式  设置模式不需要return
+            for (var i = 0; i < doms.length; i++) {
+                doms[i].removeAttribute(name)
+            }
+        }
+    }
+    /*如果有多个属性*/
+    function removeAttrNew(){
+        //将其转换成数组
+        var args =  Array.prototype.slice.call(arguments);
+        console.log(args)
+        var context = args[0];
+        var doms = $$.$all(context)
+        var attrs = args.slice(1)
+        console.log(attrs)
+        for (var i = 0; i < doms.length; i++) {
+            removeOneElement(doms[i])
+        }
+        function removeOneElement(dom){
+            for(var j =0;j<attrs.length;j++){
+                dom.removeAttribute(attrs[j])
+            }
+        }
+    }
+</script>

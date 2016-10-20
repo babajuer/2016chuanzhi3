@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+//模拟生物的成长 -- 做成一个模板
+//有些是所有生物公有的
+//有些是部分生物不一样的。。。
+//一般越往底层越一样
+// 比如 人 狗  --- 从上层看 一个是人 一个是狗
+//但是从底层构造来看则制造方式一样：头部，心脏，胸腔，大肠，小肠，生殖器官等
+//再往底层 --细胞 血液  -- 可能存在差异
+//再往底层 --原子，分子，质子，中子 --- 一样
+//同样这里 DNA复制 比较靠近底层，基本所有生物都一样。。。。一般在父类实现，并且设置不允许修改
+//其他比如出生则属于高层，每个生物是不一样的， 允许子类修改
+function Life(){
+}
+Life.prototype.init = function(){
+   this.DNA复制();
+   this.出生();
+   this.成长();
+   this.衰老();
+   this.死亡();
+}
+
+//其中DNA复制是预先定义的算法中不变部分. 所有子类都不能改写它. 如果需要我们可以写成protected的类型.
+Life.prototype.DNA复制 = function(){
+ // &*$%&^%^&(&(&(&&(^^(*)  
+//看不懂的代码
+   alert('DNA');
+}
+
+//而其他的函数在父类中会被先定义成一个空函数(钩子). 然后被子类重写，这就是模版方法中所谓的可变的步骤。
+Life.prototype.出生 = function(){
+	alert('出生');
+}
+Life.prototype.成长 = function(){
+	alert('成长');
+}
+Life.prototype.衰老 = function(){
+	alert('衰老');
+}
+Life.prototype.死亡 = function(){
+	alert('死亡');
+}
+
+
+
+//var life = new Life();
+//life.init();
+
+
+
+
+
+//子类 --哺乳动物
+function Mammal(){
+}
+
+Mammal.prototype = new Life();   
+//继承Life
+
+
+Mammal.prototype.出生 = function(){
+  alert('重写哺乳动物的出生');
+}
+
+Mammal.prototype.成长 = function(){
+//再留给子类去实现
+	alert('成长');
+}
+
+Mammal.prototype.衰老 = function(){
+     alert('重写哺乳动物的衰老');
+}
+Mammal.prototype.死亡 = function(){
+ alert('死亡');
+//再留给子类去实现
+}
+
+
+//var mammal = new Mammal();
+//mammal.init();
+
+
+
+
+//再实现一个Dog类
+var Dog = function(){
+}
+//Dog继承自哺乳动物.
+Dog.prototype = Mammal.prototype;
+
+var dog = new Dog();
+dog.init();
+
+
+
+</script>

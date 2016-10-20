@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Winpop(){
+
+    }
+    Winpop.prototype.alert= function(str)
+    {
+        console.log(' 自定义弹出框');
+    }
+    Winpop.prototype.conform= function(str1,str2)
+    {
+        console.log(' 自定义确认框');
+    }
+
+
+    var obj = new Winpop(); // 创建一个Winpop的实例对象
+    // 覆盖alert控件
+     window.alert = function(str) {
+            //给windows扩展系统内置功能
+            //其实alert只是window对象的属性方法而已
+            obj.alert.call(obj, str);
+        };
+    // 覆盖confirm控件
+    window.confirm = function(str, cb) {
+             obj.confirm.call(obj, str, cb);
+        };
+
+    window.alert ();
+</script>

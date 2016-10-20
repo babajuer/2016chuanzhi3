@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+	var image = (function(){
+			var imgNode = document.createElement('img');
+			document.body.appendChild(imgNode);
+			//返回一个对象，该对象有一个方法
+			//闭包的用法 -- 前面已经讲过
+			return {
+					setSrc:function(src){
+						  imgNode.src = src;
+						}
+				    }
+		
+		})();
+       //image.setSrc('http://img1.ali213.net/picfile/News/2012pic/01/21/550lj20130121092517_1.jpg');
+	   
+	   var proxy =(function(){
+		   	var img = new Image;
+			//当加载完之后显示图片 将代理对象的img src属性传递给真正的image对象
+			img.onload= function()
+			{
+				image.setSrc(this.src);
+			}
+			return{
+				setSrc:function(src)
+				{
+					//默认使用load图片
+					image.setSrc('load.gif');
+					//加载真正的图片
+					img.src = src;
+				}
+				};
+		   
+		   })();
+	   
+	   proxy.setSrc('http://img.redocn.com/sheji/20141008/kejichuangyihuace_3183207.jpg');
+</script>

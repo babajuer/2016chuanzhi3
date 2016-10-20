@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+<p></p>
+</body>
+<script src='itcast3.js'></script>
+<script type="text/javascript">
+
+    //测试
+    bind('btn', 'click', function(e){
+        document.getElementsByTagName('p')[0].innerHTML = '成功绑定了事件1'
+        console.log(e)
+    });
+
+    bind('btn', 'click', function(e){
+        document.getElementsByTagName('p')[0].innerHTML += '成功绑定了事件2'
+        console.log(e)
+    });
+
+
+    function bind(id, eventName, fn) {
+        $$.on(id,eventName,function(e){
+            e.stopPropagation();
+            fn(e)
+        })
+    }
+</script>
+</html>

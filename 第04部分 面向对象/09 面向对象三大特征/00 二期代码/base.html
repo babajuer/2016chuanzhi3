@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*
+
+     我们首先考虑这样一个场景：图书 衣服
+     我们可以将他们共同的提取出来 放在父亲对象里面*/
+
+
+    /*基类 父类  产品爸爸 父亲 -- 放置大家都公共的属性和方法  基类产品 -- */
+   /* Base里面保存的只是地址*/
+    function Base(){
+        /*名称*/
+        this.name='JS高级编程第四版--一般成绩中等以上的'
+        /*价格*/
+        this.price=''
+        /*描述*/
+        this.description = ''
+    }
+    Base.prototype={
+        //放置绑定相关代码
+        bindDOM:function(){},
+        /*放置事件相关代码*/
+        bindEvents:function(){},
+        init:function(){},
+
+        buy:function(){}
+    }
+
+    /*
+     产品儿子1 -- 子类 派生类 --  电子书  放置自己独特的一些属性和方法*/
+    function eBook(){
+      /*  Base.call(this, arguments);*/
+        /*作者 设计师*/
+        this.author =''
+        /*出版社*/
+        this.publisher=''
+        /*出版日期*/
+        this.publishTimer = ''
+        /*页数*/
+    }
+    /*eBook.prototype={}*/
+
+  /*  本来
+    eBook.prototype = {}
+    这句话的作用到底是什么意思呢*/
+    /*eBook.prototype只是一个地址*/
+
+    /*如果只用这句话实现继承方式 -- 原型继承*/
+    /*只有一个小缺点*/
+    eBook.prototype=new Base();
+
+    eBook.prototype.buy = function(){
+        /*放置电子书的购买代码逻辑*/
+    }
+
+    eBook.prototype.addtoCart = function(){}
+
+    eBook.prototype = {
+        buy:function(){},
+        addtoCart:function(){}
+    }
+
+
+
+    /*产品儿子2 - 衣服类对象*/
+    function  Clothes(){
+        /*尺寸*/
+        this.sizes =[]
+        /*颜色*/
+        this.colors=[]
+
+    }
+    Clothes.prototype.buy =function(){
+       /* 放置衣服的购买代码过程
+        生成一个订单
+        物流
+        送货到家
+        货到付款。。。。*/
+    }
+
+    /*
+     继承的概念：1拥有（访问）自身的属性和方法*/
+    /*同时可以访问到父亲的属性和方法*/
+    var book = new eBook()
+    console.log(book.name)
+
+    console.log(eBook.prototype.__proto__ === Base.prototype)
+
+</script>

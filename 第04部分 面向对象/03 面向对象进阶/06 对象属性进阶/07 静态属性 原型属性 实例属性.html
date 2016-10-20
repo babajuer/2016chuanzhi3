@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>测试</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+function Man(name, age) {
+//定义实例属性
+this.name = name;
+this.age = age;
+}
+
+//定义静态属性。默认性别是男，不排除变性，^v^
+Man.sex = '男';
+//定义原型属性
+Man.prototype.phone = '123456';
+
+
+
+console.log(Man.sex)
+console.log(Man.prototype.phone)
+console.log(Man.name)
+console.log(Man.age)
+console.log(Man.phone)//Man.sex和Man.prototype.phone其余全部是Undefined
+
+
+
+
+var man = new Man("Tom", 24);
+console.log(Man.sex)
+console.log(Man.name)
+console.log(Man.age)
+console.log(Man.phone)
+</script>
+</body>
+</html>

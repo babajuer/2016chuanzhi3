@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+    //团队1
+	//算法家族 --放在同一的命名空间中
+	var Price={};
+	//vip 客户优惠策略类   单一职责原则---
+	Price.vipPrice = function() {
+		this.discount = 0.5;
+		this.getPrice = function(price) {
+			return price * this.discount;
+		}
+	}
+	//老客户优惠策略类:
+	Price.oldPrice = function() {
+		this.discount = 0.3;
+		this.getPrice = function(price)
+		{
+			return price * this.discount;
+		}
+	}
+	//普通客户
+	Price.NormlPrice = function() {
+		this.discount = 1;
+		this.getPrice = function(price)
+		{
+			return price ;
+		}
+	}
+    //核心点：面向未来编程： 以后在维护的时候需求编程：比如新增钻石客户
+    Price.DiamondPrice = function() {
+        this.discount = 0.98;
+        this.getPrice = function(price)
+        {
+            return price *discount;
+            //送我京东豆
+//            专属的电话频道。。。
+        }
+    }
+
+
+
+
+    //工厂 -- 专门负责生成不同的实例 --就比如 吃货不用关心东西是如何制造的一样。。。
+	Price.factory = function (typeType) {
+		return new Price[typeType];
+	}
+
+//	json.
+//json对象的调用方法的第二种； json['属性名称']
+
+
+
+
+//团队2：使用  根本不用关心制造过程 ，只需要学会使用，
+// 其实就是面向对象的封装性，多态性
+var normalPrice = Price.factory("NormlPrice").getPrice(1000);
+var oldPrice = Price.factory("oldPrice").getPrice(1000);
+alert(normalPrice);
+alert(oldPrice);
+
+//未来新增一个新的优惠方式，如何改动最少，---只添加不修改（或者改动少），
+// 这就是传说中的开放封闭法则（只新增不修改或者少修改法则）
+var normalPrice = Price.factory("DiamondPrice").getPrice(1000);
+
+
+
+
+
+
+
+
+
+
+</script>

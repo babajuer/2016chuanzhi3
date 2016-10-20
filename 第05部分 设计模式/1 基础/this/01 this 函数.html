@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+//在浏览器的JavaScript 里，这个全局对象是window 对象。
+	window.name = '传智播客';
+
+	var getName = function(){
+		//普通函数内部 -- this指向全局
+		return this.name;
+	};
+	alert( getName() ); // 输出：globalName
+
+
+
+
+	//或者：
+	window.name = '创智播客';
+
+	var myObject = {
+		name: 'sven',
+		getName: function(){
+			return this.name;
+		}
+	};
+	//这里也是作为普通函数调用
+	var getName = myObject.getName;
+	alert( getName() ); 
+
+</script>

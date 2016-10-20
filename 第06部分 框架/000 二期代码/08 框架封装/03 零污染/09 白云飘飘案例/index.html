@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style type="text/css">
+        *{padding: 0;margin: 0;}
+        body{background: url(img/body_bg.jpg) no-repeat top center;-webkit-background-size: cover;
+            background-size: cover;overflow:hidden;}
+        img{position: absolute;}
+        #sun{top: 40px;}
+        #cloud_sun{top: 70px;}
+        #cloud{top: 200px;}
+        #cloud_1{top: 30px;}
+        #cloud_2{top: 200px;}
+
+    </style>
+</head>
+
+<body>
+<img id="sun" src="img/sun.png"/>
+<img id="cloud_sun" src="img/cloud.png" width="300" />
+<img id="cloud" src="img/cloud.png" width="600" />
+<img id="cloud_1" src="img/cloud.png" width="500" />
+<img id="cloud_2" src="img/cloud.png" width="900" />
+</body>
+</html>
+<script src='itcast.js'></script>
+<script>
+
+    var sum = 1;
+    window.alert('111');
+    alert('')
+
+    //面向对象认识整个js世界 --BOM -- window
+    console.log(sum)
+    console.log(window.sum)
+
+
+    /*获取窗口宽度*/
+    var width = window.innerWidth || document.documentElement.offsetWidth
+
+    $$.animate('#sun', {left:width},70000);
+    $$.animate('#cloud', {left:width},60000);
+    $$.animate('#cloud_sun', {left:-width},60000);
+    $$.animate('#cloud_1', {right:width},70000);
+    $$.animate('#cloud_2', {right:width},120000);
+</script>

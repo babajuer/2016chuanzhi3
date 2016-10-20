@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script src='simple.js'></script>
+<script>
+
+
+/*
+    class base{
+        var name;
+        var price;
+    }
+
+    class eBook:Base{
+            this.auther=
+
+    }
+
+
+*/
+
+
+    /*基类 父类  产品爸爸 父亲 -- 放置大家都公共的属性和方法  基类产品 -- */
+    /* Base里面保存的只是地址*/
+    var Base = Class.extend({
+        init: function(){
+            /*名称*/
+            this.name='JS高级编程第四版--一般成绩中等以上的'
+            /*价格*/
+            this.price=''
+            /*描述*/
+            this.description = ''
+        },
+        //放置绑定相关代码
+        bindDOM:function(){},
+        /*放置事件相关代码*/
+        bindEvents:function(){},
+    });
+
+
+    /*
+     产品儿子1 -- 子类 派生类 --  电子书  放置自己独特的一些属性和方法*/
+    /*另外一个流行框架：定义对象 定义继承*/
+    var eBook = Base.extend({
+        init: function(){
+            this._super()
+            /*作者 设计师*/
+            this.author ='wangshukui'
+            /*出版社*/
+            this.publisher=''
+            /*出版日期*/
+            this.publishTimer = ''
+            /*页数*/
+        },
+        //重写 覆盖
+        bindDOM:function(){},
+        /*放置事件相关代码*/
+        bindEvents:function(){},
+    });
+
+
+    var book = new  eBook()
+    console.log(book.name)
+    console.log(book.author)
+</script>

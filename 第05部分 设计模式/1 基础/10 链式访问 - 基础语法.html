@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+function ClassA(){  
+    this.prop1 = null;  
+    this.prop2 = null;  
+    this.prop3 = null;  
+}  
+ClassA.prototype = {  
+    method1 : function(p1){  
+        this.prop1 = p1;  
+        return this;  
+    },  
+    method2 : function(p2){  
+        this.prop2 = p2;  
+        return this;  
+    },  
+    method3 : function(p3){  
+        this.prop3 = p3;  
+        return this;  
+    }  
+}
+
+    var obj = new ClassA();
+    //消耗内存 消耗性能
+
+    obj.method1(1).method2(2).method(3); // obj -> prop1=1,prop2=2,prop3=3  
+</script>

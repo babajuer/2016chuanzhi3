@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    var fun = function(){}
+    fun.prototype = {
+        name:'黑马',
+        sum:100,
+        buy:function(){
+            console.log('原型对象中的方法')
+        },
+        /*只有复杂类型才会共享*/
+        info:{
+            name:'tom'
+        }
+    }
+
+    var a = new fun();
+    var b = new fun();
+
+    //相当于给实例新增一个属性
+    a.name = '黑马王子'
+    b.name='白马王子'
+    a.buy =function(){
+        console.log('a方法')
+    }
+    b.buy =function(){
+        console.log('b方法')
+    }
+
+    //访问原型中的某个属性的属性
+    a.info.name
+    //是给实例新增一个属性
+    a.info = {name:'jack_a'}
+    b.info = {name:'jack_b'}
+    console.log(a.info.name)
+    console.log(b.info.name)
+</script>

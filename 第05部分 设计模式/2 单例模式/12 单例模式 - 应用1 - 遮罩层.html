@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	div{background:#999;height:auto;width:auto}
+	    #cover{
+
+    background:gray;
+
+    position:absolute;
+
+    left:0px;
+
+    top:0px;
+
+    display:none;
+
+    z-index:20;
+
+    filter:alpha(opacity=60);
+
+    opacity:0.6 !important;
+
+    }
+</style>
+
+</head>
+
+<body>
+</body>
+</html>
+<script>
+var singleton = function( fn ){
+    var result;
+    return function(){
+        return result || ( result = fn .apply( this, arguments ) );
+    }
+}
+ 
+var createMask = singleton( function(){
+ 
+return document.body.appendChild( document.createElement('div') );
+ 
+ })
+</script>
+
+<script>
+ function show(){
+
+    var cover = document.getElementById("cover");
+
+    cover.style.width = document.documentElement.scrollWidth+"px";
+
+    cover.style.height = document.documentElement.scrollHeight+"px";
+
+    cover.style.display = "block";
+
+    }
+
+show();
+
+</script>

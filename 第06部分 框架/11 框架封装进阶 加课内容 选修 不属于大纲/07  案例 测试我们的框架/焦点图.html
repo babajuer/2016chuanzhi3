@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+*{margin:0; padding:0; list-style: none; border:0;}
+.container{margin: 10px auto; width: 510px;}
+ul{width: 500px; overflow:hidden;}
+ul li{width:500px; height:300px; overflow: hidden; display: none;}
+ul li.show{display: block;}
+ol{margin:10px auto; text-align:center}
+ol li{display:inline-block; width:13px; height:13px; background:url(img/00.png) no-repeat; cursor: pointer; margin: 0 5px;}
+ol li.choose{ background-position: 0 -26px;}
+
+
+
+</style>
+<script type="text/javascript" src="itcast.js"></script>
+    <script type="text/javascript" src="itcast.animate.js"></script>
+<script type="text/javascript">
+
+
+$(function(){
+    var LoopImg = function(id, imgArr){
+        this.id = id;
+        this.container = $.create('div', {id : id, class : 'container'});
+        this.imgs = imgArr;
+        this.ulSelect = '#' + id + ' ul li';
+        this.olSelect = '#' + id + ' ol li';
+        this.num = 0;
+        this.timer = null;
+        this.init();
+    }
+    LoopImg.prototype = {
+        init : function(){
+            this.create();
+            this.setUI();
+            this.go();
+        },
+        setUI : function(){
+            this.container.appendTo(document.body);
+            this.show();
+        },
+        show : function(){
+            $(this.ulSelect).removeClass('show').eq(this.num).addClass('show');
+            $(this.olSelect).removeClass('choose').eq(this.num).addClass('choose');
+        },
+        create : function(){
+            var html = '<ul>@(ul)</ul><ol>@(ol)</ol>';
+            var ul = '',
+                ol = '';
+            for(var i = 0, len = this.imgs.length; i < len; i++){
+                ul += $.formateString('<li><img src="img/@(num).jpg" height="300" /></li>', {num : this.imgs[i]});
+                ol += '<li></li>';
+            }
+            this.container.html($.formateString(html, {ul : ul, ol : ol}))
+        },
+        stop : function(){
+            clearInterval(this.timer);
+        },
+        go : function(){
+            var that = this;
+            that.stop();
+            that.timer = setInterval(function(){
+                that.num++;
+                if(that.num >= that.imgs.length){
+                    that.num = 0;
+                }
+                that.show();
+            }, 2000)
+        }
+    }
+    new LoopImg('aaa', [1,2,3,4,5,6,7]);
+    new LoopImg('bbb', [1,2,3]);
+
+})
+</script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{width:300px;height:300px;background:#CCC}
+    </style>
+</head>
+<body>
+    <button id='btn'>确认</button>
+    <button id='btnIE'>微软浏览器</button>
+    <div id='div'></div>
+</body>
+</html>
+<script src='../itcast.js'></script>
+<script>
+    var btn = $$.$id('btn')
+    btn.onclick = function(evt) {
+        var e;
+       if(evt) {
+            e = evt;
+        } else if (window.event) {
+            e = window.event;
+        }
+
+    }
+
+    function getEvent(e){
+        //如果是ie浏览器 --- 使用window.event来获取event对象
+        //如果不是ie（其余所有浏览器）都是支持标准的，怎么做：直接在函数中加个参数，系统会自动将这个参数看做是event对象
+        var event;
+        if(e){
+            event = e;
+        }else if(window.event){
+            event = window.event;
+        }
+
+        return event
+    }
+
+       /* 三元表达式：可以简化if语句的写法*/
+       /* zepto：用户体验至上
+    苹果公司就是 一个按钮 极简原则
+    美工 ---设计师 --硕士  */
+    /*学习三元运算符的使用*/
+    function getEvent(e){
+        return e?e:window.event;
+    }
+
+
+    /*短路表达式*/
+    /*后端开发几乎很少if语句*/
+    /*两层或者三层*/
+    /*switch*/
+    /*枚举*/
+    function getEvent(evt){
+        return evt || window.event;
+
+        }
+</script>

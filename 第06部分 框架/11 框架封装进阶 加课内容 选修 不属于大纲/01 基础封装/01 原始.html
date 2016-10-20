@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            background: yellow;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<button id="button">点击我</button>
+<div id='div'></div>
+<img id="image" src="xxx.jpg">
+</body>
+</html>
+<script>
+    //古老的时代 -- 原生时代
+    var button = document.getElementById('button')
+    var div = document.getElementById('div')
+    button.onclick =function(){
+        div.style.background='red'
+    }
+
+    function $id(id) {
+        return document.getElementById(id)
+    }
+$(id).css()
+
+    $id('button').onclick=function(){
+
+    }
+
+    on('div',function){
+
+    }
+
+    $('#div').on()
+</script>

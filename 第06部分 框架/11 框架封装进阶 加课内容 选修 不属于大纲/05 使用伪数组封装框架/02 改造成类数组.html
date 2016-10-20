@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+
+<br/>
+
+<button id="hide">隐藏</button>
+<button id="show">显示</button>
+<button id="show2">只显示一张图片</button>
+</body>
+</html>
+
+<script>
+    //    在IE8+浏览器中，我们有选择器API，
+    //    document.querySelector与document.querySelectorAll，
+    //    前者返回唯一Node，后者为NodeList集合。大统一起见，我们使用后者。于是，就有：
+    var F = function(selector, context) {
+    // return this.getNodeList(selector, context);
+        return this.init(selector,context)
+    //再次分析不同点：
+    // 老的方式返回的一个对象{elements：[]}
+    // 新的方式返回的是类数组对象{element1，element2，。。。。length}
+    /*    elements:[]
+        我们直接使用系统自动生成的这个匿名对象 {}
+        {element1，element2，elment3，。。。。}length*/
+    //不同点：遍历的时候，一个针对的是数组进行遍历，一个针对的是json对象进行遍历
+    //这里注意：
+    // 1，不能使用for in遍历
+    // 2，each函数中循环遍历原来是:（this.elements[i]）,而类数组直接使用this[i]
+    // 3, 如何获取元素个数：老：this.elements.length 新：this.length (length只是json对象的属性)
+    // 4,如何获取每个元素：老：this.elements[i] 新：this[i]
+    };
+//    F.prototype.getNodeList = function(selector, context) {
+//        context = context || document;
+//        this.element = context.querySelectorAll(selector);
+//        return this;
+//    };
+
+
+
+//    init的作用就是将当前对象的实例改造成一个类数组，当前对象的实例拥有和构造函数一样的__proto__属性
+//    所以可以访问原型对象中方法属性
+
+
+
+    //将原型对象改造成类数组对象
+    //前面我们知道：根据构造函数实例化之后获取的值：
+    // 如果构造函数返回引用类型，则通过new获取的就是返回的对象本身，而不是构造对象本身，这样我们无法访问里面的成员，比如实现隐藏
+    //如何解决：我们使用无返回值的构造函数形式--这样返回匿名对象 --通过在这个匿名对象中定义一个属性来解决该问题
+    //老的实现方式：{element：[]，each：function（）{}，hide：function（）{}}
+    //类数组形式：{element1，element2，element3，length}
+    //采用类数组的好处：
+    //老的实现方式需要通过this.elements【i】来访问获取的每个元素，而新的方式可以通过this[i]形式访问
+    //伪数组形式其实就是json对象 -- 恰巧我们可以用json[i]访问每个值，但是通过length无法获取长度，我们可以添加一个length属性，来保存个数
+    F.prototype.init = function(selector, context) {
+
+     /*   this.elements = (context || document).querySelectorAll(selector);*/
+
+        var nodeList = (context || document).querySelectorAll(selector);
+
+
+        //给匿名数组加个一个length属性 --  真正的成为一个伪数组
+     /*   {1:element1,2:element2,3:element3,length}*/
+        this.length = nodeList.length;
+        //这里遍历应从第1个开始到倒数第二个，而不是最后一个，因为最后一个属性是length
+        for (var i=0; i<this.length; i+=1) {
+            this[i] = nodeList[i];
+        }
+        //这里是关键，return的是this，表示当前对象
+        return this;
+    };
+
+
+    //改成类数组
+    F.prototype.each = function(fn) {
+        var i=0, length = this.length;
+        for (; i<length; i+=1) {
+            fn.call(this[i]);
+            //fn.call(this.element[i],i,this.element[i]);
+        }
+        return this;
+    };
+
+   F.prototype.hide =function(){
+      /*  var doms =  this.elements*/
+   /* 当使用伪数组保存元素集合之后的话，我们不再从这个真数组里面获取元素
+        而是从伪数组里面获取元素*/
+        /*如何去遍历一个json*/
+
+        /*最后一个有一个length属性*/
+       /* for(var item in this){
+            item.style.display = 'none'
+        }*/
+        for( var i = 0;i<this.length;i++) {
+         this[i].style.display = 'none'
+        }
+
+
+      /*  for(var i= 0,len=doms.length;i<len;i++){
+          doms[i].style.display = 'none'
+        }*/
+        return this;
+    },
+   F.prototype.show =function(){
+
+   for( var i = 0;i<this.length;i++) {
+         this[i].style.display = 'block'
+   }
+    return this;
+  },
+
+
+
+
+
+
+
+    F.prototype.hide = function() {
+        this.each(function() {
+            this.style.display = "none";
+        });
+    };
+    F.prototype.show = function() {
+        this.each(function() {
+            this.style.display = "block";
+        });
+    };
+
+
+
+    //    引入美元符号
+    var $ = function(selector, context) {
+        return new F(selector, context);
+    };
+
+
+    /*测试 -- 基本接近jquery*/
+    var btnhide = document.getElementById("hide")
+    btnhide.onclick = function() {
+        $('.image').hide()
+    };
+
+    var btnshow = document.getElementById("show")
+    btnshow.onclick = function() {
+        $('.image').show()
+    };
+
+    var btnshow2 = document.getElementById("show2")
+    btnshow2.onclick = function() {
+        //$('.image').show()
+        //如何访问第一张图 老：$("img"）.elements[0] 新： $("img")[0]
+
+        //引出下一篇 这里$(".image")得到是类数组对象，但是$(".image")[0]得到的是image对象，而image对象没有show方法
+        $(".image")[0].show()
+    };
+
+
+
+</script>
